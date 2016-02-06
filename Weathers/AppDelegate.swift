@@ -16,6 +16,44 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
+        
+        
+        
+        self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
+        self.window?.backgroundColor = UIColor.whiteColor()
+        self.window?.makeKeyAndVisible()
+        //        let vc = MainViewController()
+        let tabBar = MyTabBarController()
+        self.window?.rootViewController = tabBar
+        
+        //设置导航栏
+        UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 18/255.0, green: 85/255.0, blue: 137/255.0, alpha: 1.0)
+        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+        UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        //注册
+        MobAPI.registerApp("f30df66d4e10")
+        
+        MobAPI.sendRequest(MOBAPhoneRequest.addressRequestByPhone("13022138660")) { (response) -> Void in
+            if (response.error != nil) {
+                print("\(response.error)")
+            }
+            else{
+                
+                //用MOBFJson 将response.responder 转为data
+                //                let data =  MOBFJson.jsonDataFromObject(response.responder)
+                //swiftJson 用data转json对象
+                //                let json = JSON(data: data)
+                //                //取出对应的值
+                //                if let userName = json["city"].string {
+                //                    print("城市:\(userName)")
+                //                }
+                //                print("\(json["province"].string)")
+                //                
+                //                print("\(response.responder)")
+            }
+        }
+
         return true
     }
 
