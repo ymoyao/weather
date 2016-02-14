@@ -42,6 +42,9 @@ class MyTabBarController: UITabBarController {
     //MARK: - 定制tabBar
     func customTabBar() {
         let tabBar = MyTabBar.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 49))
+        tabBar.tabClosure = { (tag) in
+            self.selectedIndex = tag
+        }
         self.tabBar.addSubview(tabBar)
     }
 

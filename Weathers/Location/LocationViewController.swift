@@ -10,11 +10,11 @@ import UIKit
 import CoreLocation
 import SQLite
 
-typealias closure = (string:String) -> Void
+typealias LocationClosure = (string:String) -> Void
 
 class LocationViewController: UIViewController,CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate {
 
-    var locationClosure:closure?
+    var locationClosure:LocationClosure?
     
     var titleView:UILabel! = UILabel()
     var locationManager:CLLocationManager?

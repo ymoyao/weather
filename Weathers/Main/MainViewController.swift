@@ -14,6 +14,7 @@ class MainViewController: UIViewController,UITableViewDataSource,UITableViewDele
 
     var btn:UIButton?
     var tableView:UITableView?
+    var tableHeadView:MainVCHeadView?
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -47,6 +48,9 @@ class MainViewController: UIViewController,UITableViewDataSource,UITableViewDele
         tableView = UITableView(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height), style: .Plain)
         tableView?.dataSource = self
         tableView?.delegate = self
+        tableView?.registerClass(MainVCCell.self, forCellReuseIdentifier: "cell")
+        tableHeadView = MainVCHeadView.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 110))
+        tableView?.tableHeaderView = tableHeadView
         self.view.addSubview(tableView!)
     }
     
@@ -83,16 +87,30 @@ class MainViewController: UIViewController,UITableViewDataSource,UITableViewDele
     
     //MARK: - UITableViewDelegate
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
-        return 1
-    }
-    
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 10
     }
     
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 1
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = UITableViewCell()
-        return cell
+        let cell = tableView.dequeueReusableCellWithIdentifier("cell")
+        return cell!
+    }
+
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 64
+    }
+    
+    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+        return 10
+    }
+    
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let sectionHeadView = UIView.init()
+        sectionHeadView.backgroundColor = UIColor.init(red: 77/255.0, green: 66/255.0, blue: 77/255.0, alpha: 1.0)
+        return sectionHeadView
     }
     
     

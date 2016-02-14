@@ -8,9 +8,11 @@
 
 import UIKit
 import Foundation
+typealias TabClosure = (tag:Int) -> Void
 
 class MyTabBar: UIImageView {
     
+    var tabClosure:TabClosure?
     var tabBarModel: MyTabBarModel? {
         didSet{
             
@@ -31,6 +33,7 @@ class MyTabBar: UIImageView {
       
             btnX = CGFloat(i) * btnW
             let btn = UIButton.init(type: UIButtonType.Custom)
+            btn.tag = 100 + i
             btn.frame = CGRectMake(btnX, 0, btnW, btnH)
             btn.addTarget(self, action: Selector("btnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
             btn.setImage(UIImage.init(named: imageArr[i]), forState: UIControlState.Normal)
@@ -55,6 +58,7 @@ class MyTabBar: UIImageView {
         lastBtn?.selected = false
         btn.selected = !btn.selected
         lastBtn = btn
+        tabClosure!(tag: btn.tag - 100)
     }
     
 

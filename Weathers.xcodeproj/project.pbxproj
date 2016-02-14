@@ -10,9 +10,12 @@
 		04C63101A4B98AE1810CF1E6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A7417175DFC7757153E833 /* Pods.framework */; };
 		AB0C2A0E1C6486840034767F /* city.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = AB0C2A0D1C6486840034767F /* city.sqlite3 */; };
 		AB0C2A101C649B8C0034767F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0C2A0F1C649B8C0034767F /* CoreLocation.framework */; };
+		AB811ED71C70B8FE00C7A469 /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB811ED61C70B8FE00C7A469 /* MainVCCell.swift */; };
+		AB811ED91C70CB3900C7A469 /* MainVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB811ED81C70CB3900C7A469 /* MainVCModel.swift */; };
+		AB85F7301C702B27005C03A0 /* MainVCHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85F72F1C702B27005C03A0 /* MainVCHeadView.swift */; };
+		AB85F7321C7076C1005C03A0 /* sunshine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB85F7311C7076C1005C03A0 /* sunshine@2x.png */; };
 		ABBD380C1C638F3B00EC5AC8 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD380B1C638F3B00EC5AC8 /* Utils.m */; };
 		ABFB7FA41C634AA900550FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FA31C634AA900550FF2 /* AppDelegate.swift */; };
-		ABFB7FA61C634AA900550FF2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FA51C634AA900550FF2 /* ViewController.swift */; };
 		ABFB7FA91C634AA900550FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FA71C634AA900550FF2 /* Main.storyboard */; };
 		ABFB7FAB1C634AA900550FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FAA1C634AA900550FF2 /* Assets.xcassets */; };
 		ABFB7FAE1C634AA900550FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FAC1C634AA900550FF2 /* LaunchScreen.storyboard */; };
@@ -52,11 +55,14 @@
 		5884C0D80F20163E927B25A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AB0C2A0D1C6486840034767F /* city.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = city.sqlite3; sourceTree = "<group>"; };
 		AB0C2A0F1C649B8C0034767F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		AB811ED61C70B8FE00C7A469 /* MainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCCell.swift; sourceTree = "<group>"; };
+		AB811ED81C70CB3900C7A469 /* MainVCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCModel.swift; sourceTree = "<group>"; };
+		AB85F72F1C702B27005C03A0 /* MainVCHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCHeadView.swift; sourceTree = "<group>"; };
+		AB85F7311C7076C1005C03A0 /* sunshine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sunshine@2x.png"; sourceTree = "<group>"; };
 		ABBD380A1C638F3B00EC5AC8 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
 		ABBD380B1C638F3B00EC5AC8 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
 		ABFB7FA01C634AA900550FF2 /* Weathers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFB7FA31C634AA900550FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ABFB7FA51C634AA900550FF2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABFB7FA81C634AA900550FF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABFB7FAA1C634AA900550FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABFB7FAD1C634AA900550FF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -79,9 +85,9 @@
 		ABFB7FCD1C634B8D00550FF2 /* btn_nav_mine_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine_selected@2x.png"; sourceTree = "<group>"; };
 		ABFB7FCE1C634B8D00550FF2 /* btn_nav_mine_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine_selected@3x.png"; sourceTree = "<group>"; };
 		ABFB7FCF1C634B8D00550FF2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		ABFB7FD11C634B8D00550FF2 /* MyTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
-		ABFB7FD21C634B8D00550FF2 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
-		ABFB7FD31C634B8D00550FF2 /* MyTabBarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarModel.swift; sourceTree = "<group>"; };
+		ABFB7FD11C634B8D00550FF2 /* MyTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTabBar.swift; path = Main/MyTabBar.swift; sourceTree = "<group>"; };
+		ABFB7FD21C634B8D00550FF2 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTabBarController.swift; path = Main/MyTabBarController.swift; sourceTree = "<group>"; };
+		ABFB7FD31C634B8D00550FF2 /* MyTabBarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTabBarModel.swift; path = Main/MyTabBarModel.swift; sourceTree = "<group>"; };
 		ABFB7FD61C634B8D00550FF2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		ABFB7FD71C634B8D00550FF2 /* Weathers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Weathers-Bridging-Header.h"; sourceTree = "<group>"; };
 		ABFB7FD91C634B8D00550FF2 /* PersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
@@ -176,7 +182,9 @@
 				ABFB7FDA1C634B8D00550FF2 /* Source */,
 				ABFB7FE21C634B8D00550FF2 /* Super */,
 				ABFB7FA31C634AA900550FF2 /* AppDelegate.swift */,
-				ABFB7FA51C634AA900550FF2 /* ViewController.swift */,
+				ABFB7FD11C634B8D00550FF2 /* MyTabBar.swift */,
+				ABFB7FD21C634B8D00550FF2 /* MyTabBarController.swift */,
+				ABFB7FD31C634B8D00550FF2 /* MyTabBarModel.swift */,
 				ABFB7FA71C634AA900550FF2 /* Main.storyboard */,
 				ABFB7FAA1C634AA900550FF2 /* Assets.xcassets */,
 				ABFB7FAC1C634AA900550FF2 /* LaunchScreen.storyboard */,
@@ -246,12 +254,9 @@
 		ABFB7FC11C634B8D00550FF2 /* Main */ = {
 			isa = PBXGroup;
 			children = (
-				ABFB7FC21C634B8D00550FF2 /* Image */,
 				ABFB7FCF1C634B8D00550FF2 /* MainViewController.swift */,
+				ABFB7FC21C634B8D00550FF2 /* Image */,
 				ABFB7FD01C634B8D00550FF2 /* Model */,
-				ABFB7FD11C634B8D00550FF2 /* MyTabBar.swift */,
-				ABFB7FD21C634B8D00550FF2 /* MyTabBarController.swift */,
-				ABFB7FD31C634B8D00550FF2 /* MyTabBarModel.swift */,
 				ABFB7FD41C634B8D00550FF2 /* View */,
 			);
 			path = Main;
@@ -260,6 +265,7 @@
 		ABFB7FC21C634B8D00550FF2 /* Image */ = {
 			isa = PBXGroup;
 			children = (
+				AB85F7311C7076C1005C03A0 /* sunshine@2x.png */,
 				ABFB7FC31C634B8D00550FF2 /* btn_nav_brand@2x.png */,
 				ABFB7FC41C634B8D00550FF2 /* btn_nav_brand@3x.png */,
 				ABFB7FC51C634B8D00550FF2 /* btn_nav_brand_selected@2x.png */,
@@ -279,6 +285,7 @@
 		ABFB7FD01C634B8D00550FF2 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AB811ED81C70CB3900C7A469 /* MainVCModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -286,6 +293,8 @@
 		ABFB7FD41C634B8D00550FF2 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				AB85F72F1C702B27005C03A0 /* MainVCHeadView.swift */,
+				AB811ED61C70B8FE00C7A469 /* MainVCCell.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -433,6 +442,7 @@
 				ABFB7FF11C634B8D00550FF2 /* btn_nav_mine@2x.png in Resources */,
 				ABFB7FF21C634B8D00550FF2 /* btn_nav_mine@3x.png in Resources */,
 				ABFB7FAB1C634AA900550FF2 /* Assets.xcassets in Resources */,
+				AB85F7321C7076C1005C03A0 /* sunshine@2x.png in Resources */,
 				ABFB7FF01C634B8D00550FF2 /* btn_nav_home_selected@3x.png in Resources */,
 				ABFB7FA91C634AA900550FF2 /* Main.storyboard in Resources */,
 				ABFB7FE91C634B8D00550FF2 /* btn_nav_brand@2x.png in Resources */,
@@ -501,16 +511,18 @@
 			buildActionMask = 2147483647;
 			files = (
 				ABFB7FE81C634B8D00550FF2 /* LocationViewController.swift in Sources */,
+				AB811ED91C70CB3900C7A469 /* MainVCModel.swift in Sources */,
 				ABFB7FF71C634B8D00550FF2 /* MyTabBarController.swift in Sources */,
-				ABFB7FA61C634AA900550FF2 /* ViewController.swift in Sources */,
 				ABFB7FFD1C634B8D00550FF2 /* RootViewController.swift in Sources */,
 				ABFB7FA41C634AA900550FF2 /* AppDelegate.swift in Sources */,
 				ABBD380C1C638F3B00EC5AC8 /* Utils.m in Sources */,
 				ABFB7FF61C634B8D00550FF2 /* MyTabBar.swift in Sources */,
 				ABFB7FF91C634B8D00550FF2 /* PersonViewController.swift in Sources */,
 				ABFB7FF51C634B8D00550FF2 /* MainViewController.swift in Sources */,
+				AB811ED71C70B8FE00C7A469 /* MainVCCell.swift in Sources */,
 				ABFB7FE41C634B8D00550FF2 /* DatabaseManager.swift in Sources */,
 				ABFB7FE51C634B8D00550FF2 /* DetailViewController.swift in Sources */,
+				AB85F7301C702B27005C03A0 /* MainVCHeadView.swift in Sources */,
 				ABFB7FF81C634B8D00550FF2 /* MyTabBarModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -637,6 +649,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Other/Weathers-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
 		};
@@ -657,6 +670,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Other/Weathers-Bridging-Header.h";
+				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;
 		};
