@@ -10,40 +10,45 @@
 		04C63101A4B98AE1810CF1E6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A7417175DFC7757153E833 /* Pods.framework */; };
 		AB0C2A0E1C6486840034767F /* city.sqlite3 in Resources */ = {isa = PBXBuildFile; fileRef = AB0C2A0D1C6486840034767F /* city.sqlite3 */; };
 		AB0C2A101C649B8C0034767F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0C2A0F1C649B8C0034767F /* CoreLocation.framework */; };
-		AB811ED71C70B8FE00C7A469 /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB811ED61C70B8FE00C7A469 /* MainVCCell.swift */; };
-		AB811ED91C70CB3900C7A469 /* MainVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB811ED81C70CB3900C7A469 /* MainVCModel.swift */; };
-		AB85F7301C702B27005C03A0 /* MainVCHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB85F72F1C702B27005C03A0 /* MainVCHeadView.swift */; };
-		AB85F7321C7076C1005C03A0 /* sunshine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB85F7311C7076C1005C03A0 /* sunshine@2x.png */; };
-		ABBD380C1C638F3B00EC5AC8 /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD380B1C638F3B00EC5AC8 /* Utils.m */; };
+		ABE1A9F01C7C287C00E6C33F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9C51C7C287C00E6C33F /* DatabaseManager.swift */; };
+		ABE1A9F11C7C287C00E6C33F /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9C71C7C287C00E6C33F /* NetWorkManager.swift */; };
+		ABE1A9F21C7C287C00E6C33F /* URL.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9C81C7C287C00E6C33F /* URL.swift */; };
+		ABE1A9F31C7C287C00E6C33F /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9CA1C7C287C00E6C33F /* RootViewController.swift */; };
+		ABE1A9F41C7C287C00E6C33F /* Utils.m in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9CD1C7C287C00E6C33F /* Utils.m */; };
+		ABE1A9F51C7C287C00E6C33F /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9CF1C7C287C00E6C33F /* HealthViewController.swift */; };
+		ABE1A9F71C7C287C00E6C33F /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9D41C7C287C00E6C33F /* PersonViewController.swift */; };
+		ABE1A9F81C7C287C00E6C33F /* btn_nav_brand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9D71C7C287C00E6C33F /* btn_nav_brand@2x.png */; };
+		ABE1A9F91C7C287C00E6C33F /* btn_nav_brand@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9D81C7C287C00E6C33F /* btn_nav_brand@3x.png */; };
+		ABE1A9FA1C7C287C00E6C33F /* btn_nav_brand_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9D91C7C287C00E6C33F /* btn_nav_brand_selected@2x.png */; };
+		ABE1A9FB1C7C287C00E6C33F /* btn_nav_brand_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9DA1C7C287C00E6C33F /* btn_nav_brand_selected@3x.png */; };
+		ABE1A9FC1C7C287C00E6C33F /* btn_nav_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9DB1C7C287C00E6C33F /* btn_nav_home@2x.png */; };
+		ABE1A9FD1C7C287C00E6C33F /* btn_nav_home@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9DC1C7C287C00E6C33F /* btn_nav_home@3x.png */; };
+		ABE1A9FE1C7C287C00E6C33F /* btn_nav_home_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9DD1C7C287C00E6C33F /* btn_nav_home_selected@2x.png */; };
+		ABE1A9FF1C7C287C00E6C33F /* btn_nav_home_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9DE1C7C287C00E6C33F /* btn_nav_home_selected@3x.png */; };
+		ABE1AA001C7C287C00E6C33F /* btn_nav_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9DF1C7C287C00E6C33F /* btn_nav_mine@2x.png */; };
+		ABE1AA011C7C287C00E6C33F /* btn_nav_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9E01C7C287C00E6C33F /* btn_nav_mine@3x.png */; };
+		ABE1AA021C7C287C00E6C33F /* btn_nav_mine_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9E11C7C287C00E6C33F /* btn_nav_mine_selected@2x.png */; };
+		ABE1AA031C7C287C00E6C33F /* btn_nav_mine_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9E21C7C287C00E6C33F /* btn_nav_mine_selected@3x.png */; };
+		ABE1AA041C7C287C00E6C33F /* cloudy@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9E31C7C287C00E6C33F /* cloudy@2x.png */; };
+		ABE1AA051C7C287C00E6C33F /* rain@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9E41C7C287C00E6C33F /* rain@2x.png */; };
+		ABE1AA061C7C287C00E6C33F /* sunshine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABE1A9E51C7C287C00E6C33F /* sunshine@2x.png */; };
+		ABE1AA071C7C287C00E6C33F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9E61C7C287C00E6C33F /* MainViewController.swift */; };
+		ABE1AA081C7C287C00E6C33F /* MainVCCellModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9E81C7C287C00E6C33F /* MainVCCellModel.swift */; };
+		ABE1AA091C7C287C00E6C33F /* MainVCModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9E91C7C287C00E6C33F /* MainVCModel.swift */; };
+		ABE1AA0A1C7C287C00E6C33F /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EA1C7C287C00E6C33F /* MyTabBar.swift */; };
+		ABE1AA0B1C7C287C00E6C33F /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EB1C7C287C00E6C33F /* MyTabBarController.swift */; };
+		ABE1AA0C1C7C287C00E6C33F /* MyTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EC1C7C287C00E6C33F /* MyTabBarModel.swift */; };
+		ABE1AA0D1C7C287C00E6C33F /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EE1C7C287C00E6C33F /* MainVCCell.swift */; };
+		ABE1AA0E1C7C287C00E6C33F /* MainVCHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EF1C7C287C00E6C33F /* MainVCHeadView.swift */; };
+		ABE1AA151C7C292D00E6C33F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AA101C7C292D00E6C33F /* LocationViewController.swift */; };
 		ABFB7FA41C634AA900550FF2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FA31C634AA900550FF2 /* AppDelegate.swift */; };
 		ABFB7FA91C634AA900550FF2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FA71C634AA900550FF2 /* Main.storyboard */; };
 		ABFB7FAB1C634AA900550FF2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FAA1C634AA900550FF2 /* Assets.xcassets */; };
 		ABFB7FAE1C634AA900550FF2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FAC1C634AA900550FF2 /* LaunchScreen.storyboard */; };
-		ABFB7FE41C634B8D00550FF2 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FB71C634B8D00550FF2 /* DatabaseManager.swift */; };
-		ABFB7FE51C634B8D00550FF2 /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FB91C634B8D00550FF2 /* DetailViewController.swift */; };
 		ABFB7FE61C634B8D00550FF2 /* mobAPI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFB7FBC1C634B8D00550FF2 /* mobAPI.framework */; };
 		ABFB7FE71C634B8D00550FF2 /* MOBFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFB7FBD1C634B8D00550FF2 /* MOBFoundation.framework */; };
-		ABFB7FE81C634B8D00550FF2 /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FBF1C634B8D00550FF2 /* LocationViewController.swift */; };
-		ABFB7FE91C634B8D00550FF2 /* btn_nav_brand@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FC31C634B8D00550FF2 /* btn_nav_brand@2x.png */; };
-		ABFB7FEA1C634B8D00550FF2 /* btn_nav_brand@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FC41C634B8D00550FF2 /* btn_nav_brand@3x.png */; };
-		ABFB7FEB1C634B8D00550FF2 /* btn_nav_brand_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FC51C634B8D00550FF2 /* btn_nav_brand_selected@2x.png */; };
-		ABFB7FEC1C634B8D00550FF2 /* btn_nav_brand_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FC61C634B8D00550FF2 /* btn_nav_brand_selected@3x.png */; };
-		ABFB7FED1C634B8D00550FF2 /* btn_nav_home@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FC71C634B8D00550FF2 /* btn_nav_home@2x.png */; };
-		ABFB7FEE1C634B8D00550FF2 /* btn_nav_home@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FC81C634B8D00550FF2 /* btn_nav_home@3x.png */; };
-		ABFB7FEF1C634B8D00550FF2 /* btn_nav_home_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FC91C634B8D00550FF2 /* btn_nav_home_selected@2x.png */; };
-		ABFB7FF01C634B8D00550FF2 /* btn_nav_home_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FCA1C634B8D00550FF2 /* btn_nav_home_selected@3x.png */; };
-		ABFB7FF11C634B8D00550FF2 /* btn_nav_mine@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FCB1C634B8D00550FF2 /* btn_nav_mine@2x.png */; };
-		ABFB7FF21C634B8D00550FF2 /* btn_nav_mine@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FCC1C634B8D00550FF2 /* btn_nav_mine@3x.png */; };
-		ABFB7FF31C634B8D00550FF2 /* btn_nav_mine_selected@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FCD1C634B8D00550FF2 /* btn_nav_mine_selected@2x.png */; };
-		ABFB7FF41C634B8D00550FF2 /* btn_nav_mine_selected@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FCE1C634B8D00550FF2 /* btn_nav_mine_selected@3x.png */; };
-		ABFB7FF51C634B8D00550FF2 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FCF1C634B8D00550FF2 /* MainViewController.swift */; };
-		ABFB7FF61C634B8D00550FF2 /* MyTabBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FD11C634B8D00550FF2 /* MyTabBar.swift */; };
-		ABFB7FF71C634B8D00550FF2 /* MyTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FD21C634B8D00550FF2 /* MyTabBarController.swift */; };
-		ABFB7FF81C634B8D00550FF2 /* MyTabBarModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FD31C634B8D00550FF2 /* MyTabBarModel.swift */; };
-		ABFB7FF91C634B8D00550FF2 /* PersonViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FD91C634B8D00550FF2 /* PersonViewController.swift */; };
 		ABFB7FFB1C634B8D00550FF2 /* navBarBlk@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FDF1C634B8D00550FF2 /* navBarBlk@2x.png */; };
 		ABFB7FFC1C634B8D00550FF2 /* btn_close@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABFB7FE11C634B8D00550FF2 /* btn_close@2x.png */; };
-		ABFB7FFD1C634B8D00550FF2 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABFB7FE31C634B8D00550FF2 /* RootViewController.swift */; };
 		ABFB7FFF1C634C6500550FF2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFB7FFE1C634C6500550FF2 /* libsqlite3.tbd */; };
 		ABFB80011C6350C300550FF2 /* libicucore.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFB80001C6350C300550FF2 /* libicucore.tbd */; };
 		ABFB80031C6350CC00550FF2 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = ABFB80021C6350CC00550FF2 /* libz.tbd */; };
@@ -55,45 +60,50 @@
 		5884C0D80F20163E927B25A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		AB0C2A0D1C6486840034767F /* city.sqlite3 */ = {isa = PBXFileReference; lastKnownFileType = file; path = city.sqlite3; sourceTree = "<group>"; };
 		AB0C2A0F1C649B8C0034767F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
-		AB811ED61C70B8FE00C7A469 /* MainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCCell.swift; sourceTree = "<group>"; };
-		AB811ED81C70CB3900C7A469 /* MainVCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCModel.swift; sourceTree = "<group>"; };
-		AB85F72F1C702B27005C03A0 /* MainVCHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCHeadView.swift; sourceTree = "<group>"; };
-		AB85F7311C7076C1005C03A0 /* sunshine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sunshine@2x.png"; sourceTree = "<group>"; };
-		ABBD380A1C638F3B00EC5AC8 /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
-		ABBD380B1C638F3B00EC5AC8 /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		ABE1A9C51C7C287C00E6C33F /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		ABE1A9C71C7C287C00E6C33F /* NetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkManager.swift; sourceTree = "<group>"; };
+		ABE1A9C81C7C287C00E6C33F /* URL.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = URL.swift; sourceTree = "<group>"; };
+		ABE1A9CA1C7C287C00E6C33F /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		ABE1A9CC1C7C287C00E6C33F /* Utils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Utils.h; sourceTree = "<group>"; };
+		ABE1A9CD1C7C287C00E6C33F /* Utils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Utils.m; sourceTree = "<group>"; };
+		ABE1A9CF1C7C287C00E6C33F /* HealthViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
+		ABE1A9D41C7C287C00E6C33F /* PersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
+		ABE1A9D71C7C287C00E6C33F /* btn_nav_brand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand@2x.png"; sourceTree = "<group>"; };
+		ABE1A9D81C7C287C00E6C33F /* btn_nav_brand@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand@3x.png"; sourceTree = "<group>"; };
+		ABE1A9D91C7C287C00E6C33F /* btn_nav_brand_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand_selected@2x.png"; sourceTree = "<group>"; };
+		ABE1A9DA1C7C287C00E6C33F /* btn_nav_brand_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand_selected@3x.png"; sourceTree = "<group>"; };
+		ABE1A9DB1C7C287C00E6C33F /* btn_nav_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home@2x.png"; sourceTree = "<group>"; };
+		ABE1A9DC1C7C287C00E6C33F /* btn_nav_home@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home@3x.png"; sourceTree = "<group>"; };
+		ABE1A9DD1C7C287C00E6C33F /* btn_nav_home_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home_selected@2x.png"; sourceTree = "<group>"; };
+		ABE1A9DE1C7C287C00E6C33F /* btn_nav_home_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home_selected@3x.png"; sourceTree = "<group>"; };
+		ABE1A9DF1C7C287C00E6C33F /* btn_nav_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine@2x.png"; sourceTree = "<group>"; };
+		ABE1A9E01C7C287C00E6C33F /* btn_nav_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine@3x.png"; sourceTree = "<group>"; };
+		ABE1A9E11C7C287C00E6C33F /* btn_nav_mine_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine_selected@2x.png"; sourceTree = "<group>"; };
+		ABE1A9E21C7C287C00E6C33F /* btn_nav_mine_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine_selected@3x.png"; sourceTree = "<group>"; };
+		ABE1A9E31C7C287C00E6C33F /* cloudy@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "cloudy@2x.png"; sourceTree = "<group>"; };
+		ABE1A9E41C7C287C00E6C33F /* rain@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "rain@2x.png"; sourceTree = "<group>"; };
+		ABE1A9E51C7C287C00E6C33F /* sunshine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "sunshine@2x.png"; sourceTree = "<group>"; };
+		ABE1A9E61C7C287C00E6C33F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		ABE1A9E81C7C287C00E6C33F /* MainVCCellModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCCellModel.swift; sourceTree = "<group>"; };
+		ABE1A9E91C7C287C00E6C33F /* MainVCModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCModel.swift; sourceTree = "<group>"; };
+		ABE1A9EA1C7C287C00E6C33F /* MyTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBar.swift; sourceTree = "<group>"; };
+		ABE1A9EB1C7C287C00E6C33F /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
+		ABE1A9EC1C7C287C00E6C33F /* MyTabBarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarModel.swift; sourceTree = "<group>"; };
+		ABE1A9EE1C7C287C00E6C33F /* MainVCCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCCell.swift; sourceTree = "<group>"; };
+		ABE1A9EF1C7C287C00E6C33F /* MainVCHeadView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainVCHeadView.swift; sourceTree = "<group>"; };
+		ABE1AA101C7C292D00E6C33F /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
+		ABE1AA131C7C292D00E6C33F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		ABE1AA141C7C292D00E6C33F /* Weathers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Weathers-Bridging-Header.h"; sourceTree = "<group>"; };
 		ABFB7FA01C634AA900550FF2 /* Weathers.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weathers.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ABFB7FA31C634AA900550FF2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		ABFB7FA81C634AA900550FF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ABFB7FAA1C634AA900550FF2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ABFB7FAD1C634AA900550FF2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ABFB7FAF1C634AA900550FF2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		ABFB7FB71C634B8D00550FF2 /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
-		ABFB7FB91C634B8D00550FF2 /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		ABFB7FBC1C634B8D00550FF2 /* mobAPI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = mobAPI.framework; sourceTree = "<group>"; };
 		ABFB7FBD1C634B8D00550FF2 /* MOBFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = MOBFoundation.framework; sourceTree = "<group>"; };
-		ABFB7FBF1C634B8D00550FF2 /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
-		ABFB7FC31C634B8D00550FF2 /* btn_nav_brand@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand@2x.png"; sourceTree = "<group>"; };
-		ABFB7FC41C634B8D00550FF2 /* btn_nav_brand@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand@3x.png"; sourceTree = "<group>"; };
-		ABFB7FC51C634B8D00550FF2 /* btn_nav_brand_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand_selected@2x.png"; sourceTree = "<group>"; };
-		ABFB7FC61C634B8D00550FF2 /* btn_nav_brand_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_brand_selected@3x.png"; sourceTree = "<group>"; };
-		ABFB7FC71C634B8D00550FF2 /* btn_nav_home@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home@2x.png"; sourceTree = "<group>"; };
-		ABFB7FC81C634B8D00550FF2 /* btn_nav_home@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home@3x.png"; sourceTree = "<group>"; };
-		ABFB7FC91C634B8D00550FF2 /* btn_nav_home_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home_selected@2x.png"; sourceTree = "<group>"; };
-		ABFB7FCA1C634B8D00550FF2 /* btn_nav_home_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_home_selected@3x.png"; sourceTree = "<group>"; };
-		ABFB7FCB1C634B8D00550FF2 /* btn_nav_mine@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine@2x.png"; sourceTree = "<group>"; };
-		ABFB7FCC1C634B8D00550FF2 /* btn_nav_mine@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine@3x.png"; sourceTree = "<group>"; };
-		ABFB7FCD1C634B8D00550FF2 /* btn_nav_mine_selected@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine_selected@2x.png"; sourceTree = "<group>"; };
-		ABFB7FCE1C634B8D00550FF2 /* btn_nav_mine_selected@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_nav_mine_selected@3x.png"; sourceTree = "<group>"; };
-		ABFB7FCF1C634B8D00550FF2 /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		ABFB7FD11C634B8D00550FF2 /* MyTabBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTabBar.swift; path = Main/MyTabBar.swift; sourceTree = "<group>"; };
-		ABFB7FD21C634B8D00550FF2 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTabBarController.swift; path = Main/MyTabBarController.swift; sourceTree = "<group>"; };
-		ABFB7FD31C634B8D00550FF2 /* MyTabBarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyTabBarModel.swift; path = Main/MyTabBarModel.swift; sourceTree = "<group>"; };
-		ABFB7FD61C634B8D00550FF2 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		ABFB7FD71C634B8D00550FF2 /* Weathers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Weathers-Bridging-Header.h"; sourceTree = "<group>"; };
-		ABFB7FD91C634B8D00550FF2 /* PersonViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PersonViewController.swift; sourceTree = "<group>"; };
 		ABFB7FDF1C634B8D00550FF2 /* navBarBlk@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "navBarBlk@2x.png"; sourceTree = "<group>"; };
 		ABFB7FE11C634B8D00550FF2 /* btn_close@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "btn_close@2x.png"; sourceTree = "<group>"; };
-		ABFB7FE31C634B8D00550FF2 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
 		ABFB7FFE1C634C6500550FF2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		ABFB80001C6350C300550FF2 /* libicucore.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libicucore.tbd; path = usr/lib/libicucore.tbd; sourceTree = SDKROOT; };
 		ABFB80021C6350CC00550FF2 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
@@ -142,13 +152,157 @@
 			name = Pods;
 			sourceTree = "<group>";
 		};
-		ABBD38041C638B1B00EC5AC8 /* Utils */ = {
+		ABE1A9C21C7C287C00E6C33F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ABBD380A1C638F3B00EC5AC8 /* Utils.h */,
-				ABBD380B1C638F3B00EC5AC8 /* Utils.m */,
+				ABE1A9D51C7C287C00E6C33F /* Weather */,
+				ABE1A9CE1C7C287C00E6C33F /* Health */,
+				ABE1A9D31C7C287C00E6C33F /* Person */,
+				ABE1A9C31C7C287C00E6C33F /* Common */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		ABE1A9C31C7C287C00E6C33F /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1AA0F1C7C292D00E6C33F /* Location */,
+				ABE1AA121C7C292D00E6C33F /* Other */,
+				ABE1A9C41C7C287C00E6C33F /* Database */,
+				ABE1A9C61C7C287C00E6C33F /* Network */,
+				ABE1A9C91C7C287C00E6C33F /* Super */,
+				ABE1A9CB1C7C287C00E6C33F /* Utils */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		ABE1A9C41C7C287C00E6C33F /* Database */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9C51C7C287C00E6C33F /* DatabaseManager.swift */,
+			);
+			path = Database;
+			sourceTree = "<group>";
+		};
+		ABE1A9C61C7C287C00E6C33F /* Network */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9C71C7C287C00E6C33F /* NetWorkManager.swift */,
+				ABE1A9C81C7C287C00E6C33F /* URL.swift */,
+			);
+			path = Network;
+			sourceTree = "<group>";
+		};
+		ABE1A9C91C7C287C00E6C33F /* Super */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9CA1C7C287C00E6C33F /* RootViewController.swift */,
+			);
+			path = Super;
+			sourceTree = "<group>";
+		};
+		ABE1A9CB1C7C287C00E6C33F /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9CC1C7C287C00E6C33F /* Utils.h */,
+				ABE1A9CD1C7C287C00E6C33F /* Utils.m */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		ABE1A9CE1C7C287C00E6C33F /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9CF1C7C287C00E6C33F /* HealthViewController.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		ABE1A9D31C7C287C00E6C33F /* Person */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9D41C7C287C00E6C33F /* PersonViewController.swift */,
+			);
+			path = Person;
+			sourceTree = "<group>";
+		};
+		ABE1A9D51C7C287C00E6C33F /* Weather */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9D61C7C287C00E6C33F /* Image */,
+				ABE1A9E61C7C287C00E6C33F /* MainViewController.swift */,
+				ABE1A9E71C7C287C00E6C33F /* Model */,
+				ABE1A9EA1C7C287C00E6C33F /* MyTabBar.swift */,
+				ABE1A9EB1C7C287C00E6C33F /* MyTabBarController.swift */,
+				ABE1A9EC1C7C287C00E6C33F /* MyTabBarModel.swift */,
+				ABE1A9ED1C7C287C00E6C33F /* View */,
+			);
+			path = Weather;
+			sourceTree = "<group>";
+		};
+		ABE1A9D61C7C287C00E6C33F /* Image */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9D71C7C287C00E6C33F /* btn_nav_brand@2x.png */,
+				ABE1A9D81C7C287C00E6C33F /* btn_nav_brand@3x.png */,
+				ABE1A9D91C7C287C00E6C33F /* btn_nav_brand_selected@2x.png */,
+				ABE1A9DA1C7C287C00E6C33F /* btn_nav_brand_selected@3x.png */,
+				ABE1A9DB1C7C287C00E6C33F /* btn_nav_home@2x.png */,
+				ABE1A9DC1C7C287C00E6C33F /* btn_nav_home@3x.png */,
+				ABE1A9DD1C7C287C00E6C33F /* btn_nav_home_selected@2x.png */,
+				ABE1A9DE1C7C287C00E6C33F /* btn_nav_home_selected@3x.png */,
+				ABE1A9DF1C7C287C00E6C33F /* btn_nav_mine@2x.png */,
+				ABE1A9E01C7C287C00E6C33F /* btn_nav_mine@3x.png */,
+				ABE1A9E11C7C287C00E6C33F /* btn_nav_mine_selected@2x.png */,
+				ABE1A9E21C7C287C00E6C33F /* btn_nav_mine_selected@3x.png */,
+				ABE1A9E31C7C287C00E6C33F /* cloudy@2x.png */,
+				ABE1A9E41C7C287C00E6C33F /* rain@2x.png */,
+				ABE1A9E51C7C287C00E6C33F /* sunshine@2x.png */,
+			);
+			path = Image;
+			sourceTree = "<group>";
+		};
+		ABE1A9E71C7C287C00E6C33F /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9E81C7C287C00E6C33F /* MainVCCellModel.swift */,
+				ABE1A9E91C7C287C00E6C33F /* MainVCModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		ABE1A9ED1C7C287C00E6C33F /* View */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1A9EE1C7C287C00E6C33F /* MainVCCell.swift */,
+				ABE1A9EF1C7C287C00E6C33F /* MainVCHeadView.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABE1AA0F1C7C292D00E6C33F /* Location */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1AA101C7C292D00E6C33F /* LocationViewController.swift */,
+				ABE1AA111C7C292D00E6C33F /* View */,
+			);
+			path = Location;
+			sourceTree = "<group>";
+		};
+		ABE1AA111C7C292D00E6C33F /* View */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		ABE1AA121C7C292D00E6C33F /* Other */ = {
+			isa = PBXGroup;
+			children = (
+				ABE1AA131C7C292D00E6C33F /* PrefixHeader.pch */,
+				ABE1AA141C7C292D00E6C33F /* Weathers-Bridging-Header.h */,
+			);
+			path = Other;
 			sourceTree = "<group>";
 		};
 		ABFB7F971C634AA900550FF2 = {
@@ -172,50 +326,16 @@
 		ABFB7FA21C634AA900550FF2 /* Weathers */ = {
 			isa = PBXGroup;
 			children = (
-				ABFB7FB51C634B8D00550FF2 /* Common */,
-				ABFB7FB81C634B8D00550FF2 /* Detail */,
+				ABE1A9C21C7C287C00E6C33F /* Classes */,
 				ABFB7FBA1C634B8D00550FF2 /* Lib */,
-				ABFB7FBE1C634B8D00550FF2 /* Location */,
-				ABFB7FC11C634B8D00550FF2 /* Main */,
-				ABFB7FD51C634B8D00550FF2 /* Other */,
-				ABFB7FD81C634B8D00550FF2 /* Person */,
 				ABFB7FDA1C634B8D00550FF2 /* Source */,
-				ABFB7FE21C634B8D00550FF2 /* Super */,
 				ABFB7FA31C634AA900550FF2 /* AppDelegate.swift */,
-				ABFB7FD11C634B8D00550FF2 /* MyTabBar.swift */,
-				ABFB7FD21C634B8D00550FF2 /* MyTabBarController.swift */,
-				ABFB7FD31C634B8D00550FF2 /* MyTabBarModel.swift */,
 				ABFB7FA71C634AA900550FF2 /* Main.storyboard */,
 				ABFB7FAA1C634AA900550FF2 /* Assets.xcassets */,
 				ABFB7FAC1C634AA900550FF2 /* LaunchScreen.storyboard */,
 				ABFB7FAF1C634AA900550FF2 /* Info.plist */,
 			);
 			path = Weathers;
-			sourceTree = "<group>";
-		};
-		ABFB7FB51C634B8D00550FF2 /* Common */ = {
-			isa = PBXGroup;
-			children = (
-				ABBD38041C638B1B00EC5AC8 /* Utils */,
-				ABFB7FB61C634B8D00550FF2 /* Database */,
-			);
-			path = Common;
-			sourceTree = "<group>";
-		};
-		ABFB7FB61C634B8D00550FF2 /* Database */ = {
-			isa = PBXGroup;
-			children = (
-				ABFB7FB71C634B8D00550FF2 /* DatabaseManager.swift */,
-			);
-			path = Database;
-			sourceTree = "<group>";
-		};
-		ABFB7FB81C634B8D00550FF2 /* Detail */ = {
-			isa = PBXGroup;
-			children = (
-				ABFB7FB91C634B8D00550FF2 /* DetailViewController.swift */,
-			);
-			path = Detail;
 			sourceTree = "<group>";
 		};
 		ABFB7FBA1C634B8D00550FF2 /* Lib */ = {
@@ -233,87 +353,6 @@
 				ABFB7FBD1C634B8D00550FF2 /* MOBFoundation.framework */,
 			);
 			path = libraries;
-			sourceTree = "<group>";
-		};
-		ABFB7FBE1C634B8D00550FF2 /* Location */ = {
-			isa = PBXGroup;
-			children = (
-				ABFB7FBF1C634B8D00550FF2 /* LocationViewController.swift */,
-				ABFB7FC01C634B8D00550FF2 /* View */,
-			);
-			path = Location;
-			sourceTree = "<group>";
-		};
-		ABFB7FC01C634B8D00550FF2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ABFB7FC11C634B8D00550FF2 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				ABFB7FCF1C634B8D00550FF2 /* MainViewController.swift */,
-				ABFB7FC21C634B8D00550FF2 /* Image */,
-				ABFB7FD01C634B8D00550FF2 /* Model */,
-				ABFB7FD41C634B8D00550FF2 /* View */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
-		ABFB7FC21C634B8D00550FF2 /* Image */ = {
-			isa = PBXGroup;
-			children = (
-				AB85F7311C7076C1005C03A0 /* sunshine@2x.png */,
-				ABFB7FC31C634B8D00550FF2 /* btn_nav_brand@2x.png */,
-				ABFB7FC41C634B8D00550FF2 /* btn_nav_brand@3x.png */,
-				ABFB7FC51C634B8D00550FF2 /* btn_nav_brand_selected@2x.png */,
-				ABFB7FC61C634B8D00550FF2 /* btn_nav_brand_selected@3x.png */,
-				ABFB7FC71C634B8D00550FF2 /* btn_nav_home@2x.png */,
-				ABFB7FC81C634B8D00550FF2 /* btn_nav_home@3x.png */,
-				ABFB7FC91C634B8D00550FF2 /* btn_nav_home_selected@2x.png */,
-				ABFB7FCA1C634B8D00550FF2 /* btn_nav_home_selected@3x.png */,
-				ABFB7FCB1C634B8D00550FF2 /* btn_nav_mine@2x.png */,
-				ABFB7FCC1C634B8D00550FF2 /* btn_nav_mine@3x.png */,
-				ABFB7FCD1C634B8D00550FF2 /* btn_nav_mine_selected@2x.png */,
-				ABFB7FCE1C634B8D00550FF2 /* btn_nav_mine_selected@3x.png */,
-			);
-			path = Image;
-			sourceTree = "<group>";
-		};
-		ABFB7FD01C634B8D00550FF2 /* Model */ = {
-			isa = PBXGroup;
-			children = (
-				AB811ED81C70CB3900C7A469 /* MainVCModel.swift */,
-			);
-			path = Model;
-			sourceTree = "<group>";
-		};
-		ABFB7FD41C634B8D00550FF2 /* View */ = {
-			isa = PBXGroup;
-			children = (
-				AB85F72F1C702B27005C03A0 /* MainVCHeadView.swift */,
-				AB811ED61C70B8FE00C7A469 /* MainVCCell.swift */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
-		ABFB7FD51C634B8D00550FF2 /* Other */ = {
-			isa = PBXGroup;
-			children = (
-				ABFB7FD61C634B8D00550FF2 /* PrefixHeader.pch */,
-				ABFB7FD71C634B8D00550FF2 /* Weathers-Bridging-Header.h */,
-			);
-			path = Other;
-			sourceTree = "<group>";
-		};
-		ABFB7FD81C634B8D00550FF2 /* Person */ = {
-			isa = PBXGroup;
-			children = (
-				ABFB7FD91C634B8D00550FF2 /* PersonViewController.swift */,
-			);
-			path = Person;
 			sourceTree = "<group>";
 		};
 		ABFB7FDA1C634B8D00550FF2 /* Source */ = {
@@ -356,14 +395,6 @@
 				ABFB7FE11C634B8D00550FF2 /* btn_close@2x.png */,
 			);
 			path = Weather;
-			sourceTree = "<group>";
-		};
-		ABFB7FE21C634B8D00550FF2 /* Super */ = {
-			isa = PBXGroup;
-			children = (
-				ABFB7FE31C634B8D00550FF2 /* RootViewController.swift */,
-			);
-			path = Super;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -433,25 +464,27 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABFB7FED1C634B8D00550FF2 /* btn_nav_home@2x.png in Resources */,
-				ABFB7FEE1C634B8D00550FF2 /* btn_nav_home@3x.png in Resources */,
+				ABE1A9FC1C7C287C00E6C33F /* btn_nav_home@2x.png in Resources */,
+				ABE1AA011C7C287C00E6C33F /* btn_nav_mine@3x.png in Resources */,
+				ABE1A9FD1C7C287C00E6C33F /* btn_nav_home@3x.png in Resources */,
+				ABE1A9FF1C7C287C00E6C33F /* btn_nav_home_selected@3x.png in Resources */,
+				ABE1A9FA1C7C287C00E6C33F /* btn_nav_brand_selected@2x.png in Resources */,
+				ABE1AA001C7C287C00E6C33F /* btn_nav_mine@2x.png in Resources */,
+				ABE1A9F91C7C287C00E6C33F /* btn_nav_brand@3x.png in Resources */,
+				ABE1AA041C7C287C00E6C33F /* cloudy@2x.png in Resources */,
+				ABE1A9FE1C7C287C00E6C33F /* btn_nav_home_selected@2x.png in Resources */,
+				ABE1AA031C7C287C00E6C33F /* btn_nav_mine_selected@3x.png in Resources */,
+				ABE1AA061C7C287C00E6C33F /* sunshine@2x.png in Resources */,
+				ABE1AA051C7C287C00E6C33F /* rain@2x.png in Resources */,
 				AB0C2A0E1C6486840034767F /* city.sqlite3 in Resources */,
-				ABFB7FF41C634B8D00550FF2 /* btn_nav_mine_selected@3x.png in Resources */,
-				ABFB7FEB1C634B8D00550FF2 /* btn_nav_brand_selected@2x.png in Resources */,
+				ABE1A9F81C7C287C00E6C33F /* btn_nav_brand@2x.png in Resources */,
 				ABFB7FAE1C634AA900550FF2 /* LaunchScreen.storyboard in Resources */,
-				ABFB7FF11C634B8D00550FF2 /* btn_nav_mine@2x.png in Resources */,
-				ABFB7FF21C634B8D00550FF2 /* btn_nav_mine@3x.png in Resources */,
 				ABFB7FAB1C634AA900550FF2 /* Assets.xcassets in Resources */,
-				AB85F7321C7076C1005C03A0 /* sunshine@2x.png in Resources */,
-				ABFB7FF01C634B8D00550FF2 /* btn_nav_home_selected@3x.png in Resources */,
 				ABFB7FA91C634AA900550FF2 /* Main.storyboard in Resources */,
-				ABFB7FE91C634B8D00550FF2 /* btn_nav_brand@2x.png in Resources */,
-				ABFB7FEF1C634B8D00550FF2 /* btn_nav_home_selected@2x.png in Resources */,
-				ABFB7FEA1C634B8D00550FF2 /* btn_nav_brand@3x.png in Resources */,
+				ABE1AA021C7C287C00E6C33F /* btn_nav_mine_selected@2x.png in Resources */,
 				ABFB7FFB1C634B8D00550FF2 /* navBarBlk@2x.png in Resources */,
-				ABFB7FEC1C634B8D00550FF2 /* btn_nav_brand_selected@3x.png in Resources */,
 				ABFB7FFC1C634B8D00550FF2 /* btn_close@2x.png in Resources */,
-				ABFB7FF31C634B8D00550FF2 /* btn_nav_mine_selected@2x.png in Resources */,
+				ABE1A9FB1C7C287C00E6C33F /* btn_nav_brand_selected@3x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -510,20 +543,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ABFB7FE81C634B8D00550FF2 /* LocationViewController.swift in Sources */,
-				AB811ED91C70CB3900C7A469 /* MainVCModel.swift in Sources */,
-				ABFB7FF71C634B8D00550FF2 /* MyTabBarController.swift in Sources */,
-				ABFB7FFD1C634B8D00550FF2 /* RootViewController.swift in Sources */,
+				ABE1AA081C7C287C00E6C33F /* MainVCCellModel.swift in Sources */,
+				ABE1A9F31C7C287C00E6C33F /* RootViewController.swift in Sources */,
+				ABE1AA0C1C7C287C00E6C33F /* MyTabBarModel.swift in Sources */,
+				ABE1AA0E1C7C287C00E6C33F /* MainVCHeadView.swift in Sources */,
+				ABE1AA151C7C292D00E6C33F /* LocationViewController.swift in Sources */,
+				ABE1AA0A1C7C287C00E6C33F /* MyTabBar.swift in Sources */,
+				ABE1A9F01C7C287C00E6C33F /* DatabaseManager.swift in Sources */,
 				ABFB7FA41C634AA900550FF2 /* AppDelegate.swift in Sources */,
-				ABBD380C1C638F3B00EC5AC8 /* Utils.m in Sources */,
-				ABFB7FF61C634B8D00550FF2 /* MyTabBar.swift in Sources */,
-				ABFB7FF91C634B8D00550FF2 /* PersonViewController.swift in Sources */,
-				ABFB7FF51C634B8D00550FF2 /* MainViewController.swift in Sources */,
-				AB811ED71C70B8FE00C7A469 /* MainVCCell.swift in Sources */,
-				ABFB7FE41C634B8D00550FF2 /* DatabaseManager.swift in Sources */,
-				ABFB7FE51C634B8D00550FF2 /* DetailViewController.swift in Sources */,
-				AB85F7301C702B27005C03A0 /* MainVCHeadView.swift in Sources */,
-				ABFB7FF81C634B8D00550FF2 /* MyTabBarModel.swift in Sources */,
+				ABE1A9F41C7C287C00E6C33F /* Utils.m in Sources */,
+				ABE1A9F11C7C287C00E6C33F /* NetWorkManager.swift in Sources */,
+				ABE1A9F21C7C287C00E6C33F /* URL.swift in Sources */,
+				ABE1AA0D1C7C287C00E6C33F /* MainVCCell.swift in Sources */,
+				ABE1AA091C7C287C00E6C33F /* MainVCModel.swift in Sources */,
+				ABE1A9F51C7C287C00E6C33F /* HealthViewController.swift in Sources */,
+				ABE1A9F71C7C287C00E6C33F /* PersonViewController.swift in Sources */,
+				ABE1AA071C7C287C00E6C33F /* MainViewController.swift in Sources */,
+				ABE1AA0B1C7C287C00E6C33F /* MyTabBarController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -642,13 +678,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weathers/Lib/libraries",
 				);
-				GCC_PREFIX_HEADER = /Users/srgroup/Documents/othetProject/Weathers/Weathers/Other/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Alamofire\"";
 				INFOPLIST_FILE = Weathers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Other/Weathers-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/Weathers-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Debug;
@@ -663,13 +700,14 @@
 					"$(inherited)",
 					"$(PROJECT_DIR)/Weathers/Lib/libraries",
 				);
-				GCC_PREFIX_HEADER = /Users/srgroup/Documents/othetProject/Weathers/Weathers/Other/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = /Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/PrefixHeader.pch;
+				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Alamofire\"";
 				INFOPLIST_FILE = Weathers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Other/Weathers-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/Weathers-Bridging-Header.h";
 				USER_HEADER_SEARCH_PATHS = "";
 			};
 			name = Release;

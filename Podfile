@@ -9,5 +9,9 @@ pod 'SDWebImage', '~>3.7'
 
 pod 'SQLite.swift', '~> 0.9.0'
 
+pod 'MBProgressHUD', '~> 0.9.2'
+
+pod 'SVProgressHUD', '~> 1.1.3'
+
 
 

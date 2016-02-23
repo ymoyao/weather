@@ -1,0 +1,25 @@
+//
+//  PrefixHeader.pch
+//  Weather
+//
+//  Created by SR on 16/1/28.
+//  Copyright © 2016年 游辉. All rights reserved.
+//
+
+#ifndef PrefixHeader_pch
+#define PrefixHeader_pch
+
+
+// Include any system framework and library headers here that should be included in all compilation units.
+// You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
+
+#pragma mark -  NSUserDefalut 保存的字段信息
+//province : 省份
+//city     : 城市
+
+//enum WeatherType {
+//    case 晴 ， 多云 ， 阴 ， 阵雨 ， 雷阵雨 ， 雷阵雨伴有冰雹 ， 雨夹雪 ， 小雨 ， 中雨 ， 大雨 ， 暴雨 ， 大暴雨 ， 特大暴雨 ， 阵雪 ， 小雪 ， 中雪 ， 大雪 ， 暴雪 ， 雾 ， 冻雨 ， 沙尘暴 ， 小雨-中雨 ， 中雨-大雨 ， 大雨-暴雨 ， 暴雨-大暴雨 ， 大暴雨-特大暴雨 ， 小雪-中雪 ， 中雪-大雪 ， 大雪-暴雪 ， 浮尘 ， 扬沙 ， 强沙尘暴 ， 霾
+//}
+
+
+#endif /* PrefixHeader_pch */
