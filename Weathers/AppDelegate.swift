@@ -7,6 +7,9 @@
 //
 
 import UIKit
+import SVProgressHUD
+import SQLite
+import SwiftyJSON
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -17,20 +20,52 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
-        
-        
+        //window
         self.window = UIWindow.init(frame: UIScreen.mainScreen().bounds)
         self.window?.backgroundColor = UIColor.whiteColor()
         self.window?.makeKeyAndVisible()
-        //        let vc = MainViewController()
         let tabBar = MyTabBarController()
         self.window?.rootViewController = tabBar
         
         //设置导航栏
-//        UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 18/255.0, green: 85/255.0, blue: 137/255.0, alpha: 1.0)
+        //UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 18/255.0, green: 85/255.0, blue: 137/255.0, alpha: 1.0)
         UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 60/255.0, green: 58/255.0, blue: 77/255.0, alpha: 1.0)
         UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
         UIApplication.sharedApplication().statusBarStyle = .LightContent
+        
+        //设置SVProgressHUD
+        SVProgressHUD.setBackgroundColor(UIColor.blackColor())
+        SVProgressHUD.setForegroundColor(UIColor.whiteColor())
+        SVProgressHUD.setFont(UIFont.systemFontOfSize(16.0))
+        SVProgressHUD.setViewForExtension(UIApplication.sharedApplication().delegate?.window!)
+        SVProgressHUD.setDefaultMaskType(SVProgressHUDMaskType.Clear)
+        
+        //听写初始化
+        IFlySpeechUtility.createUtility(URL.xunfeiKeyStr())
+
+        
+        //监听计步(未完成就监控)
+        if Health.IsFinishGoal() == false {
+            Health.SharedInstance.stepCounter?.startStepCountingUpdatesToQueue(Health.SharedInstance.operation!, updateOn: 10, withHandler: { (step, date, error) -> Void in
+                
+                print("getLocalStep1\(Health.getLocalStep())")
+                print("getGoalStep1\(Health.getGoalStep())")
+                print("step1\(step)")
+                Health.updateLocalStep(Health.SharedInstance.todayStep + step)
+                if Health.getLocalStep() >= Health.getGoalStep() {
+                    Health.SharedInstance.stepCounter?.stopStepCountingUpdates()
+                    Health.finishGoal()
+                    dispatch_async(dispatch_get_global_queue(0, 0), { () -> Void in
+                        dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                            SVProgressHUD.showSuccessWithStatus("恭喜您完成目标")
+                        })
+                    })
+                    
+                }
+            })
+        }
+       
+       
         
         //注册
         MobAPI.registerApp("f30df66d4e10")
@@ -53,6 +88,51 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 //                
                 //                print("\(response.responder)")
             }
+        }
+        
+        
+        NetWorkManager.requestHeWeatherSupportCitys("", key: "", success: { (response) -> Void in
+
+  
+            
+//            let json = JSON.init(response!)
+//            let jsonArray = json["city_info"]
+//            
+////            print("jsonArray：= \(jsonArray)")
+//            
+//            for (_,dict):(String,JSON) in jsonArray {
+//            
+//                let stmt = try! db.prepare("INSERT INTO city (cnty,province,city,aleph) VALUES (?,?,?,?)")
+//                
+//                var isAlpabet:Bool = false
+//                for char in dict["city"].stringValue.utf8 {
+//                    if (char > 64 && char < 91) || (char > 96 && char < 123) {
+//                       isAlpabet = true
+//                        break
+//                    }
+//                    
+//                }
+//                
+//                if isAlpabet {
+//                    let s =  String(dict["city"].stringValue.characters.first)
+//                    
+//                    let ranges = Range.init(start: s.endIndex.advancedBy(-3), end: s.endIndex.advancedBy(-2))
+//                    
+//                    try! stmt.run(dict["cnty"].stringValue,dict["prov"].stringValue,dict["city"].stringValue,s.substringWithRange(ranges) )
+//                }
+//                else {
+//                    try! stmt.run(dict["cnty"].stringValue,dict["prov"].stringValue,dict["city"].stringValue, Utils.firstCharactor(dict["city"].stringValue) )
+//                }
+//        
+//            
+//            }
+            
+           
+
+            
+            
+            }) { (errorStr) -> Void in
+                print("asfas=--------das\(errorStr)")
         }
 
         return true

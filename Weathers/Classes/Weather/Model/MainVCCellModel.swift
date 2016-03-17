@@ -39,16 +39,21 @@ enum WeatherImage : String {
 
 
 class MainVCCellModel: NSObject {
-    var date = ""               //时间
-    var dayTime = ""            //白天天气
-    var night = ""              //晚间天气
-    var temperature = ""        //温度
-    var week = ""               //星期
-    var wind = ""               //风
     
+    var max = ""                //最高温
+    var min = ""                //最低温
+    var date = ""               // 日期
     
+    var code_d = ""             //白天图片
+    var code_n = ""             //夜间图标
+    var txt_d = ""              //白天描述
+    var txt_n = ""              //夜间描述
+    
+
     //自己添加的标志
     var cellBgColor = 0                            //cell背景颜色--七彩
     var weatherImage = ""                      //天气对应的图片
+    
+   
     
 }

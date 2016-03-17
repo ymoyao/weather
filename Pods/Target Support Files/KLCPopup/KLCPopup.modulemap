@@ -1,0 +1,6 @@
+framework module KLCPopup {
+  umbrella header "KLCPopup-umbrella.h"
+
+  export *
+  module * { export * }
+}

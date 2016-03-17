@@ -21,4 +21,13 @@
  */
 + (NSString *)firstCharactor:(NSString *)aString;
 
+
+/**
+ *  data转base64
+ *
+ *  @param theData data
+ *
+ *  @return 字符串
+ */
++ (NSString*)base64forData:(NSData*)theData;
 @end

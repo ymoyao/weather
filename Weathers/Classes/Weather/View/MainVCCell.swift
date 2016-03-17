@@ -14,9 +14,10 @@ class MainVCCell: UITableViewCell {
     var cellModel:MainVCCellModel? {
         didSet{
             
-            logoImageView?.sd_setImageWithURL(NSURL.init(string: cellModel!.weatherImage), placeholderImage: UIImage.init(named: "sunshine"))
-            contentLabel?.text = cellModel?.temperature
-            subLabel?.text = cellModel?.week
+            logoImageView?.image = UIImage.init(named: (cellModel?.code_d)!
+            )
+            contentLabel?.text = (cellModel?.min)! + "/" + (cellModel?.max)! + "℃"
+            subLabel?.text = cellModel?.date
         }
     }
     
@@ -35,13 +36,13 @@ class MainVCCell: UITableViewCell {
         logoImageView = UIImageView.init()
 
         contentLabel = UILabel.init()
-        contentLabel?.text = "-15℃"
-        contentLabel?.textAlignment = NSTextAlignment.Right
+        contentLabel?.text = ""
+        contentLabel?.textAlignment = NSTextAlignment.Center
         contentLabel?.textColor = UIColor.whiteColor()
         contentLabel?.font = UIFont.boldSystemFontOfSize(30)
         
         subLabel = UILabel.init()
-        subLabel?.text = "wednesday"
+        subLabel?.text = ""
         subLabel?.textColor = UIColor.whiteColor()
         subLabel?.textAlignment = NSTextAlignment.Right
         subLabel?.font = UIFont.systemFontOfSize(18)
@@ -67,7 +68,7 @@ class MainVCCell: UITableViewCell {
         subLabel?.snp_makeConstraints(closure: { (make) -> Void in
             make.right.bottom.equalTo(self.contentView).offset(-10)
             make.top.equalTo(self.contentView).offset(10)
-            make.width.equalTo(80)
+            make.width.equalTo(105)
         })
         
         contentLabel?.snp_makeConstraints(closure: { (make) -> Void in

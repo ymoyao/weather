@@ -13,5 +13,14 @@ pod 'MBProgressHUD', '~> 0.9.2'
 
 pod 'SVProgressHUD', '~> 1.1.3'
 
+pod 'EFCircularSlider', '~> 0.2.0'
+
+pod 'LTMorphingLabel', '~> 0.1.1'
+
+pod 'SwiftyJSON', '~> 2.3.2'
+
+pod 'KLCPopup', '~> 1.0'
+
+
 
 
