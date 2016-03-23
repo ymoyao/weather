@@ -53,9 +53,9 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
     
     override func viewDidLoad() {
         super.viewDidLoad()
+    
+        loadNavSubViews()
         
-
-        self.navigationItem.title = "机器人"
         
 //        //初始化控件
 //        loadSubViews()
@@ -69,6 +69,10 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
     //MARK: - 初始化控件
     func loadSubViews() {
         self.view.addSubview(textfeild!)
+    }
+    
+    func loadNavSubViews() {
+//        self.titleLabel?.text = self.navigationItem.title
     }
     
     //MAKR: - API 请求数据
@@ -140,6 +144,10 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
             make.size.equalTo(CGSizeMake(200, 30))
         })
     }
+    
+//    override func leftBtnClick() {
+//        self.dismissViewControllerAnimated(true, completion: nil)
+//    }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

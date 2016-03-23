@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Foundation
 
 public struct Utils {
     
@@ -28,6 +29,24 @@ public struct Utils {
     static func screenHeight()-> CGFloat{
         return UIScreen.mainScreen().bounds.height
     }
+    
+    
+    /**
+     计算宽度
+     
+     - parameter label: label
+     
+     - returns: 宽度
+     */
+    static func calWidthWithLabel(label:UILabel) -> CGFloat{
+        let paragraphStyle = NSMutableParagraphStyle.init()
+        paragraphStyle.lineBreakMode = label.lineBreakMode;
+        paragraphStyle.alignment = label.textAlignment;
+        let str:NSString =  label.text!
+        
+        return str.boundingRectWithSize(CGSizeMake(2000, label.frame.size.height), options: [NSStringDrawingOptions.UsesLineFragmentOrigin,NSStringDrawingOptions.UsesFontLeading], attributes: [NSFontAttributeName:label.font, NSParagraphStyleAttributeName:paragraphStyle], context: nil).size.width
+    }
+
     
     /**
      date转字符串

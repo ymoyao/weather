@@ -62,4 +62,23 @@
 }
 
 
+#pragma mark - 计算label高度
++ (CGFloat)calHeightWithLabel:(UILabel *)label{
+    
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = label.lineBreakMode;
+    paragraphStyle.alignment = label.textAlignment;
+    return [label.text boundingRectWithSize:CGSizeMake(label.frame.size.width, 2000) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:label.font, NSParagraphStyleAttributeName:paragraphStyle} context:nil].size.height;
+}
+
+#pragma mark - 计算label宽度
++ (CGFloat)calWidthWithLabel:(UILabel *)label{
+    
+    NSMutableParagraphStyle * paragraphStyle = [[NSMutableParagraphStyle alloc] init];
+    paragraphStyle.lineBreakMode = label.lineBreakMode;
+    paragraphStyle.alignment = label.textAlignment;
+    return [label.text boundingRectWithSize:CGSizeMake(2000, label.frame.size.height) options:NSStringDrawingUsesLineFragmentOrigin|NSStringDrawingUsesFontLeading attributes:@{NSFontAttributeName:label.font, NSParagraphStyleAttributeName:paragraphStyle} context:nil].size.width;
+}
+
+
 @end

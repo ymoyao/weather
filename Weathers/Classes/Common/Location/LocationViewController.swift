@@ -54,13 +54,14 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     func initSubViews() {
         
 
-        searchBar = UISearchBar.init(frame: CGRectMake(0, 69, Utils.screenWidth(), 20))
+        searchBar = UISearchBar.init(frame: CGRectMake(0, 64, Utils.screenWidth(), 40))
         searchBar?.delegate = self
         self.view.addSubview(searchBar!)
         
-        tableView = UITableView.init(frame: CGRectMake(0, 94, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 64), style: UITableViewStyle.Plain)
+        tableView = UITableView.init(frame: CGRectMake(0, 104, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 104), style: UITableViewStyle.Plain)
         tableView?.delegate = self
         tableView?.dataSource = self
+        tableView?.showsVerticalScrollIndicator = false
         tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
         tableView?.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "locationHead")
         self.view.addSubview(tableView!)
@@ -83,13 +84,13 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         }
         
         if versionFormate >= 800 {
-            locationManager?.requestAlwaysAuthorization()
+//            locationManager?.requestAlwaysAuthorization()
             locationManager?.requestWhenInUseAuthorization()
         }
         
         if versionFormate >= 900 {
             if #available(iOS 9.0, *) {
-                locationManager!.allowsBackgroundLocationUpdates = true
+//                locationManager!.allowsBackgroundLocationUpdates = true
             } else {
                 // Fallback on earlier versions
             }
@@ -165,12 +166,12 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         let valueFloat = Float(str.substringWithRange(range))
         if valueFloat == Float(Utils.screenHeight())  {
             var frame = self.tableView?.frame
-            frame?.size.height = Utils.screenHeight() - 84
+            frame?.size.height = Utils.screenHeight() - 104
             self.tableView?.frame = frame!
         }
         else{
             var frame = self.tableView?.frame
-            frame?.size.height = CGFloat.init(valueFloat! - 94)
+            frame?.size.height = CGFloat.init(valueFloat! - 104)
             self.tableView?.frame = frame!
         }
         
@@ -280,21 +281,24 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
             return
         }
         
-        NSUserDefaults.standardUserDefaults().setObject(cell?.textLabel?.text, forKey: "city")
-        let path = NSBundle.mainBundle().pathForResource("city", ofType: "sqlite3")
-        let db = try! Connection(path!, readonly: true)
         
-        let stmt = try! db.prepare("SELECT province FROM city where name = ?")
-        try! stmt.run(cell?.textLabel?.text)
-        for row in stmt {
-            for (index, _) in stmt.columnNames.enumerate() {
-                
-                let strArr =  String(row[index]).componentsSeparatedByString("\"")
-                if strArr.count >= 1 {
-                    NSUserDefaults.standardUserDefaults().setObject(strArr[1], forKey: "province")
-                }
-            }
-        }
+        NSUserDefaults.standardUserDefaults().setObject(cell?.textLabel?.text, forKey: "city")
+        
+//        NSUserDefaults.standardUserDefaults().setObject(cell?.textLabel?.text, forKey: "city")
+//        let path = NSBundle.mainBundle().pathForResource("city", ofType: "sqlite3")
+//        let db = try! Connection(path!, readonly: true)
+//        
+//        let stmt = try! db.prepare("SELECT province FROM city where name = ?")
+//        try! stmt.run(cell?.textLabel?.text)
+//        for row in stmt {
+//            for (index, _) in stmt.columnNames.enumerate() {
+//                
+//                let strArr =  String(row[index]).componentsSeparatedByString("\"")
+//                if strArr.count >= 1 {
+//                    NSUserDefaults.standardUserDefaults().setObject(strArr[1], forKey: "province")
+//                }
+//            }
+//        }
         locationClosure!(string: (cell?.textLabel?.text)!)
         self.dismissViewControllerAnimated(true, completion: nil)
     }
@@ -338,18 +342,40 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     }
     
     
+    //收回键盘（把通知的操作在这边做，会快一点）
     func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
         print("end search")
-        isSearchIng = false
-        searchBar.showsCancelButton = false
+        
+        var frame = self.tableView?.frame
+        frame?.size.height = Utils.screenHeight() - 104
+        self.tableView?.frame = frame!
+        
+        
         self.tableView?.reloadData()
+
         return true
     }
     
+    //点击cancal
     func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+        isSearchIng = false
+        searchBar.showsCancelButton = false
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
+    
+//    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+//        print("end search")
+//        isSearchIng = false
+//        searchBar.showsCancelButton = false
+//        self.tableView?.reloadData()
+//        return true
+//    }
+//    
+//    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+//        searchBar.text = ""
+//        searchBar.resignFirstResponder()
+//    }
     
     //MARK: - 开始点击
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {

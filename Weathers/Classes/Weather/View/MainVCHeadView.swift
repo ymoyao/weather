@@ -73,7 +73,8 @@ class MainVCHeadView: UIView {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        self.backgroundColor = UIColor.init(red: 250/255.0, green: 116/255.0, blue: 45/255.0, alpha: 1.0)
+//        self.backgroundColor = UIColor.init(red: 250/255.0, green: 116/255.0, blue: 45/255.0, alpha: 1.0)
+        self.backgroundColor = UIColor.init(red: 128/255.0, green: 192/255.0, blue: 49/255.0, alpha: 1.0)
         
         loadSubView()
     }
@@ -81,42 +82,36 @@ class MainVCHeadView: UIView {
     func loadSubView() {
     
         tempLable = UILabel.init()
-        tempLable?.text = ""
         tempLable?.textColor = UIColor.whiteColor()
         tempLable?.font = UIFont.systemFontOfSize(20.0)
         self.addSubview(tempLable!)
         
         tempIntervalLabel = UILabel.init()
-        tempIntervalLabel?.text = ""
-        tempIntervalLabel?.textColor = UIColor.redColor()
-        tempIntervalLabel?.font = UIFont.systemFontOfSize(15)
+        tempIntervalLabel?.textColor = UIColor.whiteColor()
+        tempIntervalLabel?.font = UIFont.systemFontOfSize(14)
         self.addSubview(tempIntervalLabel!)
         
         airLabel = UILabel.init()
-        airLabel?.text = ""
         airLabel?.numberOfLines = 2
         airLabel?.textColor = UIColor.whiteColor()
         airLabel?.font = UIFont.systemFontOfSize(14)
         self.addSubview(airLabel!)
         
         weekLabel = UILabel.init()
-        weekLabel?.textColor = UIColor.redColor()
-        weekLabel?.text = ""
-        weekLabel?.font = UIFont.systemFontOfSize(15)
+        weekLabel?.textColor = UIColor.whiteColor()
+        weekLabel?.font = UIFont.systemFontOfSize(14)
         self.addSubview(weekLabel!)
         
         locationProvince = UILabel.init()
-        locationProvince?.text = ""
         locationProvince?.textAlignment = NSTextAlignment.Right
-        locationProvince?.textColor = UIColor.redColor()
+        locationProvince?.textColor = UIColor.whiteColor()
         locationProvince?.font = UIFont.systemFontOfSize(17)
         self.addSubview(locationProvince!)
         
         locationCity = UILabel.init()
-        locationCity?.text = ""
         locationCity?.textAlignment = NSTextAlignment.Right
-        locationCity?.textColor = UIColor.redColor()
-        locationCity?.font = UIFont.systemFontOfSize(15)
+        locationCity?.textColor = UIColor.whiteColor()
+        locationCity?.font = UIFont.systemFontOfSize(14)
         self.addSubview(locationCity!)
         
         addCity = UIButton.init(type: UIButtonType.Custom)
@@ -125,7 +120,6 @@ class MainVCHeadView: UIView {
         self.addSubview(addCity!)
         
         weatherDescribeLabel = UILabel.init()
-        weatherDescribeLabel?.text = ""
         weatherDescribeLabel?.textAlignment = NSTextAlignment.Center
         weatherDescribeLabel?.numberOfLines = 2
         weatherDescribeLabel?.textColor = UIColor.whiteColor()

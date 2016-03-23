@@ -38,6 +38,12 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
     func customLeftBarButtonItem() {
         
         self.titleLabel?.text = "天气"
+        //计算菜单图片的位置
+        let width = Utils.calWidthWithLabel(self.titleLabel!)
+        let searchImage =  UIImageView.init(image: UIImage.init(named: "nav_search"))
+        searchImage.frame = CGRectMake(titleLabel!.frame.size.width / 2 + width / 2, 0, 20, 20)
+        titleLabel?.addSubview(searchImage)
+        
         var city = NSUserDefaults.standardUserDefaults().objectForKey("city") as? String
         if city == nil {
             city = "定位"
@@ -49,9 +55,10 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
     
     //初始化控件
     func loadSubViews() {
-        tableView = UITableView(frame: CGRectMake(0, 64, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 64), style: .Plain)
+        tableView = UITableView(frame: CGRectMake(0, 64, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 64 - 49), style: .Plain)
         tableView?.dataSource = self
         tableView?.delegate = self
+        tableView?.showsVerticalScrollIndicator = false
         tableView?.registerClass(MainVCCell.self, forCellReuseIdentifier: "cell")
         tableHeadView = MainVCHeadView.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 110))
         tableHeadView?.closure = { () in
@@ -68,15 +75,20 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
         self.view.addSubview(tableView!)
     }
     
-    //MARK: - 导航栏左边点击事件
+//    override func titleTapGes() {
+//    
+//        
+//        
+//    }
     
+    //MARK: - 导航栏左边点击事件
     override func leftBtnClick() {
         print("定位点击")
         
         let vc = LocationViewController()
         vc.navigationItem.title = "城市选择"
         vc.locationClosure = { (city) in
-            self.btn?.setTitle(city, forState:UIControlState.Normal)
+            self.leftBtn?.setTitle(city, forState:UIControlState.Normal)
             
             //清除数据
             self.cellDataArr.removeAll()
@@ -93,7 +105,6 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
     func getWeatherData(){
         
         let city = NSUserDefaults.standardUserDefaults().objectForKey("city") as? String
-        var province = NSUserDefaults.standardUserDefaults().objectForKey("province") as? String
         
         guard city != nil else {
             let show = UIAlertView.init(title: "提示", message: "需要您的位置信息", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "定位")
@@ -101,22 +112,22 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
             return
         }
         
-        if province == nil {
-            province = ""
-        }
-        
-        
-        
+        SVProgressHUD.showWithStatus("加载中...")
         NetWorkManager.requestHeweather(city!, success: { (response) -> Void in
             
             let json = JSON.init(response!)
             let mainArray = json["HeWeather data service 3.0"]
-            for (_,dict):(String,JSON) in mainArray {
-                
+            var i = 0
+            for (_,dict):(String,JSON) in mainArray{
+            
+                guard ++i < 2 else {
+                    break
+                }
                 guard dict["status"] == "ok" else {
                     SVProgressHUD.showErrorWithStatus("暂无内容")
                     break
                 }
+                SVProgressHUD.dismiss()
                 let nowDict = dict["now"]
                 let aqiDict = dict["aqi"]
                 let basicDict = dict["basic"]
@@ -193,7 +204,7 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
     
     func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeadView = UIView.init()
-        sectionHeadView.backgroundColor = UIColor.init(red: 77/255.0, green: 66/255.0, blue: 77/255.0, alpha: 1.0)
+        sectionHeadView.backgroundColor = UIColor.init(red: 233/255.0, green: 233/255.0, blue: 233/255.0, alpha: 1.0)
         return sectionHeadView
     }
     
@@ -203,7 +214,7 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
             let vc = LocationViewController.init()
             vc.navigationItem.title = "城市选择"
             vc.locationClosure = { (city) in
-                self.btn?.setTitle(city, forState:UIControlState.Normal)
+                self.leftBtn?.setTitle(city, forState:UIControlState.Normal)
                 
                 self.cellDataArr.removeAll()
                 self.headDataArr.removeAll()

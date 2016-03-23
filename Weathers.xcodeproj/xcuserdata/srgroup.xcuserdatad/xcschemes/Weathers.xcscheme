@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "ABFB7F9F1C634AA900550FF2"
-               BuildableName = "Weathers.app"
-               BlueprintName = "Weathers"
+               BuildableName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;.app"
+               BlueprintName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;"
                ReferencedContainer = "container:Weathers.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -33,8 +33,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABFB7F9F1C634AA900550FF2"
-            BuildableName = "Weathers.app"
-            BlueprintName = "Weathers"
+            BuildableName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;.app"
+            BlueprintName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;"
             ReferencedContainer = "container:Weathers.xcodeproj">
          </BuildableReference>
       </MacroExpansion>
@@ -56,8 +56,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABFB7F9F1C634AA900550FF2"
-            BuildableName = "Weathers.app"
-            BlueprintName = "Weathers"
+            BuildableName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;.app"
+            BlueprintName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;"
             ReferencedContainer = "container:Weathers.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
@@ -75,8 +75,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "ABFB7F9F1C634AA900550FF2"
-            BuildableName = "Weathers.app"
-            BlueprintName = "Weathers"
+            BuildableName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;.app"
+            BlueprintName = "&#x8d34;&#x8eab;&#x52a9;&#x624b;"
             ReferencedContainer = "container:Weathers.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>

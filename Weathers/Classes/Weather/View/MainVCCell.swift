@@ -28,7 +28,7 @@ class MainVCCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.contentView.backgroundColor = UIColor.redColor()
+        self.contentView.backgroundColor = UIColor.whiteColor()
         loadSubViews()
     }
     
@@ -38,12 +38,12 @@ class MainVCCell: UITableViewCell {
         contentLabel = UILabel.init()
         contentLabel?.text = ""
         contentLabel?.textAlignment = NSTextAlignment.Center
-        contentLabel?.textColor = UIColor.whiteColor()
+        contentLabel?.textColor = UIColor.init(red: 53/255.0, green: 110/255.0, blue: 154/255.0, alpha: 1.0)
         contentLabel?.font = UIFont.boldSystemFontOfSize(30)
         
         subLabel = UILabel.init()
         subLabel?.text = ""
-        subLabel?.textColor = UIColor.whiteColor()
+        subLabel?.textColor = UIColor.init(red: 53/255.0, green: 110/255.0, blue: 154/255.0, alpha: 1.0)
         subLabel?.textAlignment = NSTextAlignment.Right
         subLabel?.font = UIFont.systemFontOfSize(18)
         

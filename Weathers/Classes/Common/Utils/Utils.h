@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @interface Utils : NSObject
 
@@ -30,4 +31,25 @@
  *  @return 字符串
  */
 + (NSString*)base64forData:(NSData*)theData;
+
+
+/**
+ *  计算label高度
+ *
+ *  @param label label
+ *
+ *  @return 高度
+ */
++ (CGFloat)calHeightWithLabel:(UILabel *)label;
+
+/**
+ *  计算label宽度
+ *
+ *  @param label label
+ *
+ *  @return 宽度
+ */
++ (CGFloat)calWidthWithLabel:(UILabel *)label;
+
+
 @end

@@ -53,10 +53,10 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
         let circleTemp = EFCircularSlider.init()
         circleTemp.delegate = self
         circleTemp.minimumValue = 0
-        circleTemp.maximumValue = 2000
+        circleTemp.maximumValue = 50000
         circleTemp.lineWidth = 10
-        circleTemp.filledColor = UIColor.lightGrayColor()
-        circleTemp.unfilledColor = UIColor.blackColor()
+        circleTemp.filledColor = UIColor.init(red: 53/255.0, green: 110/255.0, blue: 154/255.0, alpha: 1.0)
+        circleTemp.unfilledColor = UIColor.init(red: 239/255.0, green: 239/255.0, blue: 239/255.0, alpha: 1.0)
         circleTemp.handleType = .BigCircle
         circleTemp.handleColor = UIColor.whiteColor()
         return circleTemp
@@ -67,10 +67,10 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
         let circleTemp = EFCircularSlider.init()
         circleTemp.userInteractionEnabled = false
         circleTemp.minimumValue = 0
-        circleTemp.maximumValue = 2000
+        circleTemp.maximumValue = 50000
         circleTemp.lineWidth = 10
-        circleTemp.filledColor = UIColor.lightGrayColor()
-        circleTemp.unfilledColor = UIColor.blackColor()
+        circleTemp.filledColor = UIColor.init(red: 53/255.0, green: 110/255.0, blue: 154/255.0, alpha: 1.0)
+        circleTemp.unfilledColor = UIColor.init(red: 239/255.0, green: 239/255.0, blue: 239/255.0, alpha: 1.0)
         circleTemp.handleType = .SemiTransparentWhiteCircle
         circleTemp.handleColor = UIColor.whiteColor()
         return circleTemp
@@ -121,6 +121,13 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
     
     func loadNavSubView() {
         self.titleLabel?.text = "健康"
+        
+        //计算菜单图片的位置
+        let width = Utils.calWidthWithLabel(self.titleLabel!)
+        let searchImage =  UIImageView.init(image: UIImage.init(named: "nav_search"))
+        searchImage.frame = CGRectMake(titleLabel!.frame.size.width / 2 + width / 2, 0, 20, 20)
+        titleLabel?.addSubview(searchImage)
+        
         self.leftBtn?.hidden = true
         self.view.backgroundColor = UIColor.whiteColor()
     }
@@ -157,6 +164,7 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
                     //目标
                     self.goalLabel?.text = String.init(format: "目标: %ld步", arguments: [Health.getGoalStep()!])
                     self.circle?.currentValue = Float(Health.getGoalStep()!)
+
                 })
             })
         }

@@ -16,7 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
 
-
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
         
@@ -76,25 +75,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             }
             else{
                 
-                //用MOBFJson 将response.responder 转为data
-                //                let data =  MOBFJson.jsonDataFromObject(response.responder)
-                //swiftJson 用data转json对象
-                //                let json = JSON(data: data)
-                //                //取出对应的值
-                //                if let userName = json["city"].string {
-                //                    print("城市:\(userName)")
-                //                }
-                //                print("\(json["province"].string)")
-                //                
-                //                print("\(response.responder)")
+//                用MOBFJson 将response.responder 转为data
+                let data =  MOBFJson.jsonDataFromObject(response.responder)
+//                swiftJson 用data转json对象
+                let json = JSON(data: data)
+                //取出对应的值
+                if let userName = json["city"].string {
+                    print("城市:\(userName)")
+                }
+                print("\(json["province"].string)")
+                
+                print("\(response.responder)")
             }
         }
         
-        
-        NetWorkManager.requestHeWeatherSupportCitys("", key: "", success: { (response) -> Void in
-
-  
-            
+      //API获取天气城市列表
+//        NetWorkManager.requestHeWeatherSupportCitys("", key: "", success: { (response) -> Void in
 //            let json = JSON.init(response!)
 //            let jsonArray = json["city_info"]
 //            
@@ -126,15 +122,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //            
 //            }
-            
-           
-
-            
-            
-            }) { (errorStr) -> Void in
-                print("asfas=--------das\(errorStr)")
-        }
-
+//            }) { (errorStr) -> Void in
+//                print("asfas=--------das\(errorStr)")
+//        }
+//
         return true
     }
 

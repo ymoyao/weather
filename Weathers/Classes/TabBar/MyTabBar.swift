@@ -23,11 +23,12 @@ class MyTabBar: UIImageView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.backgroundColor = UIColor.init(red: 89/255.0, green: 87/255.0, blue: 103/255.0, alpha: 0.5)
+//        self.backgroundColor = UIColor.init(colorLiteralRed: 60/255.0, green: 58/255.0, blue: 77/255.0, alpha: 1.0)
         
+        self.backgroundColor = UIColor.whiteColor()
         self.userInteractionEnabled = true
-        let imageArr = ["btn_nav_home","btn_nav_brand","btn_nav_mine"]
-        let imageSelArr = ["btn_nav_home_selected","btn_nav_brand_selected","btn_nav_mine_selected"]
+        let imageArr = ["weather_normal","health_normal","diary_normal"]
+        let imageSelArr = ["weather_select","health_select","diary_select"]
         let btnW:CGFloat = UIScreen.mainScreen().bounds.width / CGFloat(imageArr.count)
         let btnH:CGFloat = 49.0
         var btnX:CGFloat = 0.0
