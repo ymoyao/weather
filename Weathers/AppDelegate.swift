@@ -27,10 +27,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.rootViewController = tabBar
         
         //设置导航栏
-        //UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 18/255.0, green: 85/255.0, blue: 137/255.0, alpha: 1.0)
-        UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 60/255.0, green: 58/255.0, blue: 77/255.0, alpha: 1.0)
-        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
-        UIApplication.sharedApplication().statusBarStyle = .LightContent
+//        UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 18/255.0, green: 85/255.0, blue: 137/255.0, alpha: 1.0)
+//        UINavigationBar.appearance().barTintColor = UIColor.init(colorLiteralRed: 60/255.0, green: 58/255.0, blue: 77/255.0, alpha: 1.0)
+//        UINavigationBar.appearance().titleTextAttributes = [NSForegroundColorAttributeName:UIColor.whiteColor()]
+//        UIApplication.sharedApplication().statusBarStyle = .LightContent
         
         //设置SVProgressHUD
         SVProgressHUD.setBackgroundColor(UIColor.blackColor())

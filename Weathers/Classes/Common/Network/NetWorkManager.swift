@@ -47,7 +47,9 @@ struct NetWorkManager {
      - parameter fail:    失败
      */
     static func requestReporter(info:String, userid:String, success:([String : AnyObject]?) -> Void, fail:(String?) -> Void) ->Void {
-        let req = Alamofire.request(.GET, URL.reporterUrl(), parameters: ["key":"879a6cb3afb84dbf4fc84a1df2ab7319","info":info,"userid":userid], encoding: ParameterEncoding.URL, headers: ["apikey":URL.baidukeyStr()])
+//        879a6cb3afb84dbf4fc84a1df2ab7319
+        
+        let req = Alamofire.request(.GET, URL.reporterUrl(), parameters: ["key":"20db0ca5dbbbeb84239459c7ef24ff20","info":info,"userid":userid], encoding: ParameterEncoding.URL, headers: ["apikey":URL.baidukeyStr()])
         req.responseJSON { (response) -> Void in
             if (response.result.error != nil) {
                 fail(response.result.error?.description)

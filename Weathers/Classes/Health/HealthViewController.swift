@@ -11,6 +11,7 @@ import CoreMotion
 import EFCircularSlider
 import SnapKit
 import SVProgressHUD
+import LTMorphingLabel
 
 
 class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EFCircularSliderDelegate {
@@ -32,16 +33,18 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
         return btnTemp
     }()
     
-    lazy var stepLabel:UILabel? = {
-        let labelTemp = UILabel.init()
+    lazy var stepLabel:LTMorphingLabel? = {
+        let labelTemp = LTMorphingLabel.init()
+        labelTemp.morphingEffect = LTMorphingEffect.Burn
         labelTemp.text = "步数: 0步"
         labelTemp.textAlignment = NSTextAlignment.Left
         labelTemp.font = UIFont.systemFontOfSize(15)
         return labelTemp
     }()
     
-    lazy var goalLabel:UILabel? = {
-        let labelTemp = UILabel.init()
+    lazy var goalLabel:LTMorphingLabel? = {
+        let labelTemp = LTMorphingLabel.init()
+        labelTemp.morphingEffect = LTMorphingEffect.Sparkle
         labelTemp.text = "目标: 0步"
         labelTemp.textAlignment = NSTextAlignment.Center
         labelTemp.font = UIFont.systemFontOfSize(15)
@@ -76,9 +79,10 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
         return circleTemp
     }()
     
-    lazy var distanceLabel: UILabel? = {
-        let label = UILabel.init()
+    lazy var distanceLabel: LTMorphingLabel? = {
+        let label = LTMorphingLabel.init()
         label.text = "距离: 0.00公里"
+        label.morphingEffect = LTMorphingEffect.Anvil
         label.textAlignment = NSTextAlignment.Right
         label.font = UIFont.systemFontOfSize(15)
         return label
@@ -154,8 +158,7 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
                     
                     //实时
                     self.stepLabel?.text = String.init(format: "步数: %ld步", arguments: [step])
-                    let diatance = Health.getDistance(step)
-                    self.distanceLabel?.text = String.init(format: "距离: %.2f公里", diatance)
+                    self.distanceLabel?.text = String.init(format: "距离: %.2f公里", Health.getDistance(step))
                     self.circleCurent?.currentValue = Float(step)
                     self.todayStep = step
                     Health.updateLocalStep(self.todayStep)

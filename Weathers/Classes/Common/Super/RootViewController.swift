@@ -287,7 +287,7 @@ class RootViewController: UIViewController,IFlyRecognizerViewDelegate {
     func requestReporter(info:String, userid:String) {
         NetWorkManager.requestReporter(info, userid: userid, success: { (response) -> Void in
             
-            let showStr = response?["showtext"] as? String
+            let showStr = response?["text"] as? String //showtext
             
             guard showStr != nil else {
 //                SVProgressHUD.showErrorWithStatus("你在说啥?")
@@ -326,7 +326,7 @@ class RootViewController: UIViewController,IFlyRecognizerViewDelegate {
                 resultStr.appendContentsOf(str)
                 print("w == \(str)")
             }
-            requestReporter(resultStr, userid: "111")
+            requestReporter(resultStr, userid: "eb2edb736")
             print("resultStr == \(resultStr)")
             print("jsons\(jsons)")
         }

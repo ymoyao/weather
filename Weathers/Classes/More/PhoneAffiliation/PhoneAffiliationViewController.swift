@@ -73,7 +73,7 @@ class PhoneAffiliationViewController: RootViewController,UITextFieldDelegate {
         SVProgressHUD.showWithStatus("正在加载...")
         MobAPI.sendRequest(MOBAPhoneRequest.addressRequestByPhone(textFeild!.text)) { (response) -> Void in
             if (response.error != nil) {
-                SVProgressHUD.showErrorWithStatus(response.error.description)
+                SVProgressHUD.showErrorWithStatus("请输入正确电话号码")
                 print("\(response.error)")
             }
             else{
