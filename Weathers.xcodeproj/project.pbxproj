@@ -1109,14 +1109,14 @@
 					"$(PROJECT_DIR)/Weathers/Lib/libraries",
 					"$(PROJECT_DIR)/Weathers/Lib/xunfei",
 				);
-				GCC_PREFIX_HEADER = /Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Alamofire\"";
 				INFOPLIST_FILE = Weathers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/Weathers-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/Weathers-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1135,14 +1135,14 @@
 					"$(PROJECT_DIR)/Weathers/Lib/libraries",
 					"$(PROJECT_DIR)/Weathers/Lib/xunfei",
 				);
-				GCC_PREFIX_HEADER = /Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/PrefixHeader.pch;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/PrefixHeader.pch";
 				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Alamofire\"";
 				INFOPLIST_FILE = Weathers/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "/Users/srgroup/Documents/othetProject/Weathers/Weathers/Classes/Common/Other/Weathers-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/Weathers-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
