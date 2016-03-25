@@ -62,6 +62,7 @@
 		ABE1AA0D1C7C287C00E6C33F /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EE1C7C287C00E6C33F /* MainVCCell.swift */; };
 		ABE1AA0E1C7C287C00E6C33F /* MainVCHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EF1C7C287C00E6C33F /* MainVCHeadView.swift */; };
 		ABE1AA151C7C292D00E6C33F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AA101C7C292D00E6C33F /* LocationViewController.swift */; };
+		ABF4B7001CA51B470062F350 /* MapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABF4B6FF1CA51B470062F350 /* MapViewController.swift */; };
 		ABF57EA81C8574E1000A062F /* 100.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF57E751C8574E1000A062F /* 100.png */; };
 		ABF57EA91C8574E1000A062F /* 101.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF57E761C8574E1000A062F /* 101.png */; };
 		ABF57EAA1C8574E1000A062F /* 102.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF57E771C8574E1000A062F /* 102.png */; };
@@ -192,6 +193,7 @@
 		ABE1AA101C7C292D00E6C33F /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		ABE1AA131C7C292D00E6C33F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		ABE1AA141C7C292D00E6C33F /* Weathers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Weathers-Bridging-Header.h"; sourceTree = "<group>"; };
+		ABF4B6FF1CA51B470062F350 /* MapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapViewController.swift; sourceTree = "<group>"; };
 		ABF57E751C8574E1000A062F /* 100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 100.png; sourceTree = "<group>"; };
 		ABF57E761C8574E1000A062F /* 101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 101.png; sourceTree = "<group>"; };
 		ABF57E771C8574E1000A062F /* 102.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 102.png; sourceTree = "<group>"; };
@@ -469,6 +471,7 @@
 		ABE1A9C21C7C287C00E6C33F /* Classes */ = {
 			isa = PBXGroup;
 			children = (
+				ABF4B6FE1CA51AE40062F350 /* Map */,
 				AB2035BE1C9AB6440054CEB5 /* More */,
 				ABFF67471C7E8F3200210081 /* TabBar */,
 				ABD9A6AD1C901BAA00359686 /* Diary */,
@@ -592,6 +595,15 @@
 				ABE1AA141C7C292D00E6C33F /* Weathers-Bridging-Header.h */,
 			);
 			path = Other;
+			sourceTree = "<group>";
+		};
+		ABF4B6FE1CA51AE40062F350 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				ABF4B6FF1CA51B470062F350 /* MapViewController.swift */,
+			);
+			name = Map;
+			path = More/Map;
 			sourceTree = "<group>";
 		};
 		ABF57E741C8574E1000A062F /* weather */ = {
@@ -972,6 +984,7 @@
 				AB54D4491C9D26A300D3904C /* FeedbackHeadView.swift in Sources */,
 				ABE1A9F41C7C287C00E6C33F /* Utils.m in Sources */,
 				ABE1A9F11C7C287C00E6C33F /* NetWorkManager.swift in Sources */,
+				ABF4B7001CA51B470062F350 /* MapViewController.swift in Sources */,
 				AB0D0D9B1C9931B7003FB595 /* NotepadModel.swift in Sources */,
 				ABE1A9F21C7C287C00E6C33F /* URL.swift in Sources */,
 				ABE1AA0D1C7C287C00E6C33F /* MainVCCell.swift in Sources */,
