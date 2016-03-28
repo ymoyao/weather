@@ -155,17 +155,17 @@ public struct URL {
      */
     struct Sina {
         var AppId: String = "4066607455"
-        var appSecret: String = "8585e3d8c3b2ce55624713538965616b"
-        var url: String = "http://www.baidu.com"
+        var secret: String = "8585e3d8c3b2ce55624713538965616b"
+        var url: String = "http://www.cnblogs.com/devyh/"
     }
     
     /**
      *  微信分享平台
      */
     struct WX {
-        var AppId: String = "1105285002"
-        var AppKey: String = "R2tIL1DevZvTV2R2"
-        var url: String = "http://www.baidu.com"
+        var AppId: String = "wx316e69ff64f1f21f"
+        var appSecret: String = "639cdfeb2c8269f381eee6b827916451"
+        var url: String = "http://www.cnblogs.com/devyh/"
     }
     
 

@@ -309,7 +309,7 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
     
     //MARK: - 重载右边分享按钮点击事件
     override func rightBtnClick() {
-    UMSocialSnsService.presentSnsIconSheetView(self, appKey: URL.youMengKeyStr(), shareText: "你好", shareImage: UIImage.init(named: "share"), shareToSnsNames: [UMShareToQQ,UMShareToQzone,UMShareToWhatsapp], delegate: self)
+    UMSocialSnsService.presentSnsIconSheetView(self, appKey: URL.youMengKeyStr(), shareText: "今天我走了\(Health.getLocalStep())步，你呢？快来加入我们把~", shareImage: Utils.screenShot(self.view, rect: self.view.bounds), shareToSnsNames: [UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToSina], delegate: self)
     }
     
     //MARK: - 友盟分享回调 (分享成功后点击返回app才会调用这个函数) -> 原理:delegate app 回调里面调用  UMSocialSnsService.handleOpenURL(url) 然后才触发这个代理

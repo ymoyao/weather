@@ -51,5 +51,15 @@
  */
 + (CGFloat)calWidthWithLabel:(UILabel *)label;
 
+/**
+ *  获得某个范围内的屏幕图像
+ *
+ *  @param theView 对应的视图
+ *  @param rect    frame
+ *
+ *  @return image
+ */
++ (UIImage *)imageFromView:(UIView *)theView atFrame:(CGRect)rect;
+
 
 @end

@@ -21,6 +21,7 @@
 #import "UMSocial.h"
 #import "UMSocialQQHandler.h"
 #import "UMSocialWechatHandler.h"
+#import "UMSocialSinaSSOHandler.h"
 //#import <UMengSocial/UMSocial.h>
 
 //帮助文件

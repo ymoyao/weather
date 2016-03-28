@@ -64,4 +64,22 @@ public struct Utils {
         return dateFormate.stringFromDate(date)
     }
     
+    /**
+     截屏
+     
+     - parameter view: 对应的view
+     - parameter rect: frame
+     
+     - returns: 截取的图片
+     */
+    static func screenShot(view:UIView, rect:CGRect ) -> UIImage{
+        UIGraphicsBeginImageContext(view.frame.size)
+        let  context = UIGraphicsGetCurrentContext()
+        CGContextSaveGState(context)
+        UIRectClip(rect)
+        view.layer.renderInContext(context!)
+        let image = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        return image
+    }
 }

@@ -49,9 +49,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         //QQ注册
         UMSocialQQHandler.setQQWithAppId(URL.QQ().AppId, appKey: URL.QQ().AppKey, url: URL.QQ().url)
-        //新浪微博注册
-        UMSocialWechatHandler.setWXAppId(URL.Sina().AppId, appSecret: URL.Sina().appSecret, url: URL.Sina().url)
         
+        //微信注册
+        UMSocialWechatHandler.setWXAppId(URL.WX().AppId, appSecret:URL.WX().appSecret , url: URL.WX().url)
+        
+        //新浪微博注册
+        UMSocialSinaSSOHandler.openNewSinaSSOWithAppKey(URL.Sina().AppId, secret: URL.Sina().secret, redirectURL: URL.Sina().url)
         
         //没安装对应的客户端时会隐藏 如没安装QQ则QQ分享选项不会出现
         UMSocialConfig.hiddenNotInstallPlatforms([UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline])
