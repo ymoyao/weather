@@ -147,7 +147,7 @@ public struct URL {
     struct QQ {
         var AppId: String = "1105285002"
         var AppKey: String = "R2tIL1DevZvTV2R2"
-        var url: String = "http://www.baidu.com"
+        var url: String = "http://www.cnblogs.com/devyh/"
     }
     
     /**

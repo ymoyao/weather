@@ -309,6 +309,7 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
     
     //MARK: - 重载右边分享按钮点击事件
     override func rightBtnClick() {
+
     UMSocialSnsService.presentSnsIconSheetView(self, appKey: URL.youMengKeyStr(), shareText: "今天我走了\(Health.getLocalStep())步，你呢？快来加入我们把~", shareImage: Utils.screenShot(self.view, rect: self.view.bounds), shareToSnsNames: [UMShareToQQ,UMShareToQzone,UMShareToWechatSession,UMShareToWechatTimeline,UMShareToSina], delegate: self)
     }
     
@@ -318,6 +319,7 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
             print("share to \(response.data.keys.first)")
         }
     }
+    
   
     
 
