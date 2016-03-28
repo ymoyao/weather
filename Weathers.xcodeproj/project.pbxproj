@@ -62,6 +62,7 @@
 		ABE1AA0D1C7C287C00E6C33F /* MainVCCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EE1C7C287C00E6C33F /* MainVCCell.swift */; };
 		ABE1AA0E1C7C287C00E6C33F /* MainVCHeadView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9EF1C7C287C00E6C33F /* MainVCHeadView.swift */; };
 		ABE1AA151C7C292D00E6C33F /* LocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1AA101C7C292D00E6C33F /* LocationViewController.swift */; };
+		ABF4B7021CA5300B0062F350 /* share@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF4B7011CA5300B0062F350 /* share@2x.png */; };
 		ABF57EA81C8574E1000A062F /* 100.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF57E751C8574E1000A062F /* 100.png */; };
 		ABF57EA91C8574E1000A062F /* 101.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF57E761C8574E1000A062F /* 101.png */; };
 		ABF57EAA1C8574E1000A062F /* 102.png in Resources */ = {isa = PBXBuildFile; fileRef = ABF57E771C8574E1000A062F /* 102.png */; };
@@ -192,6 +193,7 @@
 		ABE1AA101C7C292D00E6C33F /* LocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LocationViewController.swift; sourceTree = "<group>"; };
 		ABE1AA131C7C292D00E6C33F /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
 		ABE1AA141C7C292D00E6C33F /* Weathers-Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Weathers-Bridging-Header.h"; sourceTree = "<group>"; };
+		ABF4B7011CA5300B0062F350 /* share@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "share@2x.png"; sourceTree = "<group>"; };
 		ABF57E751C8574E1000A062F /* 100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 100.png; sourceTree = "<group>"; };
 		ABF57E761C8574E1000A062F /* 101.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 101.png; sourceTree = "<group>"; };
 		ABF57E771C8574E1000A062F /* 102.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 102.png; sourceTree = "<group>"; };
@@ -737,6 +739,7 @@
 		ABFB7FDE1C634B8D00550FF2 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				ABF4B7011CA5300B0062F350 /* share@2x.png */,
 				AB885DE21CA167EC00B12C7E /* nav_search@2x.png */,
 				ABC9A4A21CA149BF008975B9 /* 180@2x.png */,
 				AB9888771C9B953A00FCD19F /* pop-arrow@2x.png */,
@@ -889,6 +892,7 @@
 				ABF57EBA1C8574E1000A062F /* 213.png in Resources */,
 				ABF57EAD1C8574E1000A062F /* 200.png in Resources */,
 				ABF57ED81C8574E1000A062F /* 900.png in Resources */,
+				ABF4B7021CA5300B0062F350 /* share@2x.png in Resources */,
 				ABFB7FA91C634AA900550FF2 /* Main.storyboard in Resources */,
 				AB50D8AF1CA11EDA009C3201 /* health_normal@2x.png in Resources */,
 				AB50D8B01CA11EDA009C3201 /* health_select@2x.png in Resources */,
@@ -1118,7 +1122,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/Weathers-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/UMengSocial/**";
 			};
 			name = Debug;
 		};
@@ -1144,7 +1148,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/Weathers-Bridging-Header.h";
 				TARGETED_DEVICE_FAMILY = 1;
-				USER_HEADER_SEARCH_PATHS = "";
+				USER_HEADER_SEARCH_PATHS = "$(PODS_ROOT)/UMengSocial/**";
 			};
 			name = Release;
 		};

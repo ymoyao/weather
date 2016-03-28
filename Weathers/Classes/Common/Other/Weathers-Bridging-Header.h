@@ -17,6 +17,11 @@
 #import <mobAPI/MobAPI.h>
 #import <MOBFoundation/MOBFJson.h>
 
+//友盟社会化分享
+#import "UMSocial.h"
+#import "UMSocialQQHandler.h"
+#import "UMSocialWechatHandler.h"
+//#import <UMengSocial/UMSocial.h>
 
 //帮助文件
 #import "Utils.h"

@@ -22,6 +22,7 @@ struct NetWorkManager {
      - parameter success:  成功
      - parameter fail:     失败
      */
+    //MARK: - 请求天气
     static func requestWeather(key:String, city:String, province:String, success:([String : AnyObject]?) -> Void ,fail:(String?) -> Void) -> Void{
         let req = Alamofire.request(.GET, URL.weatherUrl(),parameters: ["key":key,"city":city,"province":province])
         
@@ -46,10 +47,11 @@ struct NetWorkManager {
      - parameter success: 成功
      - parameter fail:    失败
      */
+    //MARK: - 请求机器人回答
     static func requestReporter(info:String, userid:String, success:([String : AnyObject]?) -> Void, fail:(String?) -> Void) ->Void {
-//        879a6cb3afb84dbf4fc84a1df2ab7319
+
         
-        let req = Alamofire.request(.GET, URL.reporterUrl(), parameters: ["key":"20db0ca5dbbbeb84239459c7ef24ff20","info":info,"userid":userid], encoding: ParameterEncoding.URL, headers: ["apikey":URL.baidukeyStr()])
+        let req = Alamofire.request(.GET, URL.reporterUrl(), parameters: ["key":URL.tuLingReporeterKeyStr(),"info":info,"userid":userid], encoding: ParameterEncoding.URL, headers: ["apikey":URL.baidukeyStr()])
         req.responseJSON { (response) -> Void in
             if (response.result.error != nil) {
                 fail(response.result.error?.description)
@@ -68,6 +70,7 @@ struct NetWorkManager {
      - parameter success: 成功
      - parameter fail:    失败
      */
+    //MARK: - 百度-中国和世界天气预报
     static func requestHeweather(city:String, success:(AnyObject)? -> Void, fail:(String?)? -> Void) -> Void {
         let req = Alamofire.request(.GET, URL.heweather(), parameters: ["city":city], encoding: ParameterEncoding.URL, headers: ["apikey":URL.baidukeyStr()])
         
@@ -90,8 +93,9 @@ struct NetWorkManager {
      - parameter success: 成功
      - parameter fail:    失败
      */
+    //MARK: - 获取和天气城市支持列表
     static func requestHeWeatherSupportCitys(search:String, key:String, success:(AnyObject?)-> Void,fail:(String?)->Void) -> Void {
-        let req = Alamofire.request(.GET, URL.heweatherSupurtCity(), parameters: ["search":"allworld" ,"key":URL.heWeatherStr()], encoding: ParameterEncoding.URL)
+        let req = Alamofire.request(.GET, URL.heweatherSupurtCity(), parameters: ["search":URL.cityType().WORLD ,"key":URL.heWeatherStr()], encoding: ParameterEncoding.URL)
         req.responseJSON { (response) -> Void in
             switch response.result {
             case .Success:

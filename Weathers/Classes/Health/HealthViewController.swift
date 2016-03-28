@@ -14,7 +14,7 @@ import SVProgressHUD
 import LTMorphingLabel
 
 
-class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EFCircularSliderDelegate {
+class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePickerControllerDelegate,UINavigationControllerDelegate,EFCircularSliderDelegate,UMSocialUIDelegate {
 
     
     var stepCounter = CMStepCounter.init()
@@ -134,6 +134,9 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
         
         self.leftBtn?.hidden = true
         self.view.backgroundColor = UIColor.whiteColor()
+        
+        self.rightBtn?.hidden = false
+        self.rightBtn?.setImage(UIImage.init(named: "share"), forState: UIControlState.Normal)
     }
     
     //MARK: - 选择跑步图片
@@ -303,6 +306,18 @@ class HealthViewController: RootViewController,UIActionSheetDelegate,UIImagePick
         })
     }
     
+    
+    //MARK: - 重载右边分享按钮点击事件
+    override func rightBtnClick() {
+    UMSocialSnsService.presentSnsIconSheetView(self, appKey: URL.youMengKeyStr(), shareText: "你好", shareImage: UIImage.init(named: "share"), shareToSnsNames: [UMShareToQQ,UMShareToQzone,UMShareToWhatsapp], delegate: self)
+    }
+    
+    //MARK: - 友盟分享回调 (分享成功后点击返回app才会调用这个函数) -> 原理:delegate app 回调里面调用  UMSocialSnsService.handleOpenURL(url) 然后才触发这个代理
+    func didFinishGetUMSocialDataInViewController(response: UMSocialResponseEntity!) {
+        if response.responseCode == UMSResponseCodeSuccess {
+            print("share to \(response.data.keys.first)")
+        }
+    }
   
     
 

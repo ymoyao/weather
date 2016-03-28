@@ -11,6 +11,8 @@ import SVProgressHUD
 import SQLite
 import SwiftyJSON
 
+
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -42,6 +44,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //听写初始化
         IFlySpeechUtility.createUtility(URL.xunfeiKeyStr())
 
+        //友盟分享注册
+        UMSocialData.setAppKey(URL.youMengKeyStr())
+        
+        //QQ注册
+        UMSocialQQHandler.setQQWithAppId(URL.QQ().AppId, appKey: URL.QQ().AppKey, url: URL.QQ().url)
+        //新浪微博注册
+        UMSocialWechatHandler.setWXAppId(URL.Sina().AppId, appSecret: URL.Sina().appSecret, url: URL.Sina().url)
+        
+        
+        //没安装对应的客户端时会隐藏 如没安装QQ则QQ分享选项不会出现
+        UMSocialConfig.hiddenNotInstallPlatforms([UMShareToQQ, UMShareToQzone, UMShareToWechatSession, UMShareToWechatTimeline])
+        
         
         //监听计步(未完成就监控)
         if Health.IsFinishGoal() == false {
@@ -66,28 +80,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
        
        
         
-        //注册
-        MobAPI.registerApp("f30df66d4e10")
+        //注册MOB云 API
+        MobAPI.registerApp(URL.MobKeyStr())
         
-        MobAPI.sendRequest(MOBAPhoneRequest.addressRequestByPhone("13022138660")) { (response) -> Void in
-            if (response.error != nil) {
-                print("\(response.error)")
-            }
-            else{
-                
-//                用MOBFJson 将response.responder 转为data
-                let data =  MOBFJson.jsonDataFromObject(response.responder)
-//                swiftJson 用data转json对象
-                let json = JSON(data: data)
-                //取出对应的值
-                if let userName = json["city"].string {
-                    print("城市:\(userName)")
-                }
-                print("\(json["province"].string)")
-                
-                print("\(response.responder)")
-            }
-        }
+//        MobAPI.sendRequest(MOBAPhoneRequest.addressRequestByPhone("13022138660")) { (response) -> Void in
+//            if (response.error != nil) {
+//                print("\(response.error)")
+//            }
+//            else{
+//                
+////                用MOBFJson 将response.responder 转为data
+//                let data =  MOBFJson.jsonDataFromObject(response.responder)
+////                swiftJson 用data转json对象
+//                let json = JSON(data: data)
+//                //取出对应的值
+//                if let userName = json["city"].string {
+//                    print("城市:\(userName)")
+//                }
+//                print("\(json["province"].string)")
+//                
+//                print("\(response.responder)")
+//            }
+//        }
         
       //API获取天气城市列表
 //        NetWorkManager.requestHeWeatherSupportCitys("", key: "", success: { (response) -> Void in
@@ -149,6 +163,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+    }
+    
+    
+    //MARK: - app回调
+    func application(application: UIApplication, openURL url: NSURL, sourceApplication: String?, annotation: AnyObject) -> Bool {
+       let ret = UMSocialSnsService.handleOpenURL(url)
+        if ret == false { //其他sdk
+        
+            
+        }
+        return ret       //友盟分享
     }
 
 
