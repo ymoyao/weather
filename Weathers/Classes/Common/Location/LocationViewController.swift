@@ -11,7 +11,7 @@ import CoreLocation
 import SQLite
 import SVProgressHUD
 
-typealias LocationClosure = (string:String) -> Void
+typealias LocationClosure = (_ string:String) -> Void
 
 class LocationViewController: RootViewController,CLLocationManagerDelegate,UITableViewDataSource,UITableViewDelegate,UISearchBarDelegate {
 
@@ -33,7 +33,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         super.viewDidLoad()
     
         //监听键盘弹出
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeTableHeight:"), name: UIKeyboardDidChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(LocationViewController.changeTableHeight(_:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         
         self.view.backgroundColor = UIColor.init(colorLiteralRed: 231/255.0, green: 231/255.0, blue: 231/255.0, alpha: 1.0)
 
@@ -54,16 +54,16 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     func initSubViews() {
         
 
-        searchBar = UISearchBar.init(frame: CGRectMake(0, 64, Utils.screenWidth(), 40))
+        searchBar = UISearchBar.init(frame: CGRect(x: 0, y: 64, width: Utils.screenWidth(), height: 40))
         searchBar?.delegate = self
         self.view.addSubview(searchBar!)
         
-        tableView = UITableView.init(frame: CGRectMake(0, 104, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 104), style: UITableViewStyle.Plain)
+        tableView = UITableView.init(frame: CGRect(x: 0, y: 104, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 104), style: UITableViewStyle.plain)
         tableView?.delegate = self
         tableView?.dataSource = self
         tableView?.showsVerticalScrollIndicator = false
-        tableView?.registerClass(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
-        tableView?.registerClass(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "locationHead")
+        tableView?.register(UITableViewCell.self, forCellReuseIdentifier: "locationCell")
+        tableView?.register(UITableViewHeaderFooterView.self, forHeaderFooterViewReuseIdentifier: "locationHead")
         self.view.addSubview(tableView!)
 
     }
@@ -73,10 +73,10 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         locationManager = CLLocationManager()
         
         //避免如 9.2.1这样无法直接转为 float的bug
-        let versionStr = UIDevice.currentDevice().systemVersion
-        let versionArr = versionStr.componentsSeparatedByString(".")
+        let versionStr = UIDevice.current.systemVersion
+        let versionArr = versionStr.components(separatedBy: ".")
         var versionFormate = 0
-        for var i = 0; i < versionArr.count; i++ {
+        for i in 0 ..< versionArr.count {
             let str = versionArr[i]
             if str != "." {
                 versionFormate += (Int(powf(10.0,Float(versionArr.count - i))) * Int(str)!)
@@ -107,7 +107,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         let name = Expression<String?>("city")
         let aleph = Expression<String?>("aleph")
         
-        let path = NSBundle.mainBundle().pathForResource("citys", ofType: "sqlite3")
+        let path = Bundle.main.path(forResource: "citys", ofType: "sqlite3")
         let db = try! Connection(path!, readonly: true)
 
         let city = Table("city")
@@ -120,7 +120,8 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         self.dataSubArray.append(self.gpsCityName)
         self.tableView?.reloadData()
         
-        dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+        
+        DispatchQueue.global(priority: .high).async { () -> Void in
            
             //遍历
             for cityRow in try! db.prepare(city.order(aleph)) {
@@ -144,7 +145,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
                 
             }
             
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.tableView?.reloadData()
             })
         }
@@ -155,15 +156,15 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     //MARK: - 返回上级
     override func leftBtnClick() {
         self.view.endEditing(true)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        self.dismiss(animated: true, completion: nil)
     }
     
     //监听键盘改变事件
-    func changeTableHeight(not:NSNotification) {
+    func changeTableHeight(_ not:Notification) {
         let valueStr = not.userInfo!["UIKeyboardFrameEndUserInfoKey"]
-        let str = String(valueStr)
-        let range = Range.init(start: str.startIndex.advancedBy(22), end: str.startIndex.advancedBy(25))
-        let valueFloat = Float(str.substringWithRange(range))
+        let str = String(describing: valueStr)
+        let range = (str.characters.index(str.startIndex, offsetBy: 22) ..< str.characters.index(str.startIndex, offsetBy: 25))
+        let valueFloat = Float(str.substring(with: range))
         if valueFloat == Float(Utils.screenHeight())  {
             var frame = self.tableView?.frame
             frame?.size.height = Utils.screenHeight() - 104
@@ -178,7 +179,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     }
 
     //MARK: - CLLocationManagerDelegate
-    func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
+    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
         
         //位置
         let location = locations.first
@@ -194,9 +195,9 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
                 
                 self.gpsCityName = (placemark?.first?.locality)!
          
-                if  self.gpsCityName.componentsSeparatedByString("市").count > 0 {
-                    let range =  self.gpsCityName.rangeOfString("市")
-                    self.gpsCityName.removeRange(range!)
+                if  self.gpsCityName.components(separatedBy: "市").count > 0 {
+                    let range =  self.gpsCityName.range(of: "市")
+                    self.gpsCityName.removeSubrange(range!)
                 }
                 
                 self.dataArray[0][0] = self.gpsCityName
@@ -205,8 +206,8 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
                 self.tableView?.reloadData()
               
                 
-                NSUserDefaults.standardUserDefaults().setObject(placemark?.first?.administrativeArea, forKey: "province")
-                NSUserDefaults.standardUserDefaults().setObject(self.gpsCityName, forKey: "city")
+                UserDefaults.standard.set(placemark?.first?.administrativeArea, forKey: "province")
+                UserDefaults.standard.set(self.gpsCityName, forKey: "city")
             }
         }
         
@@ -214,19 +215,19 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     }
     
     
-    func locationManager(manager: CLLocationManager, didFailWithError error: NSError) {
+    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
         print("\(error)")
     }
     
     //MARK: - UITableViewDelegate
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         if !isSearchIng {
             return dataArray.count
         }
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
     
         if !isSearchIng {
             return dataArray[section].count
@@ -235,8 +236,8 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("locationCell")
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "locationCell")
         if !isSearchIng {
             cell?.textLabel?.text = dataArray[indexPath.section][indexPath.row]
         }
@@ -247,11 +248,11 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         return cell!
     }
     
-    func tableView(tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
         return 0.01
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if !isSearchIng {
             return 30
         }
@@ -259,13 +260,13 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 44
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         
-        let headView = tableView.dequeueReusableHeaderFooterViewWithIdentifier("locationHead")
+        let headView = tableView.dequeueReusableHeaderFooterView(withIdentifier: "locationHead")
         if !isSearchIng {
             headView?.textLabel?.text = alephArray[section]
             headView?.contentView.backgroundColor = UIColor.init(colorLiteralRed: 231/255.0, green: 231/255.0, blue: 231/255.0, alpha: 1.0)
@@ -273,16 +274,16 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         return headView!
     }
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         
-        let cell = tableView.cellForRowAtIndexPath(indexPath)
+        let cell = tableView.cellForRow(at: indexPath)
         guard cell?.textLabel?.text != "正在定位..." else {
             return
         }
         
         
-        NSUserDefaults.standardUserDefaults().setObject(cell?.textLabel?.text, forKey: "city")
+        UserDefaults.standard.set(cell?.textLabel?.text, forKey: "city")
         
 //        NSUserDefaults.standardUserDefaults().setObject(cell?.textLabel?.text, forKey: "city")
 //        let path = NSBundle.mainBundle().pathForResource("city", ofType: "sqlite3")
@@ -299,32 +300,33 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
 //                }
 //            }
 //        }
-        locationClosure!(string: (cell?.textLabel?.text)!)
-        self.dismissViewControllerAnimated(true, completion: nil)
+        locationClosure!((cell?.textLabel?.text)!)
+        self.dismiss(animated: true, completion: nil)
     }
     
     
     
     //MARK: - UISearchBarDelegate
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
         
         //构建正则(包含)
-        let preicate = NSPredicate.init(format: "SELF CONTAINS[c] %@", searchText)
+        let a = NSPredicate.init(format: "SELF CONTAINS[c] %@", searchText)
   
         //清除原先搜索数据
         self.searchArray.removeAll()
 
         
-        SVProgressHUD.showWithStatus("查询中...")
+        SVProgressHUD.show(withStatus: "查询中...")
         //另外开线程，避免UI因数据量大卡顿
-        dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+        DispatchQueue.global(priority: .high).async { () -> Void in
             //在数据数组中找出符合的的数据放在搜索数据中
             let data = NSMutableArray.init(array: self.dataSubArray)
-            self.searchArray = data.filteredArrayUsingPredicate(preicate) as! [String]
+            
+                self.searchArray = data.filtered as! [String]
             
             //主线程更新UI
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.tableView?.reloadData()
                 SVProgressHUD.dismiss()
             })
@@ -333,7 +335,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
         
     }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         print("start search")
         isSearchIng = true
         searchBar.showsCancelButton = true
@@ -343,7 +345,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     
     
     //收回键盘（把通知的操作在这边做，会快一点）
-    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         print("end search")
         
         var frame = self.tableView?.frame
@@ -357,7 +359,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
     }
     
     //点击cancal
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         isSearchIng = false
         searchBar.showsCancelButton = false
         searchBar.text = ""
@@ -378,7 +380,7 @@ class LocationViewController: RootViewController,CLLocationManagerDelegate,UITab
 //    }
     
     //MARK: - 开始点击
-    override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
     

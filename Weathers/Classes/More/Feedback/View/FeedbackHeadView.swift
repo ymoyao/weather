@@ -39,7 +39,7 @@ class FeedbackHeadView: UIView {
         
         titleLabel = Factory.customLabel(nil)
         titleLabel?.text = "亲爱的伙伴们,如果你有新的想法和需求,请联系我哦~"
-        titleLabel?.textAlignment = NSTextAlignment.Center
+        titleLabel?.textAlignment = NSTextAlignment.center
         self.addSubview(titleLabel!)
     }
     
@@ -50,12 +50,12 @@ class FeedbackHeadView: UIView {
 //            make.height.equalTo(self).offset(-50)
 //        })
         
-        logoImageView?.snp_makeConstraints(closure: { (make) -> Void in
+        logoImageView?.snp_makeConstraints({ (make) -> Void in
             make.center.equalTo(self)
-            make.size.equalTo(CGSizeMake(130, 130))
+            make.size.equalTo(CGSize.init(width: 130, height: 130) )
         })
         
-        titleLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        titleLabel?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(logoImageView!.snp_bottomMargin).offset(10)
             make.left.equalTo(self).offset(10)
             make.right.equalTo(self).offset(-10)

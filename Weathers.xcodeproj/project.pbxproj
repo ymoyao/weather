@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		04C63101A4B98AE1810CF1E6 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02A7417175DFC7757153E833 /* Pods.framework */; };
+		5FE31EDB6D8CAD42A3796287 /* Pods_____.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 7DECBD3B82905321EBA50E24 /* Pods_____.framework */; };
 		AB0C2A101C649B8C0034767F /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB0C2A0F1C649B8C0034767F /* CoreLocation.framework */; };
 		AB0D0D961C98FB27003FB595 /* nav_add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB0D0D951C98FB27003FB595 /* nav_add@2x.png */; };
 		AB0D0D9B1C9931B7003FB595 /* NotepadModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AB0D0D9A1C9931B7003FB595 /* NotepadModel.swift */; };
@@ -49,6 +49,7 @@
 		ABCCD9751C7D435000919D19 /* Health.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABCCD9741C7D435000919D19 /* Health.swift */; };
 		ABD9A6AF1C901BCB00359686 /* DiaryViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD9A6AE1C901BCB00359686 /* DiaryViewController.swift */; };
 		ABD9A6B31C901F5D00359686 /* DiaryTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABD9A6B21C901F5D00359686 /* DiaryTableViewCell.swift */; };
+		ABDFE12F1CE066EC00A62E39 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABDFE12E1CE066EC00A62E39 /* ViewController.swift */; };
 		ABE1186D1C9A4C7600CB4AF4 /* CommonNavImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1186C1C9A4C7600CB4AF4 /* CommonNavImageView.swift */; };
 		ABE1A9F01C7C287C00E6C33F /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9C51C7C287C00E6C33F /* DatabaseManager.swift */; };
 		ABE1A9F11C7C287C00E6C33F /* NetWorkManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = ABE1A9C71C7C287C00E6C33F /* NetWorkManager.swift */; };
@@ -134,7 +135,9 @@
 
 /* Begin PBXFileReference section */
 		02A7417175DFC7757153E833 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		5884C0D80F20163E927B25A4 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		60B5BD8AC7A86F874A9D1AA7 /* Pods-贴身助手.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-贴身助手.release.xcconfig"; path = "Pods/Target Support Files/Pods-贴身助手/Pods-贴身助手.release.xcconfig"; sourceTree = "<group>"; };
+		7DECBD3B82905321EBA50E24 /* Pods_____.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = "Pods_____.framework"; sourceTree = BUILT_PRODUCTS_DIR; };
+		88EFB1CF880DD3A91E9741CF /* Pods-贴身助手.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-贴身助手.debug.xcconfig"; path = "Pods/Target Support Files/Pods-贴身助手/Pods-贴身助手.debug.xcconfig"; sourceTree = "<group>"; };
 		AB0C2A0F1C649B8C0034767F /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
 		AB0D0D951C98FB27003FB595 /* nav_add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "nav_add@2x.png"; sourceTree = "<group>"; };
 		AB0D0D9A1C9931B7003FB595 /* NotepadModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotepadModel.swift; sourceTree = "<group>"; };
@@ -176,6 +179,7 @@
 		ABCCD9741C7D435000919D19 /* Health.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Health.swift; sourceTree = "<group>"; };
 		ABD9A6AE1C901BCB00359686 /* DiaryViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryViewController.swift; sourceTree = "<group>"; };
 		ABD9A6B21C901F5D00359686 /* DiaryTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DiaryTableViewCell.swift; sourceTree = "<group>"; };
+		ABDFE12E1CE066EC00A62E39 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		ABE1186C1C9A4C7600CB4AF4 /* CommonNavImageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommonNavImageView.swift; sourceTree = "<group>"; };
 		ABE1A9C51C7C287C00E6C33F /* DatabaseManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		ABE1A9C71C7C287C00E6C33F /* NetWorkManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NetWorkManager.swift; sourceTree = "<group>"; };
@@ -262,7 +266,6 @@
 		ABFF67491C7E8F3200210081 /* MyTabBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarController.swift; sourceTree = "<group>"; };
 		ABFF674A1C7E8F3200210081 /* MyTabBarModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyTabBarModel.swift; sourceTree = "<group>"; };
 		ABFF674E1C7EA1C000210081 /* area.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = area.plist; sourceTree = "<group>"; };
-		F12A46B95C050AEE09E50673 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -288,7 +291,7 @@
 				ABFB7FE71C634B8D00550FF2 /* MOBFoundation.framework in Frameworks */,
 				ABC90BA81C83E2640012AAF8 /* iflyMSC.framework in Frameworks */,
 				ABFB7FE61C634B8D00550FF2 /* mobAPI.framework in Frameworks */,
-				04C63101A4B98AE1810CF1E6 /* Pods.framework in Frameworks */,
+				5FE31EDB6D8CAD42A3796287 /* Pods_____.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -314,17 +317,9 @@
 				ABFB80001C6350C300550FF2 /* libicucore.tbd */,
 				ABFB7FFE1C634C6500550FF2 /* libsqlite3.tbd */,
 				02A7417175DFC7757153E833 /* Pods.framework */,
+				7DECBD3B82905321EBA50E24 /* Pods_____.framework */,
 			);
 			name = Frameworks;
-			sourceTree = "<group>";
-		};
-		5367F77E0A3B8E5A08D02294 /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				F12A46B95C050AEE09E50673 /* Pods.debug.xcconfig */,
-				5884C0D80F20163E927B25A4 /* Pods.release.xcconfig */,
-			);
-			name = Pods;
 			sourceTree = "<group>";
 		};
 		AB0D0D971C993119003FB595 /* Model */ = {
@@ -657,8 +652,8 @@
 			children = (
 				ABFB7FA21C634AA900550FF2 /* Weathers */,
 				ABFB7FA11C634AA900550FF2 /* Products */,
-				5367F77E0A3B8E5A08D02294 /* Pods */,
 				4F61927D14DD5FAF52AA15DF /* Frameworks */,
+				BA6B0865ADD1C6209F5835BE /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -677,6 +672,7 @@
 				ABFB7FBA1C634B8D00550FF2 /* Lib */,
 				ABFB7FDA1C634B8D00550FF2 /* Source */,
 				ABFB7FA31C634AA900550FF2 /* AppDelegate.swift */,
+				ABDFE12E1CE066EC00A62E39 /* ViewController.swift */,
 				ABFB7FA71C634AA900550FF2 /* Main.storyboard */,
 				ABFB7FAA1C634AA900550FF2 /* Assets.xcassets */,
 				ABFB7FAC1C634AA900550FF2 /* LaunchScreen.storyboard */,
@@ -759,6 +755,15 @@
 			path = TabBar;
 			sourceTree = "<group>";
 		};
+		BA6B0865ADD1C6209F5835BE /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				88EFB1CF880DD3A91E9741CF /* Pods-贴身助手.debug.xcconfig */,
+				60B5BD8AC7A86F874A9D1AA7 /* Pods-贴身助手.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -766,12 +771,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = ABFB7FB21C634AA900550FF2 /* Build configuration list for PBXNativeTarget "贴身助手" */;
 			buildPhases = (
-				5E1DBBD0217DCB864415529F /* Check Pods Manifest.lock */,
+				5C833DFA0848632441774FD8 /* [CP] Check Pods Manifest.lock */,
 				ABFB7F9C1C634AA900550FF2 /* Sources */,
 				ABFB7F9D1C634AA900550FF2 /* Frameworks */,
 				ABFB7F9E1C634AA900550FF2 /* Resources */,
-				A7842760F94CF09B53954D8E /* Embed Pods Frameworks */,
-				AB50B6B1BE1FA810E9F67941 /* Copy Pods Resources */,
+				C765C2F42A83409EF404EA84 /* [CP] Embed Pods Frameworks */,
+				89019838A1D262D4716D1248 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -795,6 +800,7 @@
 					ABFB7F9F1C634AA900550FF2 = {
 						CreatedOnToolsVersion = 7.2;
 						DevelopmentTeam = 3E4LSSERGY;
+						LastSwiftMigration = 0820;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 0;
@@ -907,49 +913,49 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		5E1DBBD0217DCB864415529F /* Check Pods Manifest.lock */ = {
+		5C833DFA0848632441774FD8 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Check Pods Manifest.lock";
+			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
 			showEnvVarsInLog = 0;
 		};
-		A7842760F94CF09B53954D8E /* Embed Pods Frameworks */ = {
+		89019838A1D262D4716D1248 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Embed Pods Frameworks";
+			name = "[CP] Copy Pods Resources";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-贴身助手/Pods-贴身助手-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
-		AB50B6B1BE1FA810E9F67941 /* Copy Pods Resources */ = {
+		C765C2F42A83409EF404EA84 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			inputPaths = (
 			);
-			name = "Copy Pods Resources";
+			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-贴身助手/Pods-贴身助手-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -959,6 +965,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				ABDFE12F1CE066EC00A62E39 /* ViewController.swift in Sources */,
 				ABE1AA081C7C287C00E6C33F /* MainVCCellModel.swift in Sources */,
 				ABE1A9F31C7C287C00E6C33F /* RootViewController.swift in Sources */,
 				ABE1AA0E1C7C287C00E6C33F /* MainVCHeadView.swift in Sources */,
@@ -1098,7 +1105,7 @@
 		};
 		ABFB7FB31C634AA900550FF2 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F12A46B95C050AEE09E50673 /* Pods.debug.xcconfig */;
+			baseConfigurationReference = 88EFB1CF880DD3A91E9741CF /* Pods-贴身助手.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1110,13 +1117,17 @@
 					"$(PROJECT_DIR)/Weathers/Lib/xunfei",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/PrefixHeader.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Alamofire\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Pods/Alamofire\"",
+					"\"$(SRCROOT)/Pods/YHHeadScrollView\"",
+				);
 				INFOPLIST_FILE = Weathers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/Weathers-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};
@@ -1124,7 +1135,7 @@
 		};
 		ABFB7FB41C634AA900550FF2 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 5884C0D80F20163E927B25A4 /* Pods.release.xcconfig */;
+			baseConfigurationReference = 60B5BD8AC7A86F874A9D1AA7 /* Pods-贴身助手.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
@@ -1136,13 +1147,17 @@
 					"$(PROJECT_DIR)/Weathers/Lib/xunfei",
 				);
 				GCC_PREFIX_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/PrefixHeader.pch";
-				HEADER_SEARCH_PATHS = "\"$(SRCROOT)/Pods/Alamofire\"";
+				HEADER_SEARCH_PATHS = (
+					"\"$(SRCROOT)/Pods/Alamofire\"",
+					"\"$(SRCROOT)/Pods/YHHeadScrollView\"",
+				);
 				INFOPLIST_FILE = Weathers/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = cn.yh.Weathers;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/$(PROJECT_NAME)/Classes/Common/Other/Weathers-Bridging-Header.h";
+				SWIFT_VERSION = 3.0;
 				TARGETED_DEVICE_FAMILY = 1;
 				USER_HEADER_SEARCH_PATHS = "";
 			};

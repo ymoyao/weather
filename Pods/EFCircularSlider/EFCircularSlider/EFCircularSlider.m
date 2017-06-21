@@ -218,9 +218,7 @@
 
 -(BOOL) beginTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event {
     [super beginTrackingWithTouch:touch withEvent:event];
-    if ([_delegate respondsToSelector:@selector(circularSliderBeginWith:andCurrentValue:andMinimumValue:andMaximumValue:)]) {
-        [self.delegate circularSliderBeginWith:self andCurrentValue:_currentValue andMinimumValue:_minimumValue andMaximumValue:_maximumValue];
-    }
+    
     return YES;
 }
 
@@ -229,9 +227,6 @@
     
     CGPoint lastPoint = [touch locationInView:self];
     [self moveHandle:lastPoint];
-    if ([_delegate respondsToSelector:@selector(circularSliderContinueWith:andCurrentValue:andMinimumValue:andMaximumValue:)]) {
-        [self.delegate circularSliderContinueWith:self andCurrentValue:_currentValue andMinimumValue:_minimumValue andMaximumValue:_maximumValue];
-    }
     [self sendActionsForControlEvents:UIControlEventValueChanged];
     
     return YES;
@@ -239,11 +234,6 @@
 
 -(void)endTrackingWithTouch:(UITouch *)touch withEvent:(UIEvent *)event{
     [super endTrackingWithTouch:touch withEvent:event];
-    _currentValue = [self valueFromAngle];
-    if ([_delegate respondsToSelector:@selector(circularSliderEndWith:andCurrentValue:andMinimumValue:andMaximumValue:)]) {
-        [self.delegate circularSliderEndWith:self andCurrentValue:_currentValue andMinimumValue:_minimumValue andMaximumValue:_maximumValue];
-    }
-
     if(_snapToLabels && labelsEvenSpacing != nil) {
         CGFloat newAngle=0;
         float minDist = 360;

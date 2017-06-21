@@ -3,7 +3,7 @@
 //  https://github.com/lexrus/LTMorphingLabel
 //
 //  The MIT License (MIT)
-//  Copyright (c) 2015 Lex Tang, http://lexrus.com
+//  Copyright (c) 2016 Lex Tang, http://lexrus.com
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files
@@ -27,12 +27,11 @@
 
 import UIKit
 
-
 extension LTMorphingLabel {
     
     func PixelateLoad() {
         
-        effectClosures["Pixelate\(phaseDisappear)"] = {
+        effectClosures["Pixelate\(LTMorphingPhases.disappear)"] = {
             char, index, progress in
             
             return LTCharacterLimbo(
@@ -43,7 +42,7 @@ extension LTMorphingLabel {
                 drawingProgress: CGFloat(progress))
         }
         
-        effectClosures["Pixelate\(phaseAppear)"] = {
+        effectClosures["Pixelate\(LTMorphingPhases.appear)"] = {
             char, index, progress in
             
             return LTCharacterLimbo(
@@ -55,7 +54,7 @@ extension LTMorphingLabel {
             )
         }
         
-        drawingClosures["Pixelate\(phaseDraw)"] = {
+        drawingClosures["Pixelate\(LTMorphingPhases.draw)"] = {
             limbo in
             
             if limbo.drawingProgress > 0.0 {
@@ -65,7 +64,7 @@ extension LTMorphingLabel {
                     withBlurRadius: limbo.drawingProgress * 6.0
                 )
                 
-                charImage.drawInRect(limbo.rect)
+                charImage.draw(in: limbo.rect)
                 
                 return true
             }
@@ -74,11 +73,11 @@ extension LTMorphingLabel {
         }
     }
     
-    private func pixelateImageForCharLimbo(
-        charLimbo: LTCharacterLimbo,
+    fileprivate func pixelateImageForCharLimbo(
+        _ charLimbo: LTCharacterLimbo,
         withBlurRadius blurRadius: CGFloat
         ) -> UIImage {
-            let scale = min(UIScreen.mainScreen().scale, 1.0 / blurRadius)
+            let scale = min(UIScreen.main.scale, 1.0 / blurRadius)
             UIGraphicsBeginImageContextWithOptions(charLimbo.rect.size, false, scale)
             let fadeOutAlpha = min(1.0, max(0.0, charLimbo.drawingProgress * -2.0 + 2.0 + 0.01))
             let rect = CGRect(
@@ -87,15 +86,15 @@ extension LTMorphingLabel {
                 width: charLimbo.rect.size.width,
                 height: charLimbo.rect.size.height
             )
-            String(charLimbo.char).drawInRect(rect, withAttributes: [
+            String(charLimbo.char).draw(in: rect, withAttributes: [
                 NSFontAttributeName:
                     self.font,
                 NSForegroundColorAttributeName:
-                    self.textColor.colorWithAlphaComponent(fadeOutAlpha)
+                    self.textColor.withAlphaComponent(fadeOutAlpha)
                 ])
             let newImage = UIGraphicsGetImageFromCurrentImageContext()
             UIGraphicsEndImageContext()
-            return newImage
+            return newImage!
     }
     
 }

@@ -16,11 +16,11 @@ public struct Factory {
      
      - returns: textFeild
      */
-    static func customTextFeild(frame:CGRect) -> UITextField {
+    static func customTextFeild(_ frame:CGRect) -> UITextField {
         let textFeild = UITextField.init(frame:frame)
-        textFeild.returnKeyType = UIReturnKeyType.Done
-        textFeild.borderStyle = UITextBorderStyle.RoundedRect
-        textFeild.font = UIFont.systemFontOfSize(15)
+        textFeild.returnKeyType = UIReturnKeyType.done
+        textFeild.borderStyle = UITextBorderStyle.roundedRect
+        textFeild.font = UIFont.systemFont(ofSize: 15)
         return textFeild
     }
     
@@ -33,7 +33,7 @@ public struct Factory {
      
      - returns: label
      */
-    static func customLabel(frame:CGRect?) -> UILabel {
+    static func customLabel(_ frame:CGRect?) -> UILabel {
         var label:UILabel?
         if frame != nil {
           label = UILabel.init(frame: frame!)
@@ -42,8 +42,8 @@ public struct Factory {
          label = UILabel.init()
         }
         
-        label?.font = UIFont.systemFontOfSize(15)
-        label?.textColor = UIColor.blackColor()
+        label?.font = UIFont.systemFont(ofSize: 15)
+        label?.textColor = UIColor.black
         label?.numberOfLines = 0
         return label!
     }
@@ -61,7 +61,7 @@ public struct Factory {
      
      - returns: label
      */
-    static func detailLabel(frame:CGRect?,font:CGFloat?,textAlignment:NSTextAlignment?,textColor:UIColor?,numberOfLines:Int?) -> UILabel {
+    static func detailLabel(_ frame:CGRect?,font:CGFloat?,textAlignment:NSTextAlignment?,textColor:UIColor?,numberOfLines:Int?) -> UILabel {
         let label:UILabel?
         if frame != nil {
             label = UILabel.init(frame: frame!)
@@ -71,7 +71,7 @@ public struct Factory {
         }
         
         if font != nil {
-            label!.font = UIFont.systemFontOfSize(font!)
+            label!.font = UIFont.systemFont(ofSize: font!)
         }
         
         if textAlignment != nil {

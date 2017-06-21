@@ -28,7 +28,7 @@ class MainVCCell: UITableViewCell {
     override init(style: UITableViewCellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        self.contentView.backgroundColor = UIColor.whiteColor()
+        self.contentView.backgroundColor = UIColor.white
         loadSubViews()
     }
     
@@ -37,15 +37,15 @@ class MainVCCell: UITableViewCell {
 
         contentLabel = UILabel.init()
         contentLabel?.text = ""
-        contentLabel?.textAlignment = NSTextAlignment.Center
+        contentLabel?.textAlignment = NSTextAlignment.center
         contentLabel?.textColor = UIColor.init(red: 53/255.0, green: 110/255.0, blue: 154/255.0, alpha: 1.0)
-        contentLabel?.font = UIFont.boldSystemFontOfSize(30)
+        contentLabel?.font = UIFont.boldSystemFont(ofSize: 30)
         
         subLabel = UILabel.init()
         subLabel?.text = ""
         subLabel?.textColor = UIColor.init(red: 53/255.0, green: 110/255.0, blue: 154/255.0, alpha: 1.0)
-        subLabel?.textAlignment = NSTextAlignment.Right
-        subLabel?.font = UIFont.systemFontOfSize(18)
+        subLabel?.textAlignment = NSTextAlignment.right
+        subLabel?.font = UIFont.systemFont(ofSize: 18)
         
         self.contentView.addSubview(logoImageView!)
         self.contentView.addSubview(contentLabel!)
@@ -59,19 +59,19 @@ class MainVCCell: UITableViewCell {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        logoImageView?.snp_makeConstraints(closure: { (make) -> Void in
+        logoImageView?.snp_makeConstraints({ (make) -> Void in
             make.left.top.equalTo(self.contentView).offset(10)
             make.bottom.equalTo(self.contentView).offset(-10)
             make.width.equalTo(self.frame.size.height - 20)
         })
         
-        subLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        subLabel?.snp_makeConstraints({ (make) -> Void in
             make.right.bottom.equalTo(self.contentView).offset(-10)
             make.top.equalTo(self.contentView).offset(10)
             make.width.equalTo(105)
         })
         
-        contentLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        contentLabel?.snp_makeConstraints({ (make) -> Void in
             make.right.equalTo(subLabel!.snp_left)
             make.left.equalTo(logoImageView!.snp_right)
             make.top.bottom.equalTo(self.contentView)
@@ -84,7 +84,7 @@ class MainVCCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

@@ -22,7 +22,7 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
     var popView:KLCPopup?
     var searchBar:UISearchBar?
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //加载数据库数据
         loadDBData()
@@ -32,7 +32,7 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
         super.viewDidLoad()
 
         //监听键盘弹出
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeSearchTableHeight:"), name: UIKeyboardDidChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DiaryViewController.changeSearchTableHeight(_:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         
         //定制导航栏和按钮
         loadNavSubViews()
@@ -44,27 +44,27 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
     
     //MARK: - 加载子控件
     func loadSubViews() {
-        searchBar = UISearchBar.init(frame: CGRectMake(0, 64, Utils.screenWidth(), 40))
+        searchBar = UISearchBar.init(frame: CGRect(x: 0, y: 64, width: Utils.screenWidth(), height: 40))
         searchBar?.delegate = self
         searchBar?.showsCancelButton = false
         self.view.addSubview(searchBar!)
         
     
-        tableView = UITableView.init(frame: CGRectMake(0, 104, Utils.screenWidth(), Utils.screenHeight() - 104 - 49), style: UITableViewStyle.Plain)
+        tableView = UITableView.init(frame: CGRect(x: 0, y: 104, width: Utils.screenWidth(), height: Utils.screenHeight() - 104 - 49), style: UITableViewStyle.plain)
         tableView?.delegate = self
         tableView?.dataSource = self
         tableView?.showsVerticalScrollIndicator = false
-        tableView?.separatorStyle = UITableViewCellSeparatorStyle.None
-        tableView?.registerClass(DiaryTableViewCell.self, forCellReuseIdentifier: "DiaryCell")
+        tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
+        tableView?.register(DiaryTableViewCell.self, forCellReuseIdentifier: "DiaryCell")
         self.view.addSubview(tableView!)
         
-        searchTableView = UITableView.init(frame: CGRectMake(0, 104, Utils.screenWidth(), Utils.screenHeight() - 104 - 49), style: UITableViewStyle.Plain)
+        searchTableView = UITableView.init(frame: CGRect(x: 0, y: 104, width: Utils.screenWidth(), height: Utils.screenHeight() - 104 - 49), style: UITableViewStyle.plain)
         searchTableView?.delegate = self
         searchTableView?.dataSource = self
-        searchTableView?.hidden = true
+        searchTableView?.isHidden = true
         searchTableView?.showsVerticalScrollIndicator = false
-        searchTableView?.separatorStyle = UITableViewCellSeparatorStyle.None
-        searchTableView?.registerClass(DiaryTableViewCell.self, forCellReuseIdentifier: "searchCell")
+        searchTableView?.separatorStyle = UITableViewCellSeparatorStyle.none
+        searchTableView?.register(DiaryTableViewCell.self, forCellReuseIdentifier: "searchCell")
         self.view.addSubview(searchTableView!)
     }
     
@@ -76,24 +76,24 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
         //计算菜单图片的位置
         let width = Utils.calWidthWithLabel(self.titleLabel!)
         let searchImage =  UIImageView.init(image: UIImage.init(named: "nav_search"))
-        searchImage.frame = CGRectMake(titleLabel!.frame.size.width / 2 + width / 2, 0, 20, 20)
+        searchImage.frame = CGRect(x: titleLabel!.frame.size.width / 2 + width / 2, y: 0, width: 20, height: 20)
         titleLabel?.addSubview(searchImage)
         
         
-        self.leftBtn?.frame = CGRectMake(10, 32, 50, 20)
-        self.leftBtn?.setTitle("编辑", forState: UIControlState.Normal)
-        self.leftBtn?.setTitle("删除", forState: UIControlState.Selected)
-        self.leftBtn?.setImage(UIImage.init(), forState: UIControlState.Normal)
-        self.rightBtn?.hidden = false
-        self.rightBtnT?.hidden = false
+        self.leftBtn?.frame = CGRect(x: 10, y: 32, width: 50, height: 20)
+        self.leftBtn?.setTitle("编辑", for: UIControlState())
+        self.leftBtn?.setTitle("删除", for: UIControlState.selected)
+        self.leftBtn?.setImage(UIImage.init(), for: UIControlState())
+        self.rightBtn?.isHidden = false
+        self.rightBtnT?.isHidden = false
     }
     
     //监听键盘改变事件
-    func changeSearchTableHeight(not:NSNotification) {
+    func changeSearchTableHeight(_ not:Notification) {
         let valueStr = not.userInfo!["UIKeyboardFrameEndUserInfoKey"]
-        let str = String(valueStr)
-        let range = Range.init(start: str.startIndex.advancedBy(22), end: str.startIndex.advancedBy(25))
-        let valueFloat = Float(str.substringWithRange(range))
+        let str = String(describing: valueStr)
+        let range = (str.characters.index(str.startIndex, offsetBy: 22) ..< str.characters.index(str.startIndex, offsetBy: 25))
+        let valueFloat = Float(str.substring(with: range))
         if valueFloat == Float(Utils.screenHeight())  {
 //            var frame = self.tableView?.frame
 //            frame?.size.height = Utils.screenHeight() - 94 - 49
@@ -111,19 +111,19 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
     
     //MARK: - 编辑
     override func leftBtnClick() {
-        self.leftBtn!.selected = !(self.leftBtn!.selected)
-        self.tableView!.setEditing(self.leftBtn!.selected, animated: true)
+        self.leftBtn!.isSelected = !(self.leftBtn!.isSelected)
+        self.tableView!.setEditing(self.leftBtn!.isSelected, animated: true)
     }
     
     override func rightBtnTClick() {
-        self.rightBtnT!.selected = !self.rightBtnT!.selected
+        self.rightBtnT!.isSelected = !self.rightBtnT!.isSelected
         
         
             //另外开线程，避免UI因数据量大卡顿
-            dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+            DispatchQueue.global(priority: .high).async { () -> Void in
               
                 if self.isSearchIng == true {
-                    if self.rightBtnT?.selected == true {
+                    if self.rightBtnT?.isSelected == true {
                         //找出包含的数据
                         self.starSearchArray = self.searchArray.filter( { (user: NotepadModel) -> Bool in
                             return  user.star == true
@@ -131,7 +131,7 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
                     }
                 }
                 else{
-                    if self.rightBtnT?.selected == true {
+                    if self.rightBtnT?.isSelected == true {
                         //找出包含的数据
                         self.starDataArray = self.dataArray.filter( { (user: NotepadModel) -> Bool in
                             return  user.star == true
@@ -140,7 +140,7 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
                 }
                 
                 //主线程更新UI
-                dispatch_async(dispatch_get_main_queue(), { () -> Void in
+                DispatchQueue.main.async(execute: { () -> Void in
                     if self.isSearchIng == true {
                         self.searchTableView?.reloadData()
                     }
@@ -155,36 +155,36 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
     //MARK: - 添加note
     override func rightBtnClick() {
         
-        let contentView = UIView.init(frame: CGRectMake(20, 0, Utils.screenWidth() - 40, 100))
-        contentView.backgroundColor = UIColor.blackColor()
+        let contentView = UIView.init(frame: CGRect(x: 20, y: 0, width: Utils.screenWidth() - 40, height: 100))
+        contentView.backgroundColor = UIColor.black
         contentView.alpha = 0.5
         contentView.layer.cornerRadius = 9
         
-        let titleLabel = UILabel.init(frame: CGRectMake(0, 10, contentView.frame.size.width, 20))
-        titleLabel.textAlignment = NSTextAlignment.Center
-        titleLabel.font = UIFont.boldSystemFontOfSize(17)
-        titleLabel.textColor = UIColor.whiteColor()
+        let titleLabel = UILabel.init(frame: CGRect(x: 0, y: 10, width: contentView.frame.size.width, height: 20))
+        titleLabel.textAlignment = NSTextAlignment.center
+        titleLabel.font = UIFont.boldSystemFont(ofSize: 17)
+        titleLabel.textColor = UIColor.white
         titleLabel.text = "标题"
         contentView.addSubview(titleLabel)
         
-        let textField = UITextField.init(frame: CGRectMake(20, 40, contentView.frame.size.width - 20*2, 30))
-        textField.returnKeyType = UIReturnKeyType.Done
-        textField.borderStyle = UITextBorderStyle.RoundedRect
+        let textField = UITextField.init(frame: CGRect(x: 20, y: 40, width: contentView.frame.size.width - 20*2, height: 30))
+        textField.returnKeyType = UIReturnKeyType.done
+        textField.borderStyle = UITextBorderStyle.roundedRect
         textField.placeholder = "请输入标题"
         textField.delegate = self
         textField.becomeFirstResponder()
         contentView.addSubview(textField)
         
-        popView = KLCPopup.init(contentView: contentView, showType: KLCPopupShowType.BounceIn, dismissType: KLCPopupDismissType.BounceOut, maskType: KLCPopupMaskType.Clear, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
-        popView?.showAtCenter(CGPointMake(Utils.screenWidth() / 2, 120), inView: self.view)
+        popView = KLCPopup.init(contentView: contentView, showType: KLCPopupShowType.bounceIn, dismissType: KLCPopupDismissType.bounceOut, maskType: KLCPopupMaskType.clear, dismissOnBackgroundTouch: true, dismissOnContentTouch: false)
+        popView?.show(atCenter: CGPoint(x: Utils.screenWidth() / 2, y: 120), in: self.view)
 
     }
     
     //MARK: - 加载数据库数据
     func loadDBData() {
-        dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+        DispatchQueue.global(priority: .high).async { () -> Void in
             self.dataArray = DatabaseManager.SharedInstance.selectTable("notepad_list", goalId: nil)
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.tableView?.reloadData()
             })
         }
@@ -193,7 +193,7 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
 
     
     //MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         //取消第一响应
         textField.resignFirstResponder()
         //取消弹出框
@@ -202,7 +202,7 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
         //数据库
         let model = NotepadModel()
         model.title = textField.text!
-        model.date =  Utils.dateStr(NSDate.init(), dateFormat: "YYYY-MM-dd")
+        model.date =  Utils.dateStr(Date.init(), dateFormat: "YYYY-MM-dd")
         DatabaseManager.SharedInstance.insertTable("notepad_list", data: [model])
 
 
@@ -218,13 +218,13 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
     }
     
     //MARK: - DiaryTableViewCellDelegate
-    func diaryCellStarDidSelected(cell: DiaryTableViewCell, row: Int, btn: UIButton) {
+    func diaryCellStarDidSelected(_ cell: DiaryTableViewCell, row: Int, btn: UIButton) {
         let model = dataArray[row]
         DatabaseManager.SharedInstance.upadateTable("notepad_list", goalId: model.id, value: nil, star: model.star)
     }
     
     //MARK: - UISearchBarDelegate
-    func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         print(searchText)
     
         //清除原先搜索数据
@@ -232,34 +232,34 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
         
         
         //另外开线程，避免UI因数据量大卡顿
-        dispatch_async(dispatch_get_global_queue(0, 0)) { () -> Void in
+        DispatchQueue.global(priority: .high).async { () -> Void in
             
             //找出包含的数据
             self.searchArray = self.dataArray.filter( { (user: NotepadModel) -> Bool in
-                if self.rightBtnT?.selected == true {
-                    return (user.title.containsString(searchText) && user.star == true)
+                if self.rightBtnT?.isSelected == true {
+                    return (user.title.contains(searchText) && user.star == true)
                 }
-                return user.title.containsString(searchText)
+                return user.title.contains(searchText)
             })
             
             //主线程更新UI
-            dispatch_async(dispatch_get_main_queue(), { () -> Void in
+            DispatchQueue.main.async(execute: { () -> Void in
                 self.searchTableView?.reloadData()
             })
         }
     }
     
-    func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
         print("start search")
         isSearchIng = true
         searchBar.showsCancelButton = true
-        self.searchTableView?.hidden = false
+        self.searchTableView?.isHidden = false
         self.searchTableView?.reloadData()
         return true
     }
     
     //收回键盘（把通知的操作在这边做，会快一点）
-    func searchBarShouldEndEditing(searchBar: UISearchBar) -> Bool {
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
         print("end search")
         isSearchIng = false
         var frame = self.tableView?.frame
@@ -269,37 +269,37 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
     }
     
     //点击cancal
-    func searchBarCancelButtonClicked(searchBar: UISearchBar) {
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
         searchBar.showsCancelButton = false
-        self.searchTableView?.hidden = true
+        self.searchTableView?.isHidden = true
         searchBar.text = ""
         searchBar.resignFirstResponder()
     }
     
     //MARK: - UITableViewDelegate
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == searchTableView{
-            if self.rightBtnT?.selected == true {
+            if self.rightBtnT?.isSelected == true {
                 return  starSearchArray.count
             }
             return searchArray.count
         }
         
-        if self.rightBtnT?.selected == true {
+        if self.rightBtnT?.isSelected == true {
             return  starDataArray.count
         }
         return dataArray.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if tableView == searchTableView{
-            let cell = tableView.dequeueReusableCellWithIdentifier("searchCell") as! DiaryTableViewCell
-            if self.rightBtnT?.selected == true {
+            let cell = tableView.dequeueReusableCell(withIdentifier: "searchCell") as! DiaryTableViewCell
+            if self.rightBtnT?.isSelected == true {
                 cell.cellModel = starSearchArray[indexPath.row]
             }
             else{
@@ -311,8 +311,8 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
             return cell
         }
         
-        let cell = tableView.dequeueReusableCellWithIdentifier("DiaryCell") as! DiaryTableViewCell
-        if self.rightBtnT?.selected == true {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "DiaryCell") as! DiaryTableViewCell
+        if self.rightBtnT?.isSelected == true {
             cell.cellModel = starDataArray[indexPath.row]
         }
         else{
@@ -324,10 +324,10 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
     }
 
     
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let vc = DiaryDetailViewController()
         if tableView == searchTableView{
-            if self.rightBtnT?.selected == true {
+            if self.rightBtnT?.isSelected == true {
                 vc.notepad_list_id = starSearchArray[indexPath.row].id
             }
             else{
@@ -336,7 +336,7 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
         }
         else
         {
-            if self.rightBtnT?.selected == true {
+            if self.rightBtnT?.isSelected == true {
                 vc.notepad_list_id = starDataArray[indexPath.row].id
             }
             else{
@@ -348,25 +348,25 @@ class DiaryViewController: RootViewController,UITableViewDelegate,UITableViewDat
         self.navigationController?.pushViewController(vc, animated: true)
     }
     
-    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return true
     }
     
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         guard tableView == self.tableView else{
             return
         }
-        if editingStyle == UITableViewCellEditingStyle.Delete {
+        if editingStyle == UITableViewCellEditingStyle.delete {
             let model = dataArray[indexPath.row]
             DatabaseManager.SharedInstance.deleteTable("notepad_list", goalId: [model.id])
             DatabaseManager.SharedInstance.deleteTable("notepad_content", goalId: [model.id])
-            dataArray.removeAtIndex(indexPath.row)
-            tableView.deleteRowsAtIndexPaths([NSIndexPath.init(forRow: indexPath.row, inSection: 0)], withRowAnimation: UITableViewRowAnimation.Top)
+            dataArray.remove(at: indexPath.row)
+            tableView.deleteRows(at: [IndexPath.init(row: indexPath.row, section: 0)], with: UITableViewRowAnimation.top)
         }
         
     }
     
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50.0
     }
 

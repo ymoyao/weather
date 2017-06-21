@@ -14,21 +14,26 @@ import SwiftyJSON
 
 
 class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognizerViewDelegate {
+    public func onResult(_ resultArray: [Any]!, isLast: Bool) {
+        
+    }
+
+
 
     
     //语音识别
     lazy var recognizerView:IFlyRecognizerView? = {
         let recognizerViewTemp = IFlyRecognizerView.init(center: self.view.center)
-        recognizerViewTemp.delegate = self
+        recognizerViewTemp?.delegate = self
         
         //应用领域
-        recognizerViewTemp.setParameter("iat", forKey: IFlySpeechConstant.IFLY_DOMAIN())
+        recognizerViewTemp?.setParameter("iat", forKey: IFlySpeechConstant.ifly_DOMAIN())
         
         //保存地址
-        recognizerViewTemp.setParameter("asrview.pcm", forKey: IFlySpeechConstant.ASR_AUDIO_PATH())
+        recognizerViewTemp?.setParameter("asrview.pcm", forKey: IFlySpeechConstant.asr_AUDIO_PATH())
         
         //无标点符号
-        recognizerViewTemp?.setParameter("0", forKey: IFlySpeechConstant.ASR_PTT())
+        recognizerViewTemp?.setParameter("0", forKey: IFlySpeechConstant.asr_PTT())
         
      
 //        recognizerViewTemp.setParameter("json", forKey: IFlySpeechConstant.RESULT_TYPE())
@@ -39,13 +44,13 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
     lazy var textfeild:UITextField? = {
     let textfeildTemp = UITextField.init()
         textfeildTemp.delegate = self
-        textfeildTemp.borderStyle = UITextBorderStyle.RoundedRect
-        textfeildTemp.returnKeyType = UIReturnKeyType.Done
+        textfeildTemp.borderStyle = UITextBorderStyle.roundedRect
+        textfeildTemp.returnKeyType = UIReturnKeyType.done
         return textfeildTemp
         
     }()
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //开始识别
         recognizerView?.start()
@@ -76,32 +81,32 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
     }
     
     //MAKR: - API 请求数据
-    func requestReporter(info:String, userid:String) {
+    func requestReporter(_ info:String, userid:String) {
         NetWorkManager.requestReporter(info, userid: userid, success: { (response) -> Void in
             
             let showStr = response?["showtext"] as? String
             
             guard showStr != nil else {
-                SVProgressHUD.showErrorWithStatus("你在说啥?")
+                SVProgressHUD.showError(withStatus: "你在说啥?")
                 return
             }
             //文本转语音
             self.textToVoice(showStr!)
             
             }) { (errorString) -> Void in
-            SVProgressHUD.showErrorWithStatus(errorString)
+            SVProgressHUD.showError(withStatus: errorString)
         }
     }
     
     //MAKR: - 文字转语音
-    func textToVoice(text:String) {
+    func textToVoice(_ text:String) {
         let synthesizer = AVSpeechSynthesizer.init()
         let utterance = AVSpeechUtterance.init(string: text)
-        synthesizer.speakUtterance(utterance)
+        synthesizer.speak(utterance)
     }
     
     //MAKR: - UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         
         requestReporter(textfeild!.text!, userid: "111")
         textfeild?.resignFirstResponder()
@@ -109,7 +114,7 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
     }
     
     //MARK: - IFlyRecognizerViewDelegate
-    func onResult(resultArray: [AnyObject]!, isLast: Bool) {
+   public func onResults(_ resultArray: [Any]!, isLast: Bool) {
         guard resultArray != nil && resultArray.count > 0 else {
             return
         }
@@ -117,13 +122,13 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
         let dict = resultArray[0] as! NSDictionary
         for keyStr in dict.keyEnumerator() {
 
-            let data = keyStr.dataUsingEncoding(NSUTF8StringEncoding)
+            let data = (keyStr as! String).data(using: String.Encoding.utf8)
             let jsons = JSON.init(data: data!)
             let dataArr = jsons["ws"]
             var resultStr = ""
             for (_,subJson):(String,JSON) in dataArr {
                 let str = subJson["cw"][0]["w"].stringValue
-                resultStr.appendContentsOf(str)
+                resultStr.append(str)
                 print("w == \(str)")
             }
             requestReporter(resultStr, userid: "111")
@@ -132,16 +137,16 @@ class ReporterViewController: UIViewController,UITextFieldDelegate,IFlyRecognize
         }
     }
     
-    func onError(error: IFlySpeechError!) {
+    func onError(_ error: IFlySpeechError!) {
         SVProgressHUD.dismiss()
     }
     
     //MARK: - 布局
     func frameSubViews() {
-        textfeild?.snp_makeConstraints(closure: { (make) -> Void in
+        textfeild?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(self.view).offset(100)
             make.centerX.equalTo(self.view)
-            make.size.equalTo(CGSizeMake(200, 30))
+            make.size.equalTo(CGSize.init(width: 200, height: 30))
         })
     }
     

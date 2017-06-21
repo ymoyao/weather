@@ -27,48 +27,48 @@ class CommonNavImageView: UIImageView {
     
     func loadNavView() {
         
-        navView = UIImageView.init(frame: CGRectMake(0, 0, Utils.screenWidth(), 64))
-        navView?.userInteractionEnabled = true
+        navView = UIImageView.init(frame: CGRect(x: 0, y: 0, width: Utils.screenWidth(), height: 64))
+        navView?.isUserInteractionEnabled = true
         navView?.backgroundColor = UIColor.init(colorLiteralRed: 60/255.0, green: 58/255.0, blue: 77/255.0, alpha: 1.0)
         self.addSubview(navView!)
     }
     
     func loadNavTitleLabel() {
-        titleLabel = UILabel.init(frame: CGRectMake(0, 0, Utils.screenWidth() - 60, 30))
-        titleLabel?.frame = CGRectMake(30, 32, Utils.screenWidth() - 60, 20)
-        titleLabel?.textAlignment = NSTextAlignment.Center
-        titleLabel?.textColor = UIColor.whiteColor()
-        titleLabel?.font = UIFont.systemFontOfSize(17)
+        titleLabel = UILabel.init(frame: CGRect(x: 0, y: 0, width: Utils.screenWidth() - 60, height: 30))
+        titleLabel?.frame = CGRect(x: 30, y: 32, width: Utils.screenWidth() - 60, height: 20)
+        titleLabel?.textAlignment = NSTextAlignment.center
+        titleLabel?.textColor = UIColor.white
+        titleLabel?.font = UIFont.systemFont(ofSize: 17)
         navView?.addSubview(titleLabel!)
     }
     
     func loadNavleft() {
         
-        leftBtn = UIButton.init(type: UIButtonType.Custom)
-        leftBtn?.frame = CGRectMake(10, 32, 20, 20);
-        leftBtn?.setImage(UIImage.init(named: "nav_back"), forState: UIControlState.Normal)
-        leftBtn?.addTarget(self, action: Selector("leftBtnClick"), forControlEvents: UIControlEvents.TouchUpInside)
+        leftBtn = UIButton.init(type: UIButtonType.custom)
+        leftBtn?.frame = CGRect(x: 10, y: 32, width: 20, height: 20);
+        leftBtn?.setImage(UIImage.init(named: "nav_back"), for: UIControlState())
+        leftBtn?.addTarget(self, action: Selector("leftBtnClick"), for: UIControlEvents.touchUpInside)
         navView?.addSubview(leftBtn!)
     }
     
-    func loadNavleft(closure: (btn:UIButton) -> Void) {
+    func loadNavleft(_ closure: (_ btn:UIButton) -> Void) {
         
-        leftBtn = UIButton.init(type: UIButtonType.Custom)
-        leftBtn?.frame = CGRectMake(10, 32, 20, 20);
-        leftBtn?.setImage(UIImage.init(named: "nav_back"), forState: UIControlState.Normal)
-        leftBtn?.addTarget(self, action: Selector("leftBtnClick"), forControlEvents: UIControlEvents.TouchUpInside)
-        closure(btn: leftBtn!)
+        leftBtn = UIButton.init(type: UIButtonType.custom)
+        leftBtn?.frame = CGRect(x: 10, y: 32, width: 20, height: 20);
+        leftBtn?.setImage(UIImage.init(named: "nav_back"), for: UIControlState())
+        leftBtn?.addTarget(self, action: Selector("leftBtnClick"), for: UIControlEvents.touchUpInside)
+        closure(leftBtn!)
         navView?.addSubview(leftBtn!)
     }
     
-    func loadNavRight(closure: (btn:UIButton) -> Void) {
+    func loadNavRight(_ closure: (_ btn:UIButton) -> Void) {
         
-        rightBtn = UIButton.init(type: UIButtonType.Custom)
-        rightBtn?.frame = CGRectMake(Utils.screenWidth() - 30, 32, 20, 20)
-        rightBtn?.setImage(UIImage.init(named: "nav_add"), forState: UIControlState.Normal)
-        rightBtn?.addTarget(self, action: Selector("rightBtnClick"), forControlEvents: UIControlEvents.TouchUpInside)
-        rightBtn?.hidden = true
-        closure(btn: rightBtn!)
+        rightBtn = UIButton.init(type: UIButtonType.custom)
+        rightBtn?.frame = CGRect(x: Utils.screenWidth() - 30, y: 32, width: 20, height: 20)
+        rightBtn?.setImage(UIImage.init(named: "nav_add"), for: UIControlState())
+        rightBtn?.addTarget(self, action: Selector("rightBtnClick"), for: UIControlEvents.touchUpInside)
+        rightBtn?.isHidden = true
+        closure(rightBtn!)
         navView?.addSubview(rightBtn!)
     }
     

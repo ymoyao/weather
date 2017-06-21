@@ -25,31 +25,31 @@ class PhoneAffiliationViewController: RootViewController,UITextFieldDelegate {
     
 
     func loadNavSubViews() {
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
         
         self.titleLabel?.text = self.navigationItem.title
     }
     
     func loadSubViews() {
-        textFeild = Factory.customTextFeild(CGRectMake(Utils.screenWidth() / 2 - 200 / 2 , 100, 200, 30))
+        textFeild = Factory.customTextFeild(CGRect(x: Utils.screenWidth() / 2 - 200 / 2 , y: 100, width: 200, height: 30))
         textFeild?.delegate = self
         textFeild?.placeholder = "请输入手机号码"
         self.view.addSubview(textFeild!)
         
-        showLabel = Factory.customLabel(CGRectMake(Utils.screenWidth() / 2 - 200 / 2, 150, 200, 100))
-        showLabel?.textAlignment = NSTextAlignment.Left
+        showLabel = Factory.customLabel(CGRect(x: Utils.screenWidth() / 2 - 200 / 2, y: 150, width: 200, height: 100))
+        showLabel?.textAlignment = NSTextAlignment.left
         self.view.addSubview(showLabel!)
     }
     
     func frameSubViews() {
-        textFeild?.snp_makeConstraints(closure: { (make) -> Void in
+        textFeild?.snp_makeConstraints({ (make) -> Void in
             make.left.equalTo(self.view).offset(50)
             make.right.equalTo(self.view).offset(-50)
             make.top.equalTo(self.view).offset(100)
             make.height.equalTo(30)
         })
         
-        showLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        showLabel?.snp_makeConstraints({ (make) -> Void in
             make.left.right.equalTo(textFeild!)
             make.top.equalTo(textFeild!.snp_bottomMargin).offset(10)
             make.height.equalTo(200)
@@ -70,18 +70,18 @@ class PhoneAffiliationViewController: RootViewController,UITextFieldDelegate {
     */
     //API 请求归属地
     func requestData() {
-        SVProgressHUD.showWithStatus("正在加载...")
-        MobAPI.sendRequest(MOBAPhoneRequest.addressRequestByPhone(textFeild!.text)) { (response) -> Void in
-            if (response.error != nil) {
-                SVProgressHUD.showErrorWithStatus("请输入正确电话号码")
-                print("\(response.error)")
+        SVProgressHUD.show(withStatus: "正在加载...")
+        MobAPI.send(MOBAPhoneRequest.addressRequest(byPhone: textFeild!.text)) { (response) -> Void in
+            if (response?.error != nil) {
+                SVProgressHUD.showError(withStatus: "请输入正确电话号码")
+                print("\(response?.error)")
             }
             else{
                 
                 //用MOBFJson 将response.responder 转为data
-                let data =  MOBFJson.jsonDataFromObject(response.responder)
+                let data =  MOBFJson.jsonData(from: response?.responder)
                 //swiftJson 用data转json对象
-                let json = JSON(data: data)
+                let json = JSON(data: data!)
                 
                 
         
@@ -109,7 +109,7 @@ class PhoneAffiliationViewController: RootViewController,UITextFieldDelegate {
                 
                 print("\(json)")
                 
-                print("\(response.responder)")
+                print("\(response?.responder)")
             }
         }
     }
@@ -117,7 +117,7 @@ class PhoneAffiliationViewController: RootViewController,UITextFieldDelegate {
     
     
     //MARK: - UITextFieldDelegate
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         textFeild?.resignFirstResponder()
         requestData()
         return true

@@ -8,6 +8,30 @@
 
 import UIKit
 import SnapKit
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+// FIXME: comparison operators with optionals were removed from the Swift Standard Libary.
+// Consider refactoring the code to use the non-optional operators.
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 typealias MainVCHeadViewClosure = () -> Void
 
@@ -47,9 +71,9 @@ class MainVCHeadView: UIView {
             locationCity?.text = headModel?.city
             locationProvince?.text = headModel?.cnty
         
-            if headModel?.loc.lengthOfBytesUsingEncoding(NSUTF8StringEncoding) > 10 {
-                let index = headModel?.loc.startIndex.advancedBy(10)
-                weekLabel?.text = headModel?.loc.substringToIndex(index!)
+            if headModel?.loc.lengthOfBytes(using: String.Encoding.utf8) > 10 {
+                let index = headModel?.loc.characters.index((headModel?.loc.startIndex)!, offsetBy: 10)
+                weekLabel?.text = headModel?.loc.substring(to: index!)
             }
         }
     }
@@ -82,48 +106,48 @@ class MainVCHeadView: UIView {
     func loadSubView() {
     
         tempLable = UILabel.init()
-        tempLable?.textColor = UIColor.whiteColor()
-        tempLable?.font = UIFont.systemFontOfSize(20.0)
+        tempLable?.textColor = UIColor.white
+        tempLable?.font = UIFont.systemFont(ofSize: 20.0)
         self.addSubview(tempLable!)
         
         tempIntervalLabel = UILabel.init()
-        tempIntervalLabel?.textColor = UIColor.whiteColor()
-        tempIntervalLabel?.font = UIFont.systemFontOfSize(14)
+        tempIntervalLabel?.textColor = UIColor.white
+        tempIntervalLabel?.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(tempIntervalLabel!)
         
         airLabel = UILabel.init()
         airLabel?.numberOfLines = 2
-        airLabel?.textColor = UIColor.whiteColor()
-        airLabel?.font = UIFont.systemFontOfSize(14)
+        airLabel?.textColor = UIColor.white
+        airLabel?.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(airLabel!)
         
         weekLabel = UILabel.init()
-        weekLabel?.textColor = UIColor.whiteColor()
-        weekLabel?.font = UIFont.systemFontOfSize(14)
+        weekLabel?.textColor = UIColor.white
+        weekLabel?.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(weekLabel!)
         
         locationProvince = UILabel.init()
-        locationProvince?.textAlignment = NSTextAlignment.Right
-        locationProvince?.textColor = UIColor.whiteColor()
-        locationProvince?.font = UIFont.systemFontOfSize(17)
+        locationProvince?.textAlignment = NSTextAlignment.right
+        locationProvince?.textColor = UIColor.white
+        locationProvince?.font = UIFont.systemFont(ofSize: 17)
         self.addSubview(locationProvince!)
         
         locationCity = UILabel.init()
-        locationCity?.textAlignment = NSTextAlignment.Right
-        locationCity?.textColor = UIColor.whiteColor()
-        locationCity?.font = UIFont.systemFontOfSize(14)
+        locationCity?.textAlignment = NSTextAlignment.right
+        locationCity?.textColor = UIColor.white
+        locationCity?.font = UIFont.systemFont(ofSize: 14)
         self.addSubview(locationCity!)
         
-        addCity = UIButton.init(type: UIButtonType.Custom)
-        addCity?.setImage(UIImage.init(named: "refresh"), forState: UIControlState.Normal)
-        addCity?.addTarget(self, action: Selector("btnClick"), forControlEvents: UIControlEvents.TouchUpInside)
+        addCity = UIButton.init(type: UIButtonType.custom)
+        addCity?.setImage(UIImage.init(named: "refresh"), for: UIControlState())
+        addCity?.addTarget(self, action: #selector(MainVCHeadView.btnClick), for: UIControlEvents.touchUpInside)
         self.addSubview(addCity!)
         
         weatherDescribeLabel = UILabel.init()
-        weatherDescribeLabel?.textAlignment = NSTextAlignment.Center
+        weatherDescribeLabel?.textAlignment = NSTextAlignment.center
         weatherDescribeLabel?.numberOfLines = 2
-        weatherDescribeLabel?.textColor = UIColor.whiteColor()
-        weatherDescribeLabel?.font = UIFont.systemFontOfSize(15)
+        weatherDescribeLabel?.textColor = UIColor.white
+        weatherDescribeLabel?.font = UIFont.systemFont(ofSize: 15)
         self.addSubview(weatherDescribeLabel!)
 
         
@@ -140,10 +164,10 @@ class MainVCHeadView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         
-        mainImageView?.snp_makeConstraints(closure: { (make) -> Void in
+        mainImageView?.snp_makeConstraints({ (make) -> Void in
             make.centerX.equalTo(self)
             make.top.equalTo(self.snp_top)
-            make.size.equalTo(CGSizeMake(80, 80))
+            make.size.equalTo(CGSize.init(width: 80, height: 80))
         })
         
         tempLable?.snp_makeConstraints { (make) -> Void in
@@ -153,48 +177,48 @@ class MainVCHeadView: UIView {
             make.height.equalTo(20)
         }
         
-        tempIntervalLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        tempIntervalLabel?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(tempLable!.snp_bottom)
             make.left.equalTo(self).offset(10)
              make.right.equalTo(mainImageView!.snp_left)
             make.height.equalTo(20)
         })
         
-        airLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        airLabel?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(tempIntervalLabel!.snp_bottom)
             make.left.equalTo(self).offset(10)
              make.right.equalTo(mainImageView!.snp_left)
             make.height.equalTo(40)
         })
         
-        weekLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        weekLabel?.snp_makeConstraints({ (make) -> Void in
             make.left.equalTo(self).offset(10)
             make.bottom.equalTo(self).offset(-5)
              make.right.equalTo(mainImageView!.snp_left)
             make.height.equalTo(20)
         })
         
-        locationProvince?.snp_makeConstraints(closure: { (make) -> Void in
+        locationProvince?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(self).offset(10)
             make.right.equalTo(self).offset(-10)
             make.left.equalTo(mainImageView!.snp_right)
             make.height.equalTo(20)
         })
         
-        locationCity?.snp_makeConstraints(closure: { (make) -> Void in
+        locationCity?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(locationProvince!.snp_bottom)
             make.right.equalTo(self).offset(-10)
             make.left.equalTo(mainImageView!.snp_right)
             make.height.equalTo(20)
         })
         
-        addCity?.snp_makeConstraints(closure: { (make) -> Void in
+        addCity?.snp_makeConstraints({ (make) -> Void in
             make.right.equalTo(self).offset(-10)
             make.bottom.equalTo(self).offset(-10)
-            make.size.equalTo(CGSizeMake(30, 30))
+            make.size.equalTo(CGSize.init(width: 30, height: 30))
         })
         
-        weatherDescribeLabel?.snp_makeConstraints(closure: { (make) -> Void in
+        weatherDescribeLabel?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(mainImageView!.snp_bottom)
             make.bottom.equalTo(self)
             make.width.equalTo(150)

@@ -12,9 +12,9 @@ import UIKit
 public struct URL {
     
     //主地址
-    private static var baseUrl = "http://apicloud.mob.com/"
-    private static var baseBaiduUrl = "http://apis.baidu.com/"
-    private static var baseGoogleUrl = "http://www.google.com/"
+    fileprivate static var baseUrl = "http://apicloud.mob.com/"
+    fileprivate static var baseBaiduUrl = "http://apis.baidu.com/"
+    fileprivate static var baseGoogleUrl = "http://www.google.com/"
     
     //MARK: - 天气查询
     /**

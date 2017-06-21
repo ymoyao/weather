@@ -1,0 +1,6 @@
+framework module YHHeadScrollView {
+  umbrella header "YHHeadScrollView-umbrella.h"
+
+  export *
+  module * { export * }
+}

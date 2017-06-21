@@ -33,7 +33,7 @@ class MainVCModel: NSObject {
     var loc = ""        //本地时间
 
     
-    override func valueForUndefinedKey(key: String) -> AnyObject? {
+    override func value(forUndefinedKey key: String) -> Any? {
         print(key)
         return nil
     }

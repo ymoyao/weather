@@ -41,26 +41,26 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
         //计算菜单图片的位置
         let width = Utils.calWidthWithLabel(self.titleLabel!)
         let searchImage =  UIImageView.init(image: UIImage.init(named: "nav_search"))
-        searchImage.frame = CGRectMake(titleLabel!.frame.size.width / 2 + width / 2, 0, 20, 20)
+        searchImage.frame = CGRect(x: titleLabel!.frame.size.width / 2 + width / 2, y: 0, width: 20, height: 20)
         titleLabel?.addSubview(searchImage)
         
-        var city = NSUserDefaults.standardUserDefaults().objectForKey("city") as? String
+        var city = UserDefaults.standard.object(forKey: "city") as? String
         if city == nil {
             city = "定位"
         }
-        self.leftBtn?.frame = CGRectMake(10, 32, 50, 20)
-        self.leftBtn?.setImage(UIImage.init(), forState: UIControlState.Normal)
-        self.leftBtn?.setTitle(city, forState: UIControlState.Normal)
+        self.leftBtn?.frame = CGRect(x: 10, y: 32, width: 50, height: 20)
+        self.leftBtn?.setImage(UIImage.init(), for: UIControlState())
+        self.leftBtn?.setTitle(city, for: UIControlState())
     }
     
     //初始化控件
     func loadSubViews() {
-        tableView = UITableView(frame: CGRectMake(0, 64, UIScreen.mainScreen().bounds.width, UIScreen.mainScreen().bounds.height - 64 - 49), style: .Plain)
+        tableView = UITableView(frame: CGRect(x: 0, y: 64, width: UIScreen.main.bounds.width, height: UIScreen.main.bounds.height - 64 - 49), style: .plain)
         tableView?.dataSource = self
         tableView?.delegate = self
         tableView?.showsVerticalScrollIndicator = false
-        tableView?.registerClass(MainVCCell.self, forCellReuseIdentifier: "cell")
-        tableHeadView = MainVCHeadView.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 110))
+        tableView?.register(MainVCCell.self, forCellReuseIdentifier: "cell")
+        tableHeadView = MainVCHeadView.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 110))
         tableHeadView?.closure = { () in
             
             //清除数据
@@ -88,7 +88,7 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
         let vc = LocationViewController()
         vc.navigationItem.title = "城市选择"
         vc.locationClosure = { (city) in
-            self.leftBtn?.setTitle(city, forState:UIControlState.Normal)
+            self.leftBtn?.setTitle(city, for:UIControlState())
             
             //清除数据
             self.cellDataArr.removeAll()
@@ -97,14 +97,14 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
             //API获取 天气数据
             self.getWeatherData()
         }
-        vc.modalTransitionStyle = .CoverVertical
-        self.presentViewController(vc, animated: true, completion: nil)
+        vc.modalTransitionStyle = .coverVertical
+        self.present(vc, animated: true, completion: nil)
     }
     
     //MARK: - API获取 天气数据
     func getWeatherData(){
         
-        let city = NSUserDefaults.standardUserDefaults().objectForKey("city") as? String
+        let city = UserDefaults.standard.object(forKey: "city") as? String
         
         guard city != nil else {
             let show = UIAlertView.init(title: "提示", message: "需要您的位置信息", delegate: self, cancelButtonTitle: "取消", otherButtonTitles: "定位")
@@ -112,7 +112,7 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
             return
         }
         
-        SVProgressHUD.showWithStatus("加载中...")
+        SVProgressHUD.show(withStatus: "加载中...")
         NetWorkManager.requestHeweather(city!, success: { (response) -> Void in
             
             let json = JSON.init(response!)
@@ -120,11 +120,12 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
             var i = 0
             for (_,dict):(String,JSON) in mainArray{
             
-                guard ++i < 2 else {
+                i = i + 1
+                guard i < 2 else {
                     break
                 }
                 guard dict["status"] == "ok" else {
-                    SVProgressHUD.showErrorWithStatus("暂无内容")
+                    SVProgressHUD.showError(withStatus: "暂无内容")
                     break
                 }
                 SVProgressHUD.dismiss()
@@ -175,46 +176,46 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
         
              print("json = \(json)")
             }) { (errorStr) -> Void in
-                SVProgressHUD.showErrorWithStatus(errorStr!)
+                SVProgressHUD.showError(withStatus: errorStr!)
         }
     }
 
     //MARK: - UITableViewDelegate
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return cellDataArr.count
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as? MainVCCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as? MainVCCell
         cell!.cellModel = cellDataArr[indexPath.section]
         return cell!
     }
 
-    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 64
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 10
     }
     
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let sectionHeadView = UIView.init()
         sectionHeadView.backgroundColor = UIColor.init(red: 233/255.0, green: 233/255.0, blue: 233/255.0, alpha: 1.0)
         return sectionHeadView
     }
     
     //MARK: - UIAlertViewDelegate
-    func alertView(alertView: UIAlertView, clickedButtonAtIndex buttonIndex: Int) {
+    func alertView(_ alertView: UIAlertView, clickedButtonAt buttonIndex: Int) {
         if buttonIndex == 1 {
             let vc = LocationViewController.init()
             vc.navigationItem.title = "城市选择"
             vc.locationClosure = { (city) in
-                self.leftBtn?.setTitle(city, forState:UIControlState.Normal)
+                self.leftBtn?.setTitle(city, for:UIControlState())
                 
                 self.cellDataArr.removeAll()
                 self.headDataArr.removeAll()
@@ -223,8 +224,8 @@ class MainViewController: RootViewController,UITableViewDataSource,UITableViewDe
                 
                
             }
-            vc.modalTransitionStyle = .CoverVertical
-            presentViewController(vc, animated: true, completion: nil)
+            vc.modalTransitionStyle = .coverVertical
+            present(vc, animated: true, completion: nil)
         }
     }
     

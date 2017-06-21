@@ -8,7 +8,7 @@
 
 import UIKit
 import Foundation
-typealias TabClosure = (tag:Int) -> Void
+typealias TabClosure = (_ tag:Int) -> Void
 
 class MyTabBar: UIImageView {
     
@@ -25,27 +25,27 @@ class MyTabBar: UIImageView {
         
 //        self.backgroundColor = UIColor.init(colorLiteralRed: 60/255.0, green: 58/255.0, blue: 77/255.0, alpha: 1.0)
         
-        self.backgroundColor = UIColor.whiteColor()
-        self.userInteractionEnabled = true
+        self.backgroundColor = UIColor.white
+        self.isUserInteractionEnabled = true
         let imageArr = ["weather_normal","health_normal","diary_normal"]
         let imageSelArr = ["weather_select","health_select","diary_select"]
-        let btnW:CGFloat = UIScreen.mainScreen().bounds.width / CGFloat(imageArr.count)
+        let btnW:CGFloat = UIScreen.main.bounds.width / CGFloat(imageArr.count)
         let btnH:CGFloat = 49.0
         var btnX:CGFloat = 0.0
-        for var i = 0; i < imageArr.count; i++ {
+        for i in 0 ..< imageArr.count {
       
             btnX = CGFloat(i) * btnW
-            let btn = UIButton.init(type: UIButtonType.Custom)
+            let btn = UIButton.init(type: UIButtonType.custom)
             btn.tag = 100 + i
-            btn.frame = CGRectMake(btnX, 0, btnW, btnH)
-            btn.addTarget(self, action: Selector("btnClick:"), forControlEvents: UIControlEvents.TouchUpInside)
-            btn.setImage(UIImage.init(named: imageArr[i]), forState: UIControlState.Normal)
-            btn.setImage(UIImage.init(named: imageSelArr[i]), forState: UIControlState.Selected)
+            btn.frame = CGRect(x: btnX, y: 0, width: btnW, height: btnH)
+            btn.addTarget(self, action: #selector(MyTabBar.btnClick(_:)), for: UIControlEvents.touchUpInside)
+            btn.setImage(UIImage.init(named: imageArr[i]), for: UIControlState())
+            btn.setImage(UIImage.init(named: imageSelArr[i]), for: UIControlState.selected)
            
             
             if i == 0 {
                 lastBtn = btn
-                lastBtn?.selected = true
+                lastBtn?.isSelected = true
             }
             
             self.addSubview(btn)
@@ -57,11 +57,11 @@ class MyTabBar: UIImageView {
     }
     
     
-    func btnClick(btn:UIButton) {
-        lastBtn?.selected = false
-        btn.selected = !btn.selected
+    func btnClick(_ btn:UIButton) {
+        lastBtn?.isSelected = false
+        btn.isSelected = !btn.isSelected
         lastBtn = btn
-        tabClosure!(tag: btn.tag - 100)
+        tabClosure!(btn.tag - 100)
     }
     
 

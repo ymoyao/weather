@@ -17,6 +17,7 @@
 #import <mobAPI/MobAPI.h>
 #import <MOBFoundation/MOBFJson.h>
 
+#import "PrefixHeader.pch"
 
 //帮助文件
 #import "Utils.h"

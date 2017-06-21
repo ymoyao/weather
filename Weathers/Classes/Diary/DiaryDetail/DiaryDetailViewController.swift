@@ -14,7 +14,7 @@ class DiaryDetailViewController: RootViewController,UITextViewDelegate {
     var textView:UITextView?
     var notepad_list_id:Int64?
     var model:NotepadModel?
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         //加载本地数据
         loadDBData()
@@ -24,7 +24,7 @@ class DiaryDetailViewController: RootViewController,UITextViewDelegate {
         super.viewDidLoad()
         
         //监听键盘弹出
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("changeTextHeight:"), name: UIKeyboardDidChangeFrameNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(DiaryDetailViewController.changeTextHeight(_:)), name: NSNotification.Name.UIKeyboardDidChangeFrame, object: nil)
         
         //定制导航栏和按钮
         loadNavSubView()
@@ -41,12 +41,12 @@ class DiaryDetailViewController: RootViewController,UITextViewDelegate {
     func loadSubViews() {
         textView = UITextView.init()
         textView?.delegate = self
-        textView?.returnKeyType = UIReturnKeyType.Done
+        textView?.returnKeyType = UIReturnKeyType.done
         self.view.addSubview(textView!)
     }
     
     func frameSubViews() {
-        textView?.snp_makeConstraints(closure: { (make) -> Void in
+        textView?.snp_makeConstraints({ (make) -> Void in
             make.top.equalTo(self.view).offset(64)
             make.bottom.left.right.equalTo(self.view)
         })
@@ -56,16 +56,16 @@ class DiaryDetailViewController: RootViewController,UITextViewDelegate {
     func loadNavSubView() {
         
         self.titleLabel?.text = self.navigationItem.title
-        self.rightBtn?.hidden = false
-        self.rightBtn?.frame = CGRectMake(Utils.screenWidth() - 60, 32, 50, 20)
-        self.rightBtn?.setTitle("保存", forState: UIControlState.Normal)
-        self.rightBtn?.setImage(UIImage.init(), forState: UIControlState.Normal)
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.rightBtn?.isHidden = false
+        self.rightBtn?.frame = CGRect(x: Utils.screenWidth() - 60, y: 32, width: 50, height: 20)
+        self.rightBtn?.setTitle("保存", for: UIControlState())
+        self.rightBtn?.setImage(UIImage.init(), for: UIControlState())
+        self.view.backgroundColor = UIColor.white
     }
     
     //MARK: - 点击保存
     override func rightBtnClick() {
-        SVProgressHUD.showWithStatus("正在保存...")
+        SVProgressHUD.show(withStatus: "正在保存...")
         let model = NotepadModel()
         model.content = self.textView!.text
         model.notepad_list_id = notepad_list_id!
@@ -80,7 +80,7 @@ class DiaryDetailViewController: RootViewController,UITextViewDelegate {
             //插入数据库
             DatabaseManager.SharedInstance.insertTable("notepad_content", data: [model])
         }
-        SVProgressHUD.showSuccessWithStatus("保存成功")
+        SVProgressHUD.showSuccess(withStatus: "保存成功")
     }
     
     //MARM: - 加载本地数据
@@ -90,11 +90,11 @@ class DiaryDetailViewController: RootViewController,UITextViewDelegate {
     }
     
     //MARK: - 监听键盘弹出事件
-    func changeTextHeight(not:NSNotification) {
+    func changeTextHeight(_ not:Notification) {
         let valueStr = not.userInfo!["UIKeyboardFrameEndUserInfoKey"]
-        let str = String(valueStr)
-        let range = Range.init(start: str.startIndex.advancedBy(22), end: str.startIndex.advancedBy(25))
-        let valueFloat = Float(str.substringWithRange(range))
+        let str = String(describing: valueStr)
+        let range = (str.characters.index(str.startIndex, offsetBy: 22) ..< str.characters.index(str.startIndex, offsetBy: 25))
+        let valueFloat = Float(str.substring(with: range))
         if valueFloat == Float(Utils.screenHeight())  {
             var frame = self.textView?.frame
             frame?.size.height = Utils.screenHeight() - 64
@@ -108,7 +108,7 @@ class DiaryDetailViewController: RootViewController,UITextViewDelegate {
     }
     
     //MARK: - UITextViewDelegate
-    func textView(textView: UITextView, shouldChangeTextInRange range: NSRange, replacementText text: String) -> Bool {
+    func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         if text == "\n" {
             textView.resignFirstResponder()
         }

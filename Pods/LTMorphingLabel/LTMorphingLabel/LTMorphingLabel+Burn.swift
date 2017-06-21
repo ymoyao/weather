@@ -3,7 +3,7 @@
 //  https://github.com/lexrus/LTMorphingLabel
 //
 //  The MIT License (MIT)
-//  Copyright (c) 2015 Lex Tang, http://lexrus.com
+//  Copyright (c) 2016 Lex Tang, http://lexrus.com
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files
@@ -27,11 +27,10 @@
 
 import UIKit
 
-
 extension LTMorphingLabel {
     
-    private func burningImageForCharLimbo(
-        charLimbo: LTCharacterLimbo,
+    fileprivate func burningImageForCharLimbo(
+        _ charLimbo: LTCharacterLimbo,
         withProgress progress: CGFloat
         ) -> (UIImage, CGRect) {
             let maskedHeight = charLimbo.rect.size.height * max(0.01, progress)
@@ -42,7 +41,7 @@ extension LTMorphingLabel {
             UIGraphicsBeginImageContextWithOptions(
                 maskedSize,
                 false,
-                UIScreen.mainScreen().scale
+                UIScreen.main.scale
             )
             let rect = CGRect(
                 x: 0,
@@ -50,7 +49,7 @@ extension LTMorphingLabel {
                 width: charLimbo.rect.size.width,
                 height: maskedHeight
             )
-            String(charLimbo.char).drawInRect(rect, withAttributes: [
+            String(charLimbo.char).draw(in: rect, withAttributes: [
                 NSFontAttributeName: self.font,
                 NSForegroundColorAttributeName: self.textColor
                 ])
@@ -62,16 +61,16 @@ extension LTMorphingLabel {
                 width: charLimbo.rect.size.width,
                 height: maskedHeight
             )
-        return (newImage, newRect)
+        return (newImage!, newRect)
     }
     
     func BurnLoad() {
         
-        startClosures["Burn\(phaseStart)"] = {
+        startClosures["Burn\(LTMorphingPhases.start)"] = {
             self.emitterView.removeAllEmitters()
         }
         
-        progressClosures["Burn\(phaseProgress)"] = {
+        progressClosures["Burn\(LTMorphingPhases.progress)"] = {
             index, progress, isNewChar in
             
             if !isNewChar {
@@ -83,7 +82,7 @@ extension LTMorphingLabel {
             
         }
         
-        effectClosures["Burn\(phaseDisappear)"] = {
+        effectClosures["Burn\(LTMorphingPhases.disappear)"] = {
             char, index, progress in
             
             return LTCharacterLimbo(
@@ -95,7 +94,7 @@ extension LTMorphingLabel {
             )
         }
         
-        effectClosures["Burn\(phaseAppear)"] = {
+        effectClosures["Burn\(LTMorphingPhases.appear)"] = {
             char, index, progress in
             
             if char != " " {
@@ -116,12 +115,12 @@ extension LTMorphingLabel {
                         )
                         layer.renderMode = kCAEmitterLayerAdditive
                         layer.emitterMode = kCAEmitterLayerOutline
-                        cell.emissionLongitude = CGFloat(M_PI / 2.0)
+                        cell.emissionLongitude = CGFloat(Double.pi / 2)
                         cell.scale = self.font.pointSize / 160.0
                         cell.scaleSpeed = self.font.pointSize / 100.0
                         cell.birthRate = Float(self.font.pointSize)
                         cell.emissionLongitude = CGFloat(arc4random_uniform(30))
-                        cell.emissionRange = CGFloat(M_PI_4)
+                        cell.emissionRange = CGFloat(Double.pi / 4)
                         cell.alphaSpeed = self.morphingDuration * -3.0
                         cell.yAcceleration = 10
                         cell.velocity = CGFloat(10 + Int(arc4random_uniform(3)))
@@ -129,8 +128,7 @@ extension LTMorphingLabel {
                         cell.spin = 0
                         cell.spinRange = 0
                         cell.lifetime = self.morphingDuration / 3.0
-                    }.update {
-                        (layer, cell) in
+                    }.update { (layer, _) in
                         layer.emitterPosition = emitterPosition
                     }.play()
                 
@@ -145,14 +143,14 @@ extension LTMorphingLabel {
                         )
                         layer.renderMode = kCAEmitterLayerAdditive
                         layer.emitterMode = kCAEmitterLayerVolume
-                        cell.emissionLongitude = CGFloat(M_PI / 2.0)
+                        cell.emissionLongitude = CGFloat(Double.pi / 2)
                         cell.scale = self.font.pointSize / 40.0
                         cell.scaleSpeed = self.font.pointSize / 100.0
                         cell.birthRate =
                             Float(self.font.pointSize)
                             / Float(arc4random_uniform(10) + 10)
                         cell.emissionLongitude = 0
-                        cell.emissionRange = CGFloat(M_PI_4)
+                        cell.emissionRange = CGFloat(Double.pi / 4)
                         cell.alphaSpeed = self.morphingDuration * -3
                         cell.yAcceleration = -5
                         cell.velocity = CGFloat(20 + Int(arc4random_uniform(15)))
@@ -160,8 +158,7 @@ extension LTMorphingLabel {
                         cell.spin = CGFloat(Float(arc4random_uniform(30)) / 10.0)
                         cell.spinRange = 3
                         cell.lifetime = self.morphingDuration
-                    }.update {
-                        (layer, cell) in
+                    }.update { (layer, _) in
                         layer.emitterPosition = emitterPosition
                     }.play()
             }
@@ -175,7 +172,7 @@ extension LTMorphingLabel {
             )
         }
         
-        drawingClosures["Burn\(phaseDraw)"] = {
+        drawingClosures["Burn\(LTMorphingPhases.draw)"] = {
             (charLimbo: LTCharacterLimbo) in
             
             if charLimbo.drawingProgress > 0.0 {
@@ -184,7 +181,7 @@ extension LTMorphingLabel {
                     charLimbo,
                     withProgress: charLimbo.drawingProgress
                 )
-                charImage.drawInRect(rect)
+                charImage.draw(in: rect)
                 
                 return true
             }
@@ -192,7 +189,7 @@ extension LTMorphingLabel {
             return false
         }
         
-        skipFramesClosures["Burn\(phaseSkipFrames)"] = {
+        skipFramesClosures["Burn\(LTMorphingPhases.skipFrames)"] = {
             return 1
         }
     }

@@ -45,25 +45,25 @@ class FeedbackTableViewCell: UITableViewCell {
     func loadSubViews() {
         
     
-        titleLabel = Factory.customLabel(CGRectMake(10, 0, 100, self.frame.size.height))
-        titleLabel?.textAlignment = NSTextAlignment.Left
+        titleLabel = Factory.customLabel(CGRect(x: 10, y: 0, width: 100, height: self.frame.size.height))
+        titleLabel?.textAlignment = NSTextAlignment.left
         self.contentView.addSubview(titleLabel!)
         
-        contentLabel = Factory.customLabel(CGRectMake(Utils.screenWidth() - 100, 0, 100,  self.frame.size.height))
-        contentLabel?.textAlignment = NSTextAlignment.Right
+        contentLabel = Factory.customLabel(CGRect(x: Utils.screenWidth() - 100, y: 0, width: 100,  height: self.frame.size.height))
+        contentLabel?.textAlignment = NSTextAlignment.right
         self.contentView.addSubview(contentLabel!)
         
         lineView = UIView.init()
-        lineView?.backgroundColor = UIColor.lightGrayColor()
+        lineView?.backgroundColor = UIColor.lightGray
         self.contentView.addSubview(lineView!)
     }
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        lineView?.frame = CGRectMake(10, self.frame.size.height - 1, Utils.screenWidth() - 10, 1)
+        lineView?.frame = CGRect(x: 10, y: self.frame.size.height - 1, width: Utils.screenWidth() - 10, height: 1)
     }
 
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state

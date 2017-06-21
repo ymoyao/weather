@@ -17,7 +17,7 @@ public struct Utils {
      - returns: CGFloat
      */
     static func screenWidth()-> CGFloat{
-        return UIScreen.mainScreen().bounds.width
+        return UIScreen.main.bounds.width
     }
     
     
@@ -27,7 +27,7 @@ public struct Utils {
      - returns: CGFloat
      */
     static func screenHeight()-> CGFloat{
-        return UIScreen.mainScreen().bounds.height
+        return UIScreen.main.bounds.height
     }
     
     
@@ -38,13 +38,13 @@ public struct Utils {
      
      - returns: 宽度
      */
-    static func calWidthWithLabel(label:UILabel) -> CGFloat{
+    static func calWidthWithLabel(_ label:UILabel) -> CGFloat{
         let paragraphStyle = NSMutableParagraphStyle.init()
         paragraphStyle.lineBreakMode = label.lineBreakMode;
         paragraphStyle.alignment = label.textAlignment;
-        let str:NSString =  label.text!
+        let str:NSString =  label.text! as NSString
         
-        return str.boundingRectWithSize(CGSizeMake(2000, label.frame.size.height), options: [NSStringDrawingOptions.UsesLineFragmentOrigin,NSStringDrawingOptions.UsesFontLeading], attributes: [NSFontAttributeName:label.font, NSParagraphStyleAttributeName:paragraphStyle], context: nil).size.width
+        return str.boundingRect(with: CGSize(width: 2000, height: label.frame.size.height), options: [NSStringDrawingOptions.usesLineFragmentOrigin,NSStringDrawingOptions.usesFontLeading], attributes: [NSFontAttributeName:label.font, NSParagraphStyleAttributeName:paragraphStyle], context: nil).size.width
     }
 
     
@@ -56,12 +56,12 @@ public struct Utils {
      
      - returns: 时间字符串
      */
-    static func dateStr(date:NSDate, dateFormat:String?) ->String {
-        let dateFormate = NSDateFormatter.init()
+    static func dateStr(_ date:Date, dateFormat:String?) ->String {
+        let dateFormate = DateFormatter.init()
         if dateFormat != nil {
             dateFormate.dateFormat = dateFormat
         }
-        return dateFormate.stringFromDate(date)
+        return dateFormate.string(from: date)
     }
     
 }

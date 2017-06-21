@@ -12,32 +12,25 @@ import SQLite
 
 
 class DatabaseManager: NSObject {
+    var instance : DatabaseManager?
+    static let SharedInstance = DatabaseManager.init()
+    private override init(){
+        instance = DatabaseManager()
+        instance?.openDB()
+    }
 
     var databaseFilePath:String?
     var db:Connection?
-    
-    class var SharedInstance : DatabaseManager {
-        struct Database {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : DatabaseManager? = nil
-        }
-        
-        dispatch_once(&Database.onceToken) {
-            Database.instance = DatabaseManager()
-            Database.instance?.openDB()
-        }
-        return Database.instance!
-    }
     
     //创建创建数据库文件夹和数据库并打开数据库
     func openDB() {
         
         //创建数据库文件夹
-        let dbPath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.DocumentDirectory, NSSearchPathDomainMask.UserDomainMask, true).first
+        let dbPath = NSSearchPathForDirectoriesInDomains(FileManager.SearchPathDirectory.documentDirectory, FileManager.SearchPathDomainMask.userDomainMask, true).first
         let dbPathTemp = dbPath! + "/DB"
-        let fileManager =  NSFileManager.init()
-        if  !fileManager.fileExistsAtPath(dbPathTemp) {
-            try! fileManager.createDirectoryAtPath(dbPathTemp, withIntermediateDirectories: true, attributes: nil)
+        let fileManager =  FileManager.init()
+        if  !fileManager.fileExists(atPath: dbPathTemp) {
+            try! fileManager.createDirectory(atPath: dbPathTemp, withIntermediateDirectories: true, attributes: nil)
         }
         
         //创建和打开数据库
@@ -86,7 +79,7 @@ class DatabaseManager: NSObject {
     
     
     //MARK: - 插入数据
-    func insertTable(name:String, data:[NotepadModel]) ->Bool {
+    func insertTable(_ name:String, data:[NotepadModel]) ->Bool {
         var sqlStr = ""
         var style = 0
         if name == "notepad_list" {
@@ -118,7 +111,7 @@ class DatabaseManager: NSObject {
     
     
     //MARK: - 查找数据
-    func selectTable(name:String, goalId:Int64?) ->[NotepadModel] {
+    func selectTable(_ name:String, goalId:Int64?) ->[NotepadModel] {
     
         var array:[NotepadModel] = []
         let table = Table(name)
@@ -161,7 +154,7 @@ class DatabaseManager: NSObject {
     
     
     //MARK: - 删除数据
-    func deleteTable(name:String, goalId:[Int64]?) -> Bool {
+    func deleteTable(_ name:String, goalId:[Int64]?) -> Bool {
 
         if  name == "notepad_list" {
             for value in goalId! {
@@ -185,7 +178,7 @@ class DatabaseManager: NSObject {
     }
     
     //MARK: - 更新数据
-    func upadateTable(name:String, goalId:Int64?, value:String? ,star:Bool?) -> Bool {
+    func upadateTable(_ name:String, goalId:Int64?, value:String? ,star:Bool?) -> Bool {
         
         if name == "notepad_content" {
             //1.字符串要加 ''  数字不用加 ;2.  注意空格
@@ -199,7 +192,7 @@ class DatabaseManager: NSObject {
             return true
         }
         else if name == "notepad_list" {
-            var sqlStr = " SET star = " + String.init(format: "%i", Int(star!)) + " WHERE id = " + String.init(format: "%ld", goalId!)
+            var sqlStr = " SET star = " + String.init(format: "%i", Bool(star!) as CVarArg) + " WHERE id = " + String.init(format: "%ld", goalId!)
             sqlStr  = "UPDATE " + name + sqlStr
             let stmt = try! db!.prepare(sqlStr)
             try! stmt.run()

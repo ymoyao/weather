@@ -20,7 +20,7 @@ import UIKit
  - purple: 紫色
  */
 enum CellBgColor : Int{
-    case Red = 0,Orange,Yellow,Green,Cyan,Blue,Purple
+    case red = 0,orange,yellow,green,cyan,blue,purple
 }
 
 /**

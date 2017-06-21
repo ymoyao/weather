@@ -28,43 +28,43 @@ class FeedbackViewController: RootViewController,UITableViewDelegate,UITableView
     //MARK: - 导航栏
     func loadNavSubViews() {
         self.titleLabel?.text = self.navigationItem.title
-        self.view.backgroundColor = UIColor.whiteColor()
+        self.view.backgroundColor = UIColor.white
     }
     
     //MARK: - 子视图
     func loadSubViews() {
-        tableView = UITableView.init(frame: CGRectMake(0, 64, Utils.screenWidth(), Utils.screenHeight() - 64), style: UITableViewStyle.Plain)
+        tableView = UITableView.init(frame: CGRect(x: 0, y: 64, width: Utils.screenWidth(), height: Utils.screenHeight() - 64), style: UITableViewStyle.plain)
         tableView?.delegate = self
         tableView?.dataSource = self
-        tableView?.separatorStyle = UITableViewCellSeparatorStyle.None
+        tableView?.separatorStyle = UITableViewCellSeparatorStyle.none
         tableView?.tableHeaderView = loadTableViewHeadView()
-        tableView?.registerClass(FeedbackTableViewCell.self, forCellReuseIdentifier: "cell")
+        tableView?.register(FeedbackTableViewCell.self, forCellReuseIdentifier: "cell")
         self.view.addSubview(tableView!)
     }
     
     //MARK: - 加载本地数据
     func loadData() {
-       let version = NSBundle.mainBundle().infoDictionary!["CFBundleShortVersionString"] as! String
+       let version = Bundle.main.infoDictionary!["CFBundleShortVersionString"] as! String
         dataArray = [["key":"作者","content":"游辉"],["key":"当前版本","content":version],["key":"邮箱","content":"developer_yh@163.com"]]
     }
     
     //MARK: - 加载头部视图
     func loadTableViewHeadView() -> FeedbackHeadView {
-        tableHeadView = FeedbackHeadView.init(frame: CGRectMake(0, 0, Utils.screenWidth(), 200)) //330
+        tableHeadView = FeedbackHeadView.init(frame: CGRect(x: 0, y: 0, width: Utils.screenWidth(), height: 200)) //330
         return tableHeadView!
     }
     
     //MARK: - UITableViewDelegate
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataArray!.count
     }
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier("cell") as! FeedbackTableViewCell
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell") as! FeedbackTableViewCell
         cell.dict = self.dataArray![indexPath.row]
         return cell
     }

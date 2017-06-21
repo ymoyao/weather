@@ -3,7 +3,7 @@
 //  https://github.com/lexrus/LTMorphingLabel
 //
 //  The MIT License (MIT)
-//  Copyright (c) 2015 Lex Tang, http://lexrus.com
+//  Copyright (c) 2016 Lex Tang, http://lexrus.com
 //
 //  Permission is hereby granted, free of charge, to any person obtaining a
 //  copy of this software and associated documentation files
@@ -26,7 +26,25 @@
 //
 
 import UIKit
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
 
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
 
 public struct LTEmitter {
     
@@ -47,8 +65,8 @@ public struct LTEmitter {
         cell.velocityRange = -80.0
         cell.lifetime = 0.16
         cell.lifetimeRange = 0.1
-        cell.emissionLongitude = CGFloat(M_PI_2 * 2.0)
-        cell.emissionRange = CGFloat(M_PI_2 * 2.0)
+        cell.emissionLongitude = CGFloat(Double.pi / 2 * 2.0)
+        cell.emissionRange = CGFloat(Double.pi / 2 * 2.0)
         cell.scale = 0.1
         cell.yAcceleration = 100
         cell.scaleSpeed = -0.06
@@ -63,7 +81,7 @@ public struct LTEmitter {
         self.duration = duration
         var image: UIImage?
         defer {
-            cell.contents = image?.CGImage
+            cell.contents = image?.cgImage
         }
 
         image = UIImage(named: particleName)
@@ -74,8 +92,8 @@ public struct LTEmitter {
         // Load from Framework
         image = UIImage(
             named: particleName,
-            inBundle: NSBundle(forClass: LTMorphingLabel.self),
-            compatibleWithTraitCollection: nil)
+            in: Bundle(for: LTMorphingLabel.self),
+            compatibleWith: nil)
     }
     
     public func play() {
@@ -84,11 +102,8 @@ public struct LTEmitter {
         }
         
         layer.emitterCells = [cell]
-        let d = dispatch_time(
-            DISPATCH_TIME_NOW,
-            Int64(duration * Float(NSEC_PER_SEC))
-        )
-        dispatch_after(d, dispatch_get_main_queue()) {
+        let d = DispatchTime.now() + Double(Int64(duration * Float(NSEC_PER_SEC))) / Double(NSEC_PER_SEC)
+        DispatchQueue.main.asyncAfter(deadline: d) {
             self.layer.birthRate = 0.0
         }
     }
@@ -99,26 +114,24 @@ public struct LTEmitter {
         }
     }
     
-    func update(configureClosure: LTEmitterConfigureClosure? = .None) -> LTEmitter {
+    func update(_ configureClosure: LTEmitterConfigureClosure? = .none) -> LTEmitter {
         configureClosure?(layer, cell)
         return self
     }
     
 }
 
-
 public typealias LTEmitterConfigureClosure = (CAEmitterLayer, CAEmitterCell) -> Void
 
-
-public class LTEmitterView: UIView {
+open class LTEmitterView: UIView {
     
-    public lazy var emitters: Dictionary<String, LTEmitter> = {
-        var _emitters = Dictionary<String, LTEmitter>()
+    open lazy var emitters: [String: LTEmitter] = {
+        var _emitters = [String: LTEmitter]()
         return _emitters
         }()
     
-    public func createEmitter(
-        name: String,
+    open func createEmitter(
+        _ name: String,
         particleName: String,
         duration: Float,
         configureClosure: LTEmitterConfigureClosure?
@@ -142,18 +155,18 @@ public class LTEmitterView: UIView {
             return emitter
     }
     
-    public func emitterByName(name: String) -> LTEmitter? {
+    open func emitterByName(_ name: String) -> LTEmitter? {
         if let e = emitters[name] {
             return e
         }
-        return Optional.None
+        return Optional.none
     }
     
-    public func removeAllEmitters() {
+    open func removeAllEmitters() {
         for (_, emitter) in emitters {
             emitter.layer.removeFromSuperlayer()
         }
-        emitters.removeAll(keepCapacity: false)
+        emitters.removeAll(keepingCapacity: false)
     }
     
 }

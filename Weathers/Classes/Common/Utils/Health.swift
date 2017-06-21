@@ -9,37 +9,32 @@
 import UIKit
 import CoreMotion
 
-public class Health: NSObject {
+open class Health: NSObject {
     
-    var stepCounter:CMStepCounter?
-    var operation:NSOperationQueue?
-    public var todayStep = 0
-    class var SharedInstance : Health {
-        struct HealthManager {
-            static var onceToken : dispatch_once_t = 0
-            static var instance : Health? = nil
-        }
-        
-        dispatch_once(&HealthManager.onceToken) {
-            HealthManager.instance = Health()
-            HealthManager.instance?.stepCounter = CMStepCounter.init()
-            HealthManager.instance?.operation = NSOperationQueue.init()
-            HealthManager.instance?.todaySteps()
-        }
-        return HealthManager.instance!
+    var instance:Health?
+    static let SharedInstance = Health.init()
+    private override init(){
+        instance? = Health()
+        instance?.stepCounter = CMStepCounter.init()
+        instance?.operation = OperationQueue.init()
+        instance?.todaySteps()
     }
     
     
+    var stepCounter:CMStepCounter?
+    var operation:OperationQueue?
+    open var todayStep = 0
+    
     //MARK: - 取到今天凌晨到现在的步数
-   private func todaySteps(){
+   fileprivate func todaySteps(){
         
-        let date = NSDate.init()
-        let dateFomate = NSDateFormatter.init()
+        let date = Date.init()
+        let dateFomate = DateFormatter.init()
         dateFomate.dateFormat = "YYYY-MM-dd"
-        let dayDateStr = dateFomate.stringFromDate(date)
-        let dayDate = dateFomate.dateFromString(dayDateStr)
+        let dayDateStr = dateFomate.string(from: date)
+        let dayDate = dateFomate.date(from: dayDateStr)
         
-        stepCounter!.queryStepCountStartingFrom(dayDate!, to: NSDate.init(), toQueue: operation!) { (step, ErrorType) -> Void in
+        stepCounter!.queryStepCountStarting(from: dayDate!, to: Date.init(), to: operation!) { (step, ErrorType) -> Void in
             self.todayStep = step
         }
     }
@@ -52,58 +47,58 @@ public class Health: NSObject {
      
      - returns: 距离（公里）
      */
-    public class func getDistance(step:Int) -> CGFloat {
+    open class func getDistance(_ step:Int) -> CGFloat {
     
         return 170.0 * CGFloat(step) / 230000.0
     }
     
     
-    public class func getLocalStep() -> Int? {
-        if NSUserDefaults.standardUserDefaults().objectForKey("localStep") != nil {
-          return  NSUserDefaults.standardUserDefaults().objectForKey("localStep") as? Int
+    open class func getLocalStep() -> Int? {
+        if UserDefaults.standard.object(forKey: "localStep") != nil {
+          return  UserDefaults.standard.object(forKey: "localStep") as? Int
         }
         else{
             return 0
         }
     }
     
-    public class func updateLocalStep(step:Int){
-        NSUserDefaults.standardUserDefaults().setInteger(step, forKey: "localStep")
-        NSUserDefaults.standardUserDefaults().synchronize()
+    open class func updateLocalStep(_ step:Int){
+        UserDefaults.standard.set(step, forKey: "localStep")
+        UserDefaults.standard.synchronize()
     }
     
-    public class func getGoalStep() -> Int? {
-        if NSUserDefaults.standardUserDefaults().objectForKey("goalStep") != nil {
-            return  NSUserDefaults.standardUserDefaults().objectForKey("goalStep") as? Int
+    open class func getGoalStep() -> Int? {
+        if UserDefaults.standard.object(forKey: "goalStep") != nil {
+            return  UserDefaults.standard.object(forKey: "goalStep") as? Int
         }
         else{
             return 0
         }
     }
     
-    public class func updateGoalStep(step:Int){
-        NSUserDefaults.standardUserDefaults().setInteger(step, forKey: "goalStep")
-        NSUserDefaults.standardUserDefaults().synchronize()
+    open class func updateGoalStep(_ step:Int){
+        UserDefaults.standard.set(step, forKey: "goalStep")
+        UserDefaults.standard.synchronize()
     }
     
     
-    public class func IsFinishGoal() ->Bool? {
-        if NSUserDefaults.standardUserDefaults().objectForKey("isFinishGoal") != nil {
-            return  NSUserDefaults.standardUserDefaults().objectForKey("isFinishGoal") as? Bool
+    open class func IsFinishGoal() ->Bool? {
+        if UserDefaults.standard.object(forKey: "isFinishGoal") != nil {
+            return  UserDefaults.standard.object(forKey: "isFinishGoal") as? Bool
         }
         else{
             return true
         }
     }
     
-    public class func finishGoal() {
-        NSUserDefaults.standardUserDefaults().setBool(true, forKey: "isFinishGoal")
-        NSUserDefaults.standardUserDefaults().synchronize()
+    open class func finishGoal() {
+        UserDefaults.standard.set(true, forKey: "isFinishGoal")
+        UserDefaults.standard.synchronize()
     }
     
-    public class func beginGoal() {
-        NSUserDefaults.standardUserDefaults().setBool(false, forKey: "isFinishGoal")
-        NSUserDefaults.standardUserDefaults().synchronize()
+    open class func beginGoal() {
+        UserDefaults.standard.set(false, forKey: "isFinishGoal")
+        UserDefaults.standard.synchronize()
     }
     
 }

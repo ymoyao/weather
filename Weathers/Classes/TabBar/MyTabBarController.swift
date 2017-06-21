@@ -11,7 +11,7 @@ import UIKit
 class MyTabBarController: UITabBarController {
 
     
-    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: NSBundle?) {
+    override init(nibName nibNameOrNil: String?, bundle nibBundleOrNil: Bundle?) {
         super.init(nibName: nibNameOrNil, bundle: nibBundleOrNil)
         //添加vc到tab
         addViewControllerToTab()
@@ -48,7 +48,7 @@ class MyTabBarController: UITabBarController {
 
         for controller:UIViewController in vcArray {
             let nav = UINavigationController.init(rootViewController: controller )
-            nav.navigationBarHidden = true
+            nav.isNavigationBarHidden = true
             narMutArray.append(nav)
         }
         self.viewControllers = narMutArray
@@ -56,7 +56,7 @@ class MyTabBarController: UITabBarController {
     
     //MARK: - 定制tabBar
     func customTabBar() {
-        let tabBar = MyTabBar.init(frame: CGRectMake(0, 0, UIScreen.mainScreen().bounds.width, 49))
+        let tabBar = MyTabBar.init(frame: CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 49))
         tabBar.tabClosure = { (tag) in
             self.selectedIndex = tag
         }

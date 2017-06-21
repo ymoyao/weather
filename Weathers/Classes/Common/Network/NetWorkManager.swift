@@ -22,13 +22,14 @@ struct NetWorkManager {
      - parameter success:  成功
      - parameter fail:     失败
      */
-    static func requestWeather(key:String, city:String, province:String, success:([String : AnyObject]?) -> Void ,fail:(String?) -> Void) -> Void{
-        let req = Alamofire.request(.GET, URL.weatherUrl(),parameters: ["key":key,"city":city,"province":province])
+    static func requestWeather(_ key:String, city:String, province:String, success:@escaping ([String : AnyObject]?) -> Void ,fail:@escaping (String?) -> Void) -> Void{
         
+        let req = Alamofire.request(URL.weatherUrl(), method: .get, parameters: ["key":key,"city":city,"province":province],encoding: URLEncoding.default, headers: nil)
+
         req.responseJSON { (response) -> Void in
 
             if (response.result.error != nil) {
-                fail(response.result.error?.description)
+                fail(response.result.error.debugDescription)
             }
             else{
                 success(response.result.value as? [String : AnyObject])
@@ -46,13 +47,13 @@ struct NetWorkManager {
      - parameter success: 成功
      - parameter fail:    失败
      */
-    static func requestReporter(info:String, userid:String, success:([String : AnyObject]?) -> Void, fail:(String?) -> Void) ->Void {
+    static func requestReporter(_ info:String, userid:String, success:@escaping ([String : AnyObject]?) -> Void, fail:@escaping (String?) -> Void) ->Void {
 //        879a6cb3afb84dbf4fc84a1df2ab7319
         
-        let req = Alamofire.request(.GET, URL.reporterUrl(), parameters: ["key":"20db0ca5dbbbeb84239459c7ef24ff20","info":info,"userid":userid], encoding: ParameterEncoding.URL, headers: ["apikey":URL.baidukeyStr()])
+        let req = Alamofire.request(URL.reporterUrl(),method: .get, parameters: ["key":"20db0ca5dbbbeb84239459c7ef24ff20","info":info,"userid":userid], encoding: URLEncoding.default, headers: ["apikey":URL.baidukeyStr()])
         req.responseJSON { (response) -> Void in
             if (response.result.error != nil) {
-                fail(response.result.error?.description)
+                fail(response.result.error.debugDescription)
             }
             else{
                 success(response.result.value as? [String : AnyObject] )
@@ -68,15 +69,15 @@ struct NetWorkManager {
      - parameter success: 成功
      - parameter fail:    失败
      */
-    static func requestHeweather(city:String, success:(AnyObject)? -> Void, fail:(String?)? -> Void) -> Void {
-        let req = Alamofire.request(.GET, URL.heweather(), parameters: ["city":city], encoding: ParameterEncoding.URL, headers: ["apikey":URL.baidukeyStr()])
+    static func requestHeweather(_ city:String, success:@escaping ((AnyObject)?) -> Void, fail:@escaping ((String?)?) -> Void) -> Void {
+        let req = Alamofire.request(URL.heweather(),method: .get,  parameters: ["city":city], encoding: URLEncoding.default, headers: ["apikey":URL.baidukeyStr()])
         
         req.responseJSON { (response) -> Void in
             switch response.result {
-            case .Success:
-                success(response.result.value)
-            case .Failure:
-                fail(response.result.error?.description)
+            case .success:
+                success(response.result.value as (AnyObject)?)
+            case .failure:
+                fail(response.result.error.debugDescription)
             }
         }
     }
@@ -90,14 +91,14 @@ struct NetWorkManager {
      - parameter success: 成功
      - parameter fail:    失败
      */
-    static func requestHeWeatherSupportCitys(search:String, key:String, success:(AnyObject?)-> Void,fail:(String?)->Void) -> Void {
-        let req = Alamofire.request(.GET, URL.heweatherSupurtCity(), parameters: ["search":"allworld" ,"key":URL.heWeatherStr()], encoding: ParameterEncoding.URL)
+    static func requestHeWeatherSupportCitys(_ search:String, key:String, success:@escaping (AnyObject?)-> Void,fail:@escaping (String?)->Void) -> Void {
+        let req = Alamofire.request(URL.heweatherSupurtCity(), method: .get, parameters: ["search":"allworld" ,"key":URL.heWeatherStr()], encoding: URLEncoding.default)
         req.responseJSON { (response) -> Void in
             switch response.result {
-            case .Success:
-                success(response.result.value)
-            case .Failure:
-                fail(response.result.error?.description)
+            case .success:
+                success(response.result.value as AnyObject?)
+            case .failure:
+                fail(response.result.error.debugDescription)
             }
         }
     }
